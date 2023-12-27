@@ -1,0 +1,19 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "PNU 2023 Linear Algebra"
+  sidebar:
+    style: "docked"
+    contents:
+      - text: "Basics"
+        contents:
+          - Numpy_Introduction.ipynb
+          - Linear_Systems.ipynb
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true

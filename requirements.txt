@@ -1,0 +1,6 @@
+ipykernel
+numpy
+scipy
+scikit-learn
+matplotlib
+koreanize-matplotlib
