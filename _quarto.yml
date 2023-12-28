@@ -9,8 +9,11 @@ website:
     contents:
       - text: "Basics"
         contents:
-          - Numpy_Introduction.ipynb
           - Linear_Systems.ipynb
+          - Gaussian_Elimination.ipynb
+      - text: "Appendix"
+        contents:
+          - Numpy_Basic.ipynb
 
 format:
   html:

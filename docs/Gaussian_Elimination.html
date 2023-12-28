@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PNU 2023 Linear Algebra - Gaussian Elimination</title>
+<title>PNU 2023 Linear Algebra - 가우스 소거법(Gaussian Elimination)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,9 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      PNU 2023 Linear Algebra
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Linear_Systems.html">Basics</a></li><li class="breadcrumb-item"><a href="./Gaussian_Elimination.html">가우스 소거법(Gaussian Elimination)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -147,14 +145,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Numpy_Introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to NumPy and Matplotlib</span></a>
+  <a href="./Linear_Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">연립 선형 방정식과 해집합</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Linear_Systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear Systems</span></a>
+  <a href="./Gaussian_Elimination.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">가우스 소거법(Gaussian Elimination)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Numpy_Basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to NumPy and Matplotlib</span></a>
   </div>
 </li>
       </ul>
@@ -169,8 +184,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#example-1-row-operations-and-elimination" id="toc-example-1-row-operations-and-elimination" class="nav-link active" data-scroll-target="#example-1-row-operations-and-elimination">Example 1: Row operations and elimination</a></li>
-  <li><a href="#example-2-finding-pivots" id="toc-example-2-finding-pivots" class="nav-link" data-scroll-target="#example-2-finding-pivots">Example 2: Finding pivots</a></li>
+  <li><a href="#예제-1-row-operations-and-elimination" id="toc-예제-1-row-operations-and-elimination" class="nav-link active" data-scroll-target="#예제-1-row-operations-and-elimination">예제 1: Row operations and elimination</a></li>
+  <li><a href="#예제-2-finding-pivots" id="toc-예제-2-finding-pivots" class="nav-link" data-scroll-target="#예제-2-finding-pivots">예제 2: Finding pivots</a></li>
   </ul>
 </nav>
     </div>
@@ -179,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Gaussian Elimination</h1>
+<h1 class="title">가우스 소거법(Gaussian Elimination)</h1>
 </div>
 
 
@@ -194,56 +209,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>이 섹션에서는 가장 직접적인 방법으로 선형 시스템을 푸는 데 도움이 되는 몇 가지 파이썬 함수를 정의하겠습니다. 이 알고리즘은 가우스 제거라고 알려져 있으며, 이 시점부터는 <strong>제거</strong>라고 간단히 부르겠습니다. 제거의 개념은 주어진 시스템을 해는 같지만 풀기가 훨씬 쉬운 다른 시스템과 교환하는 것입니다. 이를 위해 시스템의 해를 보존하면서 점차적으로 해에 더 쉽게 접근할 수 있도록 하는 <strong>행 연산</strong>이라는 일련의 단계를 수행합니다. 이러한 연산에는 세 가지가 있습니다. 1. 두 방정식의 위치 교환하기 2. 방정식에 0이 아닌 숫자를 곱하기<br>
-3. 방정식을 그 자체의 합과 다른 방정식의 배수로 바꾸기.</p>
-<section id="example-1-row-operations-and-elimination" class="level2">
-<h2 class="anchored" data-anchor-id="example-1-row-operations-and-elimination">Example 1: Row operations and elimination</h2>
+<p>연립 선형방정식을 푸는 데 도움이 되는 몇 가지 파이썬 함수를 사용하여, 가우스 소거법에 대해서 알아보겠습니다. 가우스 소거법의 핵심은 해를 보존하면서 점차적으로 해에 더 쉽게 접근할 수 있도록 하는 <strong>행 연산</strong>이라는 일련의 단계를 적용하는 것 입니다. 기본 행 연산은 세 가지가 있습니다. 1. 두 방정식의 위치 교환하기(interchange) 2. 방정식에 0이 아닌 숫자를 곱하기(scaling) 3. 특정 행을 자기 자신과 다른 행의 배수 배를 합한 것으로 교체(replacement)</p>
+<section id="예제-1-row-operations-and-elimination" class="level2">
+<h2 class="anchored" data-anchor-id="예제-1-row-operations-and-elimination">예제 1: Row operations and elimination</h2>
 <p>예를 들어 보겠습니다.</p>
 <p><span class="math display">\[
-\begin{eqnarray*}
+\begin{matrix}
 x_1 - x_2 + x_3 &amp; = &amp; 3\\
 2x_1 + x_2 + 8x_3 &amp; = &amp; 18\\
 4x_1 + 2x_2 -3x_3 &amp; = &amp; -2
-\end{eqnarray*}
+\end{matrix}
 \]</span></p>
 <p>첫 번째 방정식과 마지막 방정식을 바꿀 수 있습니다.</p>
 <p><span class="math display">\[
-\begin{eqnarray*}
+\begin{matrix}
 4x_1 + 2x_2 -3x_3 &amp; = &amp; -2 \\
 2x_1 + x_2 + 8x_3 &amp; = &amp; 18\\
 x_1 - x_2 + x_3 &amp; = &amp; 3
-\end{eqnarray*}
+\end{matrix}
 \]</span></p>
 <p>또는 첫 번째 방정식에 <span class="math inline">\(5\)</span>를 곱할 수 있습니다.</p>
 <p><span class="math display">\[
-\begin{eqnarray*}
+\begin{matrix}
 5x_1 - 5x_2 + 5x_3 &amp; = &amp; 15\\
 2x_1 + x_2 + 8x_3 &amp; = &amp; 18\\
 4x_1 + 2x_2 -3x_3 &amp; = &amp; -2
-\end{eqnarray*}
+\end{matrix}
 \]</span></p>
 <p>또는 마지막 방정식에 첫 번째 방정식의 <span class="math inline">\(2\)</span>배를 더할 수도 있습니다.</p>
 <p><span class="math display">\[
-\begin{eqnarray*}
+\begin{matrix}
 x_1 - x_2 + x_3 &amp; = &amp; 3\\
 2x_1 + x_2 + 3x_3 &amp; = &amp; 8\\
 6x_1 \quad\quad -x_3 &amp; = &amp; 4
-\end{eqnarray*}
+\end{matrix}
 \]</span></p>
-<p>마지막 연산이 가장 중요한 이유는 방정식 중 하나에서 변수를 ’제거’할 수 있기 때문입니다. 세 번째 방정식에는 더 이상 <span class="math inline">\(x_2\)</span> 항이 포함되어 있지 않다는 점에 유의하세요. 이것이 제거 알고리즘의 핵심입니다.</p>
+<p>마지막 연산이 가장 중요한 이유는 방정식 중 하나에서 변수를 ’제거’할 수 있기 때문입니다. 세 번째 방정식에는 더 이상 <span class="math inline">\(x_2\)</span> 항이 포함되어 있지 않다는 점에 유의하세요. 이것이 ’가우스 소거법’의 핵심입니다.</p>
 <p>계산을 위해 변수 이름과 “=” 기호를 생략하고 실제 숫자를 모두 배열로 정렬할 수 있습니다.</p>
 <p><span class="math display">\[
-\begin{equation}
-\left[ \begin{array}{rrrr} 1 &amp; -1 &amp; 1 &amp; 3 \\ 2 &amp; 1 &amp; 8 &amp; 18 \\ 4 &amp; 2 &amp; -3 &amp; -2 \end{array}\right]
-\end{equation}
+\begin{matrix}
+\left[ \begin{array}{ccc|c} 1 &amp; -1 &amp; 1 &amp; 3 \\ 2 &amp; 1 &amp; 8 &amp; 18 \\ 4 &amp; 2 &amp; -3 &amp; -2 \end{array}\right]
+\end{matrix}
 \]</span></p>
 <p>이제 이 값으로 NumPy 배열을 만들어 보겠습니다. 나중에 참조할 수 있도록 배열에 <span class="math inline">\(\texttt{A}\)</span>라는 이름을 지정하겠습니다.</p>
-<div class="cell" data-execution_count="1">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">18</span>],[<span class="dv">4</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">2</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>배열에 대한 연산을 바로 시작할 수도 있지만, 그 대신 먼저 각 연산을 개별적으로 수행하는 몇 가지 코드를 작성하겠습니다. 각 연산을 파이썬 함수 안에 집어넣어 나중에 계산에 다시 사용할 수 있도록 하겠습니다.</p>
-<div class="cell" data-execution_count="2">
+<p>기본 행 연산을 수행할 수 있는 간단한 함수를 작성하도록 하겠습니다.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> row_swap(A,k,l):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> A.shape[<span class="dv">0</span>]  <span class="co"># m is number of rows in A</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">1</span>]  <span class="co"># n is number of columns in A</span></span>
@@ -279,163 +293,95 @@ x_1 - x_2 + x_3 &amp; = &amp; 3\\
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> B </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>이제 <span class="math inline">\(\texttt{row_swap}\)</span>, <span class="math inline">\(\texttt{row_scale}\)</span>, <span class="math inline">\(\texttt{row_add}\)</span>라는 세 가지 새로운 함수가 생겼습니다. 이 함수를 사용해 어떤 결과가 나오는지 살펴봅시다.</p>
-<div class="cell" data-execution_count="3">
+<p>이제 <code>row_swap</code>, <code>row_scale</code>, <code>row_add</code>라는 세 가지 새로운 함수가 생겼습니다. 이 함수를 사용해 어떤 결과가 나오는지 살펴봅시다.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B1 <span class="op">=</span> row_swap(A,<span class="dv">0</span>,<span class="dv">2</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>B2 <span class="op">=</span> row_scale(A,<span class="dv">2</span>,<span class="fl">0.5</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>B3 <span class="op">=</span> row_add(A,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[ 1 -1  1  3]
- [ 2  1  8 18]
- [ 4  2 -3 -2]]
-
-
-[[ 1.  -1.   1.   3. ]
- [ 2.   1.   8.  18. ]
- [ 2.   1.  -1.5 -1. ]]</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B2,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>제거의 목표는 이 배열에 행 연산을 수행하여 다음과 같은 구조의 새 배열을 생성하는 것입니다.</p>
+<p>가우스 소거법의 목표는 행 연산을 수행하여 다음과 같은 구조의 행렬을 생성하는 것입니다.</p>
 <p><span class="math display">\[
 \begin{equation}
-\left[ \begin{array}{cccc} 1 &amp; * &amp; * &amp; * \\ 0 &amp; 1 &amp; * &amp; * \\ 0 &amp; 0 &amp; 1 &amp; * \end{array}\right]
+\left[ \begin{array}{ccc|c} 1 &amp; * &amp; * &amp; * \\ 0 &amp; 1 &amp; * &amp; * \\ 0 &amp; 0 &amp; 1 &amp; * \end{array}\right]
 \end{equation}
 \]</span></p>
 <p><em>(여기서 </em> 기호는 0 또는 1이 될 수도 있고 아닐 수도 있는 다양한 미지의 값을 나타냅니다.)*.</p>
 <p>행 연산을 수행하고 각 단계마다 새로운 이름을 붙인 배열로 진행 상황을 저장합니다. 예를 들어 <span class="math inline">\(\texttt{A1}\)</span>, <span class="math inline">\(\texttt{A2}\)</span>, <span class="math inline">\(\texttt{A3}\)</span> 등으로 이름을 지정할 수 있습니다. 이렇게 하면 진행 상황을 확인하거나 원하는 경우 돌아가서 코드를 변경할 수 있습니다.</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Add -2 times row 0 to row 1</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> row_add(A,<span class="dv">0</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A1,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">## Add -4 times row 0 to row 2</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> row_add(A1,<span class="dv">0</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">4</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A2,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">## Add -2 times row 1 to row 2</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>A3 <span class="op">=</span> row_add(A2,<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A3,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">## Multiply row 1 by 1/3</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>A4 <span class="op">=</span> row_scale(A3,<span class="dv">1</span>,<span class="fl">1.0</span><span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A4,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">## Multiply row 2 by 1/19</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>A5 <span class="op">=</span> row_scale(A4,<span class="dv">2</span>,<span class="fl">1.0</span><span class="op">/-</span><span class="fl">19.</span>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[ 1. -1.  1.  3.]
- [ 0.  3.  6. 12.]
- [ 4.  2. -3. -2.]] 
-
-[[  1.  -1.   1.   3.]
- [  0.   3.   6.  12.]
- [  0.   6.  -7. -14.]] 
-
-[[  1.  -1.   1.   3.]
- [  0.   3.   6.  12.]
- [  0.   0. -19. -38.]] 
-
-[[  1.  -1.   1.   3.]
- [  0.   1.   2.   4.]
- [  0.   0. -19. -38.]] 
-
-[[ 1. -1.  1.  3.]
- [ 0.  1.  2.  4.]
- [-0. -0.  1.  2.]]</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> row_add(A,<span class="dv">0</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A1,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> row_add(A1,<span class="dv">0</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">4</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A2,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>A3 <span class="op">=</span> row_add(A2,<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A3,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>A4 <span class="op">=</span> row_scale(A3,<span class="dv">1</span>,<span class="fl">1.0</span><span class="op">/</span><span class="dv">3</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A4,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>A5 <span class="op">=</span> row_scale(A4,<span class="dv">2</span>,<span class="fl">1.0</span><span class="op">/-</span><span class="fl">19.</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A5,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>이제 이 배열을 모든 기호가 제자리에 있는 시스템 설명으로 다시 변환해 보겠습니다. <span class="math display">\[
-\begin{eqnarray*}
+<p>이제 행렬을 연립 선형 방정식 형태로 다시 표현하도록 하겠습니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
 x_1 - x_2 + x_3 &amp; = &amp; 3\\
 x_2 + 2x_3 &amp; = &amp; 4\\
 x_3 &amp; = &amp; 2
-\end{eqnarray*}
+\end{matrix}
 \]</span></p>
-<p>제거 단계가 끝나면 우리는 <strong>상부 삼각형</strong> 시스템이라고 알려진 것을 얻게 됩니다. 이 시스템의 해는 마지막 방정식을 거꾸로 풀면 큰 노력 없이 찾을 수 있습니다. 마지막 방정식은 <span class="math inline">\(x_3 = 2\)</span>임을 알려줍니다. 이 값을 두 번째 방정식에 대입하면 <span class="math inline">\(x_2 = 0\)</span>이 됩니다. 마지막으로, 이 값을 다시 첫 번째 방정식에 대입하면 <span class="math inline">\(x_1 = 1\)</span>이 됩니다. 이처럼 위 삼각형 시스템의 해를 구하는 과정을 <strong>역치환</strong>이라고 합니다.</p>
+<p>해는 마지막 방정식을 활용해서 대입을 진행하면 큰 노력 없이 찾을 수 있습니다. 즉, 마지막 방정식은 <span class="math inline">\(x_3 = 2\)</span>임을 알려줍니다. 이 값을 두 번째 방정식에 대입하면 <span class="math inline">\(x_2 = 0\)</span>이 됩니다. 마지막으로, 이 값을 다시 첫 번째 방정식에 대입하면 <span class="math inline">\(x_1 = 1\)</span>이 됩니다.</p>
 </section>
-<section id="example-2-finding-pivots" class="level2">
-<h2 class="anchored" data-anchor-id="example-2-finding-pivots">Example 2: Finding pivots</h2>
-<p>보시다시피, 마지막 예제의 코드는 배율을 계산하기 위해 나눈 배열의 항목 중 하나라도 0이 나타나면 실패합니다. 이러한 중요한 항목을 <strong>피벗</strong>이라고 하며, 매트릭스에서 해당 항목의 위치를 <strong>피벗 위치</strong>라고 합니다. 정의상 피벗은 0이 아니어야 합니다. 제거 단계에서 피벗 위치에 0이 발생하면 행의 순서를 바꿔서 0이 아닌 항목을 피벗 위치로 옮길 수 있습니다. 무작위 배열에서 작동하는 코드를 작성하기 전에 먼저 특정 배열에 대해 이 방법을 시도해 보겠습니다.</p>
+<section id="예제-2-finding-pivots" class="level2">
+<h2 class="anchored" data-anchor-id="예제-2-finding-pivots">예제 2: Finding pivots</h2>
+<p>보시다시피, 마지막 예제의 코드는 배율을 계산하기 위해 나눈 배열의 항목 중 하나라도 0이 나타나면 실패합니다. 이러한 중요한 항목을 <strong>피벗</strong>이라고 하며, 행렬에서 해당 항목의 위치를 <strong>피벗 위치</strong>라고 합니다. 정의상 피벗은 0이 아니어야 합니다. 제거 단계에서 피벗 위치에 0이 발생하면 행의 순서를 바꿔서 0이 아닌 항목을 피벗 위치로 옮길 수 있습니다. 무작위 배열에서 작동하는 코드를 작성하기 전에 먼저 특정 배열에 대해 이 방법을 시도해 보겠습니다.</p>
 <p><span class="math display">\[
-\begin{eqnarray*}
+\begin{matrix}
 x_1 - x_2 + x_3 &amp; = &amp; 3\\
 2x_1 - 2x_2 + 4x_3 &amp; = &amp; 8\\
 3x_1 \quad\quad -9x_3 &amp; = &amp; 0
-\end{eqnarray*}
+\end{matrix}
 \]</span></p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>G<span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">8</span>],[<span class="dv">3</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">9</span>,<span class="dv">0</span>]])</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[ 1 -1  1  3]
- [ 2 -2  4  8]
- [ 3  0 -9  0]]</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>G<span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">8</span>],[<span class="dv">3</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">9</span>,<span class="dv">0</span>]])</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Add -2 times row 0 to row 1</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>G1 <span class="op">=</span> row_add(G,<span class="dv">0</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Add -3 times row 0 to row 2</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>G2 <span class="op">=</span> row_add(G1,<span class="dv">0</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[  1.  -1.   1.   3.]
- [  0.   0.   2.   2.]
- [  0.   3. -12.  -9.]]</code></pre>
-</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>G1 <span class="op">=</span> row_add(G,<span class="dv">0</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>G2 <span class="op">=</span> row_add(G1,<span class="dv">0</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>이제 중간 피벗 위치에 0이 있습니다. 제거를 계속하기 위해 중간 방정식과 마지막 방정식을 바꿀 수 있습니다.</p>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Swap rows 1 and 2</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>G3 <span class="op">=</span> row_swap(G2,<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Scale the new row 1 by 1/3</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>G4 <span class="op">=</span> row_scale(G3,<span class="dv">1</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">## Scale the new row 2 by 1/2</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>G5 <span class="op">=</span> row_scale(G4,<span class="dv">2</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[ 1. -1.  1.  3.]
- [ 0.  1. -4. -3.]
- [ 0.  0.  1.  1.]]</code></pre>
-</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>G3 <span class="op">=</span> row_swap(G2,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>G4 <span class="op">=</span> row_scale(G3,<span class="dv">1</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">3</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>G5 <span class="op">=</span> row_scale(G4,<span class="dv">2</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>시스템을 익숙한 방정식 집합으로 다시 작성합니다.</p>
 <p><span class="math display">\[
-\begin{eqnarray*}
+\begin{matrix}
 x_1 - x_2 + x_3 &amp; = &amp; 3\\
 x_2 - 4x_3 &amp; = &amp; -3\\
 x_3 &amp; = &amp; 1
-\end{eqnarray*}
+\end{matrix}
 \]</span></p>
 <p>역치환을 적용하면 <span class="math inline">\(x_2 = 1\)</span>과 <span class="math inline">\(x_1=3\)</span>이 됩니다.</p>
 <p>행을 바꾸는 것은 정리의 문제로만 필요하다는 점에 주목할 필요가 있습니다. 다음은 제거를 수행하여 동일한 시스템으로 끝낼 수 있는 다른 방법입니다.</p>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Scale row 1 by 1/2</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>G3_alternative <span class="op">=</span> row_scale(G2,<span class="dv">1</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Scale row 2 by 1/3</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>G4_alternative <span class="op">=</span> row_scale(G3_alternative,<span class="dv">2</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G4_alternative)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[ 1. -1.  1.  3.]
- [ 0.  0.  1.  1.]
- [ 0.  1. -4. -3.]]</code></pre>
-</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>G3_alternative <span class="op">=</span> row_scale(G2,<span class="dv">1</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>G4_alternative <span class="op">=</span> row_scale(G3_alternative,<span class="dv">2</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">3</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G4_alternative)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>생성된 배열은 방정식의 순서는 물론 다르지만 동일한 단순화된 시스템을 나타냅니다.</p>
 <p><span class="math display">\[
-\begin{eqnarray*}
+\begin{matrix}
 x_1 - x_2 + x_3 &amp; = &amp; 3\\
 x_3 &amp; = &amp; 1 \\
 x_2 - 4x_3 &amp; = &amp; -3
-\end{eqnarray*}
+\end{matrix}
 \]</span></p>
-<p>역치환의 개념은 이러한 형태의 시스템에서도 잘 작동하지만 알고리즘의 구성이 약간 더 복잡해집니다.</p>
 
 
 </section>
