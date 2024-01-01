@@ -229,3 +229,4 @@ cython_debug/
 .quarto/
 .vscode/
 /.quarto/
+_backup/

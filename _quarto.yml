@@ -9,8 +9,13 @@ website:
     contents:
       - text: "Basics"
         contents:
-          - Linear_Systems.ipynb
-          - Gaussian_Elimination.ipynb
+          - 01_Linear_Systems.ipynb
+          - 02_Gaussian_Elimination.ipynb
+          - 03_Matrix_Algebra.ipynb
+          - 04_Inverse_Matrix.ipynb
+      - text: "Textbook Solutions"
+        contents:
+          - Textbook_Solutions.ipynb
       - text: "Appendix"
         contents:
           - Numpy_Basic.ipynb

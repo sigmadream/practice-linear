@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -111,14 +130,40 @@ ul.task-list li input[type="checkbox"] {
       <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Linear_Systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">연립 선형 방정식과 해집합</span></a>
+  <a href="./01_Linear_Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. 연립 선형 방정식과 해집합</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Gaussian_Elimination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">가우스 소거법(Gaussian Elimination)</span></a>
+  <a href="./02_Gaussian_Elimination.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. 가우스 소거법</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Matrix_Algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. 행렬과 행렬연산</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">04_Inverse_Matrix.ipynb</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Textbook Solutions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Textbook_Solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">프로그래밍 실습</span></a>
   </div>
 </li>
       </ul>
@@ -146,7 +191,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ref." id="toc-ref." class="nav-link active" data-scroll-target="#ref.">Ref.</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -168,9 +219,17 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>2023년 겨울 계절학기에 진행된 “공학선형대수학 (CB3500573-059)”에 사용된 Python 코드 및 간단한 예제등을 모아둔 곳 입니다. 선형대수학 공부에 도움이 되시길 바라니다.</p>
+<p>2023년 겨울 계절학기에 진행된 “공학선형대수학 (CB3500573-059)”에 사용된 Python 코드 및 간단한 예제등을 모아둔 곳 입니다. 선형대수학 공부에 도움이 되시길 바라니다. 교재는 “응용이 보이는 선형대수학 : 파이썬과 함께하는 선형대수학 이론과 응용”<span class="citation" data-cites="linear_algebra_hanbit_2020">(<a href="#ref-linear_algebra_hanbit_2020" role="doc-biblioref">이건명 2020</a>)</span> 입니다.</p>
+<section id="ref." class="level2">
+<h2 class="anchored" data-anchor-id="ref.">Ref.</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-linear_algebra_hanbit_2020" class="csl-entry" role="listitem">
+이건명. 2020. <em>응용이 보이는 선형대수학 : 파이썬과 함께하는 선형대수학 이론과 응용</em>. 한빛미디어.
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PNU 2023 Linear Algebra - 연립 선형 방정식과 해집합</title>
+<title>PNU 2023 Linear Algebra - 1. 연립 선형 방정식과 해집합</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Linear_Systems.html">Basics</a></li><li class="breadcrumb-item"><a href="./Linear_Systems.html">연립 선형 방정식과 해집합</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Linear_Systems.html">Basics</a></li><li class="breadcrumb-item"><a href="./01_Linear_Systems.html">1. 연립 선형 방정식과 해집합</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -145,14 +145,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Linear_Systems.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">연립 선형 방정식과 해집합</span></a>
+  <a href="./01_Linear_Systems.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1. 연립 선형 방정식과 해집합</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Gaussian_Elimination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">가우스 소거법(Gaussian Elimination)</span></a>
+  <a href="./02_Gaussian_Elimination.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. 가우스 소거법</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Matrix_Algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. 행렬과 행렬연산</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">04_Inverse_Matrix.ipynb</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Textbook Solutions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Textbook_Solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">프로그래밍 실습</span></a>
   </div>
 </li>
       </ul>
@@ -196,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">연립 선형 방정식과 해집합</h1>
+<h1 class="title">1. 연립 선형 방정식과 해집합</h1>
 </div>
 
 
@@ -245,31 +271,30 @@ x_1 - x_2 -1 &amp; = &amp; 0 \
 \end{matrix}
 \]</span></p>
 <p>각 방정식의 해집합은 선으로 나타낼 수 있으며, 선형 시스템의 해집합은 두 선에 놓인 모든 점으로 나타낼 수 있습니다. 이 경우 선은 한 점에서 교차하며 두 방정식을 모두 만족하는 값은 한 쌍만 존재합니다.</p>
-<div class="cell" data-tags="[&quot;hide_input&quot;]" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">2</span><span class="op">-</span>x))</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">1</span><span class="op">+</span>x))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">2</span>,<span class="dv">0</span>,<span class="st">'$x_1+x_2 - 2 = 0$'</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="op">-</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="st">'$x_1-x_2 - 1 = 0$'</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">4</span>,<span class="dv">6</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>ax.axvline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ax.axhline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">list</span>(<span class="bu">range</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">5</span>)))</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>,ls<span class="op">=</span><span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Linear_Systems_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[&quot;hide_input&quot;]">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">2</span><span class="op">-</span>x))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">1</span><span class="op">+</span>x))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">1</span>,<span class="fl">1.6</span>,<span class="st">'$x_1+x_2 -2 = 0$'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="op">-</span><span class="dv">3</span>,<span class="fl">0.5</span>,<span class="st">'$x_1-x_2 -1 = 0$'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">2</span>,<span class="dv">6</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ax.axvline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>ax.axhline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">list</span>(<span class="bu">range</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">5</span>)))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>,ls<span class="op">=</span><span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="예제-2-no-solutions" class="level2">
@@ -281,25 +306,22 @@ x_1 + 3x_2 &amp; = &amp; 0 \\
 \end{matrix}
 \]</span></p>
 <p>두 방정식을 동시에 만족하는 해는 없습니다.</p>
-<div class="cell" data-tags="[&quot;hide_input&quot;]" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">5</span><span class="op">-</span>x)<span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x,<span class="op">-</span>x<span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">1</span>,<span class="fl">1.6</span>,<span class="st">'$x_1+3x_2 = 5$'</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">0.3</span>,<span class="op">-</span><span class="fl">1.4</span>,<span class="st">'$x_1+3x_2 = 0$'</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">2</span>,<span class="dv">6</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ax.axvline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>ax.axhline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">list</span>(<span class="bu">range</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">5</span>)))</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>,ls<span class="op">=</span><span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Linear_Systems_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
-</div>
+<div class="cell" data-tags="[&quot;hide_input&quot;]">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">2</span><span class="op">*</span>x<span class="op">-</span><span class="dv">3</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">4</span><span class="op">*</span>x<span class="op">-</span><span class="dv">6</span>)<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">1</span>,<span class="fl">1.6</span>,<span class="st">'$2x_1-x_2 -3 = 0$'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">1</span>,<span class="fl">2.6</span>,<span class="st">'$-4x_1+2x_2 +6 = 0$'</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ax.axvline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax.axhline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">list</span>(<span class="bu">range</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">5</span>)))</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>,ls<span class="op">=</span><span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="예제-3-infinite-number-of-solutions" class="level2">
@@ -311,25 +333,24 @@ x_1 + 3x_2 &amp; = &amp; 5 \\
 \end{matrix}
 \]</span></p>
 <p>마지막 예제에서 두 번째 방정식은 첫 번째 방정식의 배수입니다. 두 방정식의 해는 모두 같은 선으로 표시되므로 선의 모든 점이 선형 시스템의 해입니다.</p>
-<div class="cell" data-tags="[&quot;hide_input&quot;]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">5</span><span class="op">-</span>x)<span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">5</span><span class="op">-</span>x)<span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">1</span>,<span class="fl">1.6</span>,<span class="st">'$x_1+3x_2 = 5$'</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="op">-</span><span class="dv">3</span>,<span class="fl">1.2</span>,<span class="st">'$2x_1+6x_2 = 10$'</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">2</span>,<span class="dv">6</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ax.axvline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>ax.axhline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">list</span>(<span class="bu">range</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">5</span>)))</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>,ls<span class="op">=</span><span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="Linear_Systems_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
-</div>
+<div class="cell" data-tags="[&quot;hide_input&quot;]">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">1</span><span class="op">-</span>x))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">1</span><span class="op">+</span>x))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="op">-</span><span class="dv">3</span><span class="op">+</span><span class="dv">3</span><span class="op">*</span>x))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="dv">0</span>,<span class="dv">1</span>,<span class="st">'$x_1+x_2 - 1 = 0$'</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="st">'$x_1-x_2 - 1= 0$'</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">1.5</span>,<span class="dv">2</span>,<span class="st">'$-x_1+3x_2 - 3 = 10$'</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="op">-</span><span class="dv">4</span>,<span class="dv">4</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="dv">2</span>,<span class="dv">6</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>ax.axvline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>ax.axhline(color<span class="op">=</span><span class="st">'k'</span>,linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">list</span>(<span class="bu">range</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">5</span>)))</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>,ls<span class="op">=</span><span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>앞선 세 가지 예는 두 개의 미지수가 있는 연립 선형 방정식의 모든 유형의 해집합을 보여줍니다. 정확히 하나의 해가 있을 수도 있고, 해가 없을 수도 있으며, 해가 무한 할 수도 있습니다. 선형 시스템에 대한 기본적인 사실은 해집합이 이 세 가지 경우 중 하나라는 것입니다.</p>
 

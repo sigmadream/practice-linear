@@ -145,14 +145,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Linear_Systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">연립 선형 방정식과 해집합</span></a>
+  <a href="./01_Linear_Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. 연립 선형 방정식과 해집합</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Gaussian_Elimination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">가우스 소거법(Gaussian Elimination)</span></a>
+  <a href="./02_Gaussian_Elimination.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. 가우스 소거법</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Matrix_Algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. 행렬과 행렬연산</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">04_Inverse_Matrix.ipynb</span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Textbook Solutions</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Textbook_Solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">프로그래밍 실습</span></a>
   </div>
 </li>
       </ul>
@@ -220,9 +246,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="numpy">NumPy</h2>
 <p>선형 대수에서 하는 거의 모든 계산은 숫자 배열을 다루는 작업이 포함됩니다. 배열은 행과 열로 배열되어 직사각형을 이루는 숫자의 집합으로 생각할 수 있는데, 아래 예는 행 2개와 열 4개로 이루어진 배열입니다.</p>
 <p><span class="math display">\[
-\begin{equation}
+\begin{matrix}
 \left[ \begin{array}{rrrr} 5 &amp; -1 &amp; 1 &amp; 0 \\ 4 &amp; 3 &amp; 12 &amp; -6 \end{array}\right]
-\end{equation}
+\end{matrix}
 \]</span></p>
 <p>파이썬의 List 객체를 사용하여 배열을 표현할 수도 있지만, NumPy 배열 객체를 사용하겠습니다. NumPy는 배열을 표현하는 강력한 방법을 가지고 있으며, 배열을 효율적으로 처리하기 위한 많은 내장 도구가 있습니다. 수학 모듈과 마찬가지로, NumPy를 사용하기 전에 해당 패키진를 가져와야 합니다. 이번에는 모듈을 가져오되 입력하기 더 편리한 별칭이라고 하는 다른 이름을 지정하는 <span class="math inline">\(\texttt{import numpy as np}\)</span> 코드를 사용하겠습니다.</p>
 <p>위의 배열을 만드는 가장 쉬운 방법은 <span class="math inline">\(\texttt{array}\)</span> 함수를 사용하여 특정 형식의 모든 배열 항목 목록을 제공하는 것입니다. 행 항목은 쉼표로 구분하고 대괄호 []로 묶은 다음, 나열된 모든 행을 쉼표로 구분하고 또 다른 대괄호로 묶습니다.</p>
