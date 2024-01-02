@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PNU 2023 Linear Algebra - 3. 행렬과 행렬연산</title>
+<title>PNU 2023 Linear Algebra - Applications of Linear Systems and Matrix Algebra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Linear_Systems.html">Basics</a></li><li class="breadcrumb-item"><a href="./03_Matrix_Algebra.html">3. 행렬과 행렬연산</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Linear_Systems.html">Basics</a></li><li class="breadcrumb-item"><a href="./06_Applications.html">Applications of Linear Systems and Matrix Algebra</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -157,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Matrix_Algebra.html" class="sidebar-item-text sidebar-link active">
+  <a href="./03_Matrix_Algebra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3. 행렬과 행렬연산</span></a>
   </div>
 </li>
@@ -175,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_Applications.html" class="sidebar-item-text sidebar-link">
+  <a href="./06_Applications.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Applications of Linear Systems and Matrix Algebra</span></a>
   </div>
 </li>
@@ -225,10 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#행렬" id="toc-행렬" class="nav-link active" data-scroll-target="#행렬">행렬</a></li>
-  <li><a href="#행렬-연산" id="toc-행렬-연산" class="nav-link" data-scroll-target="#행렬-연산">행렬 연산</a></li>
-  <li><a href="#행렬-연산의-속성" id="toc-행렬-연산의-속성" class="nav-link" data-scroll-target="#행렬-연산의-속성">행렬 연산의 속성</a></li>
-  <li><a href="#행렬의-전치" id="toc-행렬의-전치" class="nav-link" data-scroll-target="#행렬의-전치">행렬의 전치</a></li>
+  <li><a href="#interpolation" id="toc-interpolation" class="nav-link active" data-scroll-target="#interpolation">Interpolation</a></li>
   </ul>
 </nav>
     </div>
@@ -237,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">3. 행렬과 행렬연산</h1>
+<h1 class="title">Applications of Linear Systems and Matrix Algebra</h1>
 </div>
 
 
@@ -252,192 +249,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="행렬" class="level2">
-<h2 class="anchored" data-anchor-id="행렬">행렬</h2>
-<p><strong>행렬</strong> A는 숫자의 2차원 배열입니다. NumPy를 사용하여 행렬로 계산할 때는 이전과 마찬가지로 배열을 사용하게 됩니다. 행렬의 몇 가지 모양은 아래와 같습니다.</p>
+<p>선형 시스템을 풀어야 할 필요성은 다양한 분야에서 발생합니다. 선형 시스템의 예를 보여드리겠습니다. 또한 행렬 대수를 암호화와 그래프 이론에 적용하는 방법에 대해서도 설명합니다.</p>
+<section id="interpolation" class="level2">
+<h2 class="anchored" data-anchor-id="interpolation">Interpolation</h2>
+<p>보간은 알려진 값 사이에 있는 미지의 데이터 값을 추정하는 프로세스입니다. 이 프로세스에는 일반적으로 알려진 데이터 포인트 집합을 통해 곡선을 피팅하여 미지의 값을 예측하는 작업이 포함됩니다. 곡선은 일련의 매개변수로 설명되며, ’곡선을 맞추는 것’은 곡선이 데이터를 가장 잘 나타내도록 매개변수를 선택하는 것을 의미합니다. 곡선을 맞추는 간단한 방법은 곡선이 제공된 모든 데이터를 통과하도록 하는 것입니다.</p>
+<p>데이터 포인트 <span class="math inline">\((2,8)\)</span>, <span class="math inline">\((5,12)\)</span>, <span class="math inline">\((6,14)\)</span> 및 <span class="math inline">\((15,15)\)</span>를 예로 들어 보겠습니다.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> linear_solver <span class="im">as</span> ls</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">15</span>])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">15</span>])</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.scatter(x,y,color<span class="op">=</span><span class="st">'red'</span>)<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>,<span class="dv">20</span>)<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>,<span class="dv">20</span>)<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)<span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="06_Applications_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>다항식은 보간에 사용되는 일반적인 곡선입니다. 이 경우 데이터 포인트가 4개이므로 그래프가 각 포인트를 통과하기 위해 충족해야 하는 방정식이 4개가 있습니다. 방정식을 만족하는 매개변수가 4개이므로 3차 다항식인 <span class="math inline">\(P_3\)</span>을 선택합니다.</p>
 <p><span class="math display">\[
-\begin{equation}
-A = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right] \hspace{1cm}
-B = \left[ \begin{array}{rrr} 3 &amp; 0 &amp; 4 \\ -1 &amp; -2 &amp; 1 \end{array}\right] \hspace{1cm}
-C = \left[ \begin{array}{rr} -2 &amp; 1 \\ 4 &amp; 1 \end{array}\right] \hspace{1cm}
-D = \left[ \begin{array}{r} 2 \\ 6 \end{array}\right]
-\end{equation}
+\begin{matrix}
+P_3(x) = a_0 + a_1x + a_2x^2 + a_3x^3
+\end{matrix}
 \]</span></p>
-<p>행렬은 행과 열의 개수를 지정하여 행렬의 크기 또는 모양에 대해 이야기하는 것이 일반적입니다. 일반적으로 행의 개수가 먼저 나열됩니다. 이 예제에서 <span class="math inline">\(A\)</span>와 <span class="math inline">\(C\)</span>는 <span class="math inline">\(2 \times 2\)</span> 행렬이고, <span class="math inline">\(B\)</span>는 <span class="math inline">\(2 \times 3\)</span> 행렬이며, <span class="math inline">\(D\)</span>는 $ 2 $ 행렬입니다. <span class="math inline">\(D\)</span>와 같이 열이 1개만 있는 행렬은 일반적으로 <strong>벡터</strong>라고 합니다.</p>
-<p>행렬의 개별 항목에 대해서도 이야기할 필요가 있습니다. 이에 대한 일반적인 표기법은 행렬에서 항목의 위치를 나타내기 위해 아래 첨자가 있는 소문자입니다. 따라서 <span class="math inline">\(b_{12}\)</span>는 행렬 <span class="math inline">\(B\)</span>의 첫 번째 행과 두 번째 열에 있는 0을 나타냅니다. 일반적인 위치에 대해 이야기하는 경우, <span class="math inline">\(a_{ij}\)</span>와 같이 아래 첨자 안에 변수를 사용할 수 있습니다.</p>
+<p>데이터는 <span class="math inline">\(P_3(2) = 8\)</span>, <span class="math inline">\(P_3(5) = 12\)</span>, <span class="math inline">\(P_3(6) = 14\)</span>, <span class="math inline">\(P_3(15) = 15\)</span>의 네 가지 방정식을 제공합니다. 이 방정식 집합은 미지 계수에 대한 선형 시스템입니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+a_0 + 2a_1 + 2^2a_2 + 2^3a_3 &amp; = &amp; 8\\
+a_0 + 5a_1 + 5^2a_2 + 5^3a_3 &amp; = &amp; 12\\
+a_0 + 6a_1 + 6^2a_2 + 6^3a_3 &amp; = &amp; 14\\
+a_0 + 15a_1 + 15^2a_2 + 15^3a_3 &amp; = &amp; 15
+\end{matrix}
+\]</span></p>
+<p>행렬 <span class="math inline">\(A\)</span>와 오른쪽 벡터 <span class="math inline">\(B\)</span>를 NumPy 배열로 조합합니다.</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">3</span>],[<span class="dv">2</span>,<span class="dv">1</span>]])</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">4</span>],[<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>]])</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.array([[<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>],[<span class="dv">4</span>, <span class="dv">1</span>]])</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.array([[<span class="dv">2</span>],[<span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.zeros((<span class="dv">4</span>,<span class="dv">4</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.zeros((<span class="dv">4</span>,<span class="dv">1</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    B[i,<span class="dv">0</span>] <span class="op">=</span> y[i]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        A[i,j] <span class="op">=</span> x[i]<span class="op">**</span>(j)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1.000e+00 2.000e+00 4.000e+00 8.000e+00]
+ [1.000e+00 5.000e+00 2.500e+01 1.250e+02]
+ [1.000e+00 6.000e+00 3.600e+01 2.160e+02]
+ [1.000e+00 1.500e+01 2.250e+02 3.375e+03]] 
+
+[[ 8.]
+ [12.]
+ [14.]
+ [15.]]</code></pre>
 </div>
-<p>행과 열의 모양과 크기에 대해서는 배열 객체의 일부로 저장되며 <strong>shape</strong>라는 메서드로 액세스할 수 있습니다. %B$가 배열인 경우, <strong>B.shape</strong> 객체는 그 자체로 두 개의 항목이 있는 배열입니다. 첫 번째 항목(<strong>인덱스 0</strong>)은 행의 개수이고 두 번째 항목(<strong>인덱스 1</strong>)은 열의 개수입니다.</p>
+</div>
+<p>이제 제거를 통해 <span class="math inline">\(AX=B\)</span> 시스템을 풀 수 있습니다. x$ 변수와 혼동을 피하기 위해, 다항식의 계수를 나타내므로 해의 이름을 <strong>coeffs</strong>로 지정하겠습니다.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Array B has </span><span class="sc">{</span>B<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows."</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Array B has </span><span class="sc">{</span>B<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> columns."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>coeffs <span class="op">=</span> ls.solve_system(A,B)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(coeffs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Array B has 2 rows.
-Array B has 3 columns.</code></pre>
+<pre><code>[[ 8.64102564]
+ [-1.25555556]
+ [ 0.52222222]
+ [-0.02735043]]</code></pre>
 </div>
 </div>
-</section>
-<section id="행렬-연산" class="level2">
-<h2 class="anchored" data-anchor-id="행렬-연산">행렬 연산</h2>
-<p>행렬에 대해 수행해야 할 세 가지 대수 연산이 있습니다. 정의를 위해 <span class="math inline">\(A\)</span>와 <span class="math inline">\(C\)</span>가 <span class="math inline">\(m \times n\)</span> 행렬이고, <span class="math inline">\(B\)</span>가 <span class="math inline">\(n \times k\)</span> 행렬이며, <span class="math inline">\(c\)</span>가 숫자라고 가정해 보겠습니다. 행렬과 숫자를 포함하는 대수를 논의할 때 숫자는 일반적으로 <strong>스칼라</strong>라고 합니다.</p>
-<ol type="1">
-<li>모든 형태의 행렬에 스칼라를 곱할 수 있습니다. 그 결과 모든 항목에 해당 스칼라가 곱해집니다. 아래 첨자 표기법을 사용하면 다음과 같이 작성할 수 있습니다.</li>
-</ol>
-<p><span class="math display">\[
-(cA)_{ij} = ca_{ij}
-\]</span></p>
-<ol start="2" type="1">
-<li>동일한 모양을 가진 두 행렬을 추가할 수 있습니다. 그 결과 해당되는 모든 항목이 추가됩니다.</li>
-</ol>
-<p><span class="math display">\[
-(A+C)_{ij} = a_{ij} + c_{ij}
-\]</span></p>
-<ol start="3" type="1">
-<li>행렬 <span class="math inline">\(A\)</span>의 열 수가 행렬 <span class="math inline">\(B\)</span>의 행 수와 같으면, 행렬을 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> 순서로 곱할 수 있습니다. 그 결과 행의 개수는 <span class="math inline">\(A\)</span>와 같고 열의 개수는 <span class="math inline">\(B\)</span>와 같은 새로운 행렬 <span class="math inline">\(AB\)</span>가 생성됩니다. <span class="math inline">\((AB)_{ij}\)</span> 행렬은 <span class="math inline">\(A\)</span>의 행 <span class="math inline">\(i\)</span>와 <span class="math inline">\(B\)</span>의 열 <span class="math inline">\(j\)</span>의 행렬을 다음과 같이 조합한 행렬이 됩니다.</li>
-</ol>
-<p><span class="math display">\[
-(AB)_{ij} = \sum_{k=1}^n a_{ik}b_{kj}
-\]</span></p>
-<p><strong>행렬 곱셈</strong>으로 알려진 마지막 연산은 세 가지 연산 중 가장 복잡하고 직관적이지 않습니다. 이 마지막 공식은 처음 접했을 때 다소 어렵게 느껴질 수 있습니다. 몇 가지 예를 들어 설명해 드리겠습니다.</p>
-<ol type="1">
-<li>숫자와 행렬의 곱셈입니다:</li>
-</ol>
-<p><span class="math display">\[
-\begin{matrix}
-3A = 3\left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right]
-= \left[ \begin{array}{rr} 3 &amp; 9 \\ 6 &amp; 3 \end{array}\right]
-\end{matrix}
-\]</span></p>
-<ol start="2" type="1">
-<li>모양이 같은 두 행렬의 합계입니다:</li>
-</ol>
-<p><span class="math display">\[
-\begin{matrix}
-A + C = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right] +
-\left[ \begin{array}{rr} -2 &amp; 1 \\ 4 &amp; 1 \end{array}\right]
-= \left[ \begin{array}{rr} -1 &amp; 4 \\ 6 &amp; 2 \end{array}\right]
-\end{matrix}
-\]</span></p>
-<ol start="3" type="1">
-<li>두 행렬의 곱셈입니다:</li>
-</ol>
-<p><span class="math display">\[
-\begin{matrix}
-AB = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right]
-\left[ \begin{array}{rrr} 3 &amp; 0 &amp; 4 \\ -1 &amp; -2 &amp; 1 \end{array}\right]
-= \left[ \begin{array}{rrr} 0 &amp; -6 &amp; 7  \\  5 &amp; -2 &amp; 9  \end{array}\right]
-\end{matrix}
-\]</span></p>
-<p>행렬 곱셈에서 어떤 일이 일어나는지 명확히 하기 위해 두 개의 항목을 자세히 계산해 보겠습니다.</p>
-<p><span class="math display">\[
-\begin{matrix}
-(AB)_{12} &amp; = &amp; 1\times 0 + 3 \times (-2) = -6 \\
-(AB)_{23} &amp; = &amp; 2 \times 4 + 1 \times 1 = 9
-\end{matrix}
-\]</span></p>
-<p>이러한 행렬 연산은 모두 NumPy에 내장되어 있지만 행렬 곱셈의 경우 <span class="math inline">\(\texttt{*}\)</span> 대신 <span class="math inline">\(\texttt{@}\)</span> 기호를 사용해야 합니다.</p>
+<p>마지막으로 데이터 위에 다항식 그래프를 그려서 적합도를 확인합니다.</p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span><span class="op">*</span>A,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A<span class="op">+</span>C,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A<span class="op">@</span>B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[3 9]
- [6 3]] 
-
-[[-1  4]
- [ 6  2]] 
-
-[[ 0 -6  7]
- [ 5 -2  9]]</code></pre>
-</div>
-</div>
-</section>
-<section id="행렬-연산의-속성" class="level2">
-<h2 class="anchored" data-anchor-id="행렬-연산의-속성">행렬 연산의 속성</h2>
-<p>행렬 곱셈에 대해 몇 가지 일반적인 대수적 성질은 아래와 같습니다. <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>를 행렬로, <span class="math inline">\(k\)</span>를 스칼라로 가정합니다. 여기서 설명한 연관성 및 특성은 행렬 곱셈에도 적용됩니다.</p>
-<p><span class="math display">\[
-\begin{equation}
-k(A+B) = kA + kB
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-C(A+B) = CA + CB
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-A(BC) = (AB)C
-\end{equation}
-\]</span></p>
-<p><span class="math inline">\(A\)</span>와 <span class="math inline">\(B\)</span>가 <span class="math inline">\(3 \times 3\)</span> 행렬인 경우에, <span class="math inline">\(AB = BA\)</span>가 성립하지 않는다는 것을 주의해야 합니다.</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.random.randint(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,size<span class="op">=</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.random.randint(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,size<span class="op">=</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x_fit <span class="op">=</span> np.linspace(x[<span class="dv">0</span>],x[<span class="dv">3</span>],<span class="dv">50</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y_fit <span class="op">=</span> coeffs[<span class="dv">0</span>] <span class="op">+</span> coeffs[<span class="dv">1</span>]<span class="op">*</span>x_fit <span class="op">+</span> coeffs[<span class="dv">2</span>]<span class="op">*</span>x_fit<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> coeffs[<span class="dv">3</span>]<span class="op">*</span>x_fit<span class="op">**</span><span class="dv">3</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A<span class="op">@</span>B)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B<span class="op">@</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[-28  -3  -1]
- [ -8   1   5]
- [-25   0   5]]
-
-
-[[-14  -7  10]
- [ -3 -28  -7]
- [-18  11  20]]</code></pre>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>ax.scatter(x,y,color<span class="op">=</span><span class="st">'red'</span>)<span class="op">;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>ax.plot(x_fit,y_fit,<span class="st">'b'</span>)<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>,<span class="dv">20</span>)<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>,<span class="dv">30</span>)<span class="op">;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)<span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)<span class="op">;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="06_Applications_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-</section>
-<section id="행렬의-전치" class="level2">
-<h2 class="anchored" data-anchor-id="행렬의-전치">행렬의 전치</h2>
-<p>유용하게 사용할 수 있는 또 다른 일반적인 아이디어는 행렬 전치입니다. 행렬 <span class="math inline">\(A\)</span>의 <strong>전치</strong>는 열이 <span class="math inline">\(A\)</span>의 행이 되도록 정의된 또 다른 행렬인 <span class="math inline">\(A^T\)</span>입니다. A<sup>T<span class="math inline">\(는 모든 항목의 행 인덱스를 열 인덱스로 간단히 바꾸면 됩니다(\)</span>a</sup>T_{ij} = a_{ji}$). 두 가지 예제만으로도 이 정의를 명확히 이해할 수 있습니다.</p>
-<p><span class="math display">\[
-\begin{equation}
-A = \left[ \begin{array}{rrr} 5 &amp; 4 &amp; 0 \\ 1 &amp; 8 &amp; 3 \\ 6 &amp; 7 &amp; 2\end{array}\right] \hspace{1cm}
-A^T = \left[ \begin{array}{rrr} 5 &amp; 1 &amp; 6 \\ 4 &amp; 8 &amp; 7 \\ 0 &amp; 3 &amp; 2\end{array}\right] \hspace{1cm}
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-B = \left[ \begin{array}{rrr} 1 &amp; 2 &amp; 7 &amp; 0 \\ 3 &amp; 1 &amp; 5 &amp; 2 \\ 4 &amp; 9 &amp; 8 &amp; 6\end{array}\right] \hspace{1cm}
-B^T = \left[ \begin{array}{rrr} 1 &amp; 3 &amp; 4 \\ 2 &amp; 1 &amp; 9 \\ 7 &amp; 5 &amp; 8 \\ 0 &amp; 2 &amp; 6\end{array}\right] \hspace{1cm}
-\end{equation}
-\]</span></p>
-<p>NumPy 배열 객체에는 이를 위해 <span class="math inline">\(\texttt{transpose}\)</span>라는 메서드가 있습니다.</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>],[<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">3</span>],[<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">2</span>]])</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Note that the tranpose method must be called with (), the same as a function with no arguments.</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>A_T <span class="op">=</span> A.transpose()</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A_T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[5 4 0]
- [1 8 3]
- [6 7 2]]
-
-
-[[5 1 6]
- [4 8 7]
- [0 3 2]]</code></pre>
-</div>
-</div>
-<p>행렬 <span class="math inline">\(A\)</span>가 자신의 전치와 같을 때, 행렬은 주 대각선을 가로질러 대칭이 되는 성질을 가집니다. 이러한 이유로 행렬 <span class="math inline">\(A\)</span>가 <span class="math inline">\(A = A^T\)</span>이면 <strong>대칭</strong> 행렬이라고 합니다. 이와 동등하게 행렬의 모든 행렬 <span class="math inline">\(a_{ij}\)</span>에 대해 <span class="math inline">\(a_{ij} = a_{ji}\)</span>이면 <span class="math inline">\(A\)</span>는 대칭이라고 말할 수 있습니다. 아래 행렬 <span class="math inline">\(P\)</span>는 그러한 예시 중 하나입니다.</p>
-<p><span class="math display">\[
-\begin{equation}
-P = \left[ \begin{array}{rrr} 1 &amp; 0 &amp; 6 \\ 0 &amp; 3 &amp; 5 \\ 6 &amp; 5 &amp; -2\end{array}\right] \hspace{1cm}
-\end{equation}
-\]</span></p>
+<p>우리가 생성하는 곡선이 실제로 각 데이터 포인트를 통과하지만, 이 다항식은 기본 프로세스의 최상의 모델이 아닐 수 있습니다. 한 가지 잠재적인 우려는 곡선이 세 번째와 네 번째 데이터 요소를 직접 연결하는 것이 아니라 진동을 나타내는 것처럼 보인다는 것입니다. 데이터 포인트 집합에 맞는 곡선을 만들 때 단순히 곡선이 각 포인트를 통과하도록 하는 것보다 더 중요한 다른 요소가 있을 수 있습니다.</p>
 
 
 </section>

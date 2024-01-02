@@ -12,7 +12,9 @@ website:
           - 01_Linear_Systems.ipynb
           - 02_Gaussian_Elimination.ipynb
           - 03_Matrix_Algebra.ipynb
-          - 04_Inverse_Matrix.ipynb
+          - 04_Inverse_Matrices.ipynb
+          - 05_LU_Factorization.ipynb
+          - 06_Applications.ipynb
       - text: "Textbook Solutions"
         contents:
           - Textbook_Solutions.ipynb
