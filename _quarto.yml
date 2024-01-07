@@ -20,7 +20,7 @@ website:
           - Textbook_Solutions.ipynb
       - text: "Appendix"
         contents:
-          - Numpy_Basic.ipynb
+          - A1_Numpy_Basic.ipynb
 
 format:
   html:
