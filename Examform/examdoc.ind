@@ -1,0 +1,655 @@
+\begin{theindex}
+
+  \item \texttt  {\char `\\addpoints}, \hyperpage{11}, 
+		\hyperpage{28, 29}, \hyperpage{32}, \hyperpage{36, 37}, 
+		\hyperpage{70}, \hyperpage{75, 76}
+  \item \texttt  {addpoints}, \hyperpage{11}, \hyperpage{28}, 
+		\hyperpage{32}, \hyperpage{36, 37}, \hyperpage{70}, 
+		\hyperpage{75, 76}
+  \item \texttt  {\char `\\addquestionobject}, \hyperpage{94}, 
+		\hyperpage{96}
+  \item allocating space, \hyperpage{9}
+  \item \texttt  {\char `\\Alph}, \hyperpage{39}
+  \item \texttt  {\char `\\alph}, \hyperpage{39}
+  \item \texttt  {amssymb}, \hyperpage{45, 46}
+  \item answer space, \hyperpage{9}, \hyperpage{52--60}, 
+		\hyperpage{66--68}
+  \item \texttt  {\char `\\answerclearance}, \hyperpage{60}
+  \item \texttt  {\char `\\answerline}, \hyperpage{12}, \hyperpage{41}, 
+		\hyperpage{43}, \hyperpage{58--60}
+    \subitem optional~argument, \hyperpage{12}, \hyperpage{41}, 
+		\hyperpage{60}
+  \item \texttt  {\char `\\answerlinelength}, \hyperpage{58}
+  \item answers, \hyperpage{61--69}
+    \subitem to short answers, \hyperpage{60}
+  \item \texttt  {answers}, \hyperpage{12}, \hyperpage{44}, 
+		\hyperpage{61--63}
+  \item \texttt  {\char `\\answerskip}, \hyperpage{58}
+  \item \texttt  {\char `\\arabic}, \hyperpage{39}
+
+  \indexspace
+
+  \item \texttt  {\char `\\baselinestretch}, \hyperpage{80}
+  \item \texttt  {\char `\\begingradingrange}, \hyperpage{75}, 
+		\hyperpage{77}
+  \item beta test, \hyperpage{5}
+  \item \texttt  {\char `\\bhpgword}, \hyperpage{81}
+  \item \texttt  {\char `\\bhpword}, \hyperpage{81}
+  \item \texttt  {\char `\\bhqword}, \hyperpage{81}
+  \item \texttt  {\char `\\bhsword}, \hyperpage{81}
+  \item \texttt  {\char `\\bhtword}, \hyperpage{81}
+  \item \texttt  {\char `\\blacksquare}, \hyperpage{46}
+  \item blank lines, \hyperpage{7}, \hyperpage{9}, \hyperpage{14, 15}
+  \item blank space, \hyperpage{9}, \hyperpage{52}
+  \item \texttt  {\char `\\boldmath}, \hyperpage{27}
+  \item bonus points, \hyperpage{34--36}, \hyperpage{77}
+  \item \texttt  {\char `\\bonusgradetable}, \hyperpage{35}, 
+		\hyperpage{77}
+  \item \texttt  {\char `\\bonuspart}, \hyperpage{34, 35}
+  \item \texttt  {\char `\\bonuspointformat}, \hyperpage{25, 26}
+  \item \texttt  {\char `\\bonuspointname}, \hyperpage{26}, 
+		\hyperpage{36}
+  \item \texttt  {\char `\\bonuspointpoints}, \hyperpage{24}, 
+		\hyperpage{35, 36}
+  \item \texttt  {\char `\\bonuspointsinrange}, \hyperpage{77}
+  \item \texttt  {\char `\\bonuspointsofquestion}, \hyperpage{30}, 
+		\hyperpage{35}, \hyperpage{77}
+  \item \texttt  {\char `\\bonuspointsonpage}, \hyperpage{35}, 
+		\hyperpage{77}
+  \item \texttt  {\char `\\bonuspointtable}, \hyperpage{35}, 
+		\hyperpage{77}
+  \item \texttt  {\char `\\bonusqformat}, \hyperpage{32}, 
+		\hyperpage{35}, \hyperpage{40}
+  \item \texttt  {\char `\\bonusquestion}, \hyperpage{34, 35}
+  \item \texttt  {\char `\\bonussubpart}, \hyperpage{34, 35}
+  \item \texttt  {\char `\\bonussubsubpart}, \hyperpage{34, 35}
+  \item \texttt  {\char `\\bonustitledquestion}, \hyperpage{34, 35}
+  \item \texttt  {\char `\\bonustotalformat}, \hyperpage{30}, 
+		\hyperpage{36}
+  \item \texttt  {\char `\\Box}, \hyperpage{45, 46}
+  \item \texttt  {\char `\\boxedpoints}, \hyperpage{19}, \hyperpage{22}, 
+		\hyperpage{25}
+  \item \texttt  {\char `\\bracketedpoints}, \hyperpage{19}, 
+		\hyperpage{21, 22}, \hyperpage{26}, \hyperpage{29}
+  \item \texttt  {\char `\\bvpgword}, \hyperpage{81}
+  \item \texttt  {\char `\\bvpword}, \hyperpage{81}
+  \item \texttt  {\char `\\bvqword}, \hyperpage{81}
+  \item \texttt  {\char `\\bvsword}, \hyperpage{81}
+  \item \texttt  {\char `\\bvtword}, \hyperpage{81}
+
+  \indexspace
+
+  \item \texttt  {\char `\\cancelspace}, \hyperpage{67--68}
+  \item \texttt  {cancelspace}, \hyperpage{68}
+  \item \texttt  {\char `\\cellwidth}, \hyperpage{80}
+  \item \texttt  {\char `\\cfoot}, \hyperpage{88--89}, 
+		\hyperpage{97--106}
+  \item \texttt  {\char `\\chbpword}, \hyperpage{81}
+  \item \texttt  {\char `\\chead}, \hyperpage{87}, \hyperpage{97--106}
+    \subitem different on first page, \hyperpage{87}
+    \subitem optional argument, \hyperpage{87}
+  \item checkbox, \hyperpage{45}
+  \item \texttt  {\char `\\checkboxchar}, \hyperpage{45}
+  \item \texttt  {checkboxes}, \hyperpage{12}, \hyperpage{41}, 
+		\hyperpage{43--45}
+  \item checkboxes environment, \hyperpage{41}, \hyperpage{43}
+    \subitem correct choice, \hyperpage{44}
+  \item \texttt  {\char `\\checkboxeshook}, \hyperpage{40}
+  \item \texttt  {\char `\\checkedchar}, \hyperpage{45}
+  \item \texttt  {\char `\\choice}, \hyperpage{12}, \hyperpage{41--44}
+  \item \texttt  {choice}, \hyperpage{39}
+  \item choice counter, \hyperpage{39}
+  \item \texttt  {\char `\\choicelabel}, \hyperpage{39, 40}
+  \item \texttt  {choices}, \hyperpage{12}, \hyperpage{41}, 
+		\hyperpage{44}
+  \item choices environment, \hyperpage{41}
+    \subitem correct choice, \hyperpage{44}
+  \item \texttt  {\char `\\choiceshook}, \hyperpage{40}
+  \item \texttt  {\char `\\chpgword}, \hyperpage{81}
+  \item \texttt  {\char `\\chpword}, \hyperpage{81}
+  \item \texttt  {\char `\\chqword}, \hyperpage{81}
+  \item \texttt  {\char `\\chsword}, \hyperpage{81}
+  \item \texttt  {\char `\\chtword}, \hyperpage{81}
+  \item clickable links, \hyperpage{74}, \hyperpage{77, 78}
+  \item \texttt  {\char `\\color}, \hyperpage{45}
+  \item \texttt  {color}, \hyperpage{45}
+  \item color package, \hyperpage{62, 63}
+  \item \texttt  {\char `\\colorbox}, \hyperpage{62}
+  \item \texttt  {\char `\\combinedgradetable}, \hyperpage{35}, 
+		\hyperpage{78}
+  \item \texttt  {\char `\\combinedpointtable}, \hyperpage{35}, 
+		\hyperpage{78}
+  \item \texttt  {\char `\\ContinuedQuestion}, \hyperpage{94, 95}, 
+		\hyperpage{103}
+  \item \texttt  {\char `\\CorrectChoice}, \hyperpage{12}, 
+		\hyperpage{44}
+  \item \texttt  {\char `\\correctchoice}, \hyperpage{44}
+  \item \texttt  {\char `\\CorrectChoiceEmphasis}, \hyperpage{12}, 
+		\hyperpage{44, 45}, \hyperpage{60}
+  \item \texttt  {\char `\\correctchoiceemphasis}, \hyperpage{45}
+  \item cover pages, \hyperpage{106--108}
+    \subitem counting, \hyperpage{107--108}
+  \item \texttt  {\char `\\covercfoot}, \hyperpage{107}
+  \item \texttt  {\char `\\coverchead}, \hyperpage{107}
+  \item \texttt  {\char `\\coverextrafootheight}, \hyperpage{107}
+  \item \texttt  {\char `\\coverextraheadheight}, \hyperpage{107}
+  \item \texttt  {\char `\\coverfirstpagefooter}, \hyperpage{107}
+  \item \texttt  {\char `\\coverfirstpageheader}, \hyperpage{107}
+  \item \texttt  {\char `\\coverfooter}, \hyperpage{107}
+  \item \texttt  {\char `\\coverheader}, \hyperpage{107}
+  \item \texttt  {\char `\\coverlfoot}, \hyperpage{107}
+  \item \texttt  {\char `\\coverlhead}, \hyperpage{107}
+  \item \texttt  {coverpages}, \hyperpage{92}, \hyperpage{106--108}
+  \item \texttt  {\char `\\coverrfoot}, \hyperpage{107}
+  \item \texttt  {\char `\\coverrhead}, \hyperpage{107}
+  \item \texttt  {\char `\\coverrunningfooter}, \hyperpage{107}
+  \item \texttt  {\char `\\coverrunningheader}, \hyperpage{107}
+  \item cross references, \hyperpage{37--38}
+  \item customization
+    \subitem \texttt{\char`\\CorrectChoice}, \hyperpage{60}
+    \subitem \texttt{\char`\\answerline}, \hyperpage{58}, 
+		\hyperpage{60}
+    \subitem \texttt{\char`\\fillwithdottedlines}, \hyperpage{56}
+    \subitem \texttt{\char`\\fillwithlines}, \hyperpage{55}
+    \subitem \texttt{\char`\\half}, \hyperpage{21}
+    \subitem grading table, \hyperpage{80--83}
+    \subitem list parameters, \hyperpage{40--41}
+    \subitem margins, \hyperpage{83--84}
+    \subitem multiple choice questions, \hyperpage{44--46}
+    \subitem point table, \hyperpage{80--83}
+    \subitem points, \hyperpage{21--27}
+    \subitem question numbers, \hyperpage{38--40}
+    \subitem solution, \hyperpage{64--66}
+  \item \texttt  {\char `\\cvbpword}, \hyperpage{81}
+  \item \texttt  {\char `\\cvpgword}, \hyperpage{81}
+  \item \texttt  {\char `\\cvpword}, \hyperpage{81}
+  \item \texttt  {\char `\\cvqword}, \hyperpage{81}
+  \item \texttt  {\char `\\cvsword}, \hyperpage{81}
+  \item \texttt  {\char `\\cvtword}, \hyperpage{81}
+
+  \indexspace
+
+  \item \texttt  {\char `\\documentclass}, \hyperpage{6}, 
+		\hyperpage{11}
+    \subitem options, \hyperpage{11, 12}, \hyperpage{61}, 
+		\hyperpage{68}, \hyperpage{70}, \hyperpage{75, 76}
+  \item dotted lined space, \hyperpage{56--58}
+  \item \texttt  {\char `\\dottedlinefillheight}, \hyperpage{56}
+  \item \texttt  {\char `\\droppoints}, \hyperpage{19--21}
+  \item \texttt  {\char `\\droptotalbonuspoints}, \hyperpage{28}, 
+		\hyperpage{30}, \hyperpage{35}
+  \item \texttt  {\char `\\droptotalpoints}, \hyperpage{28}, 
+		\hyperpage{35, 36}
+
+  \indexspace
+
+  \item \texttt  {empty}, \hyperpage{85}
+  \item empty box, \hyperpage{53--54}
+  \item \texttt  {\char `\\endgradingrange}, \hyperpage{75}, 
+		\hyperpage{77}
+  \item \texttt  {EnvFullwidth}, \hyperpage{46}, \hyperpage{48--51}, 
+		\hyperpage{63}
+  \item EnvFullwidth environment, \hyperpage{46}, \hyperpage{48--51}, 
+		\hyperpage{63}
+  \item environment
+    \subitem checkboxes, \hyperpage{41}, \hyperpage{43}
+      \subsubitem correct choice, \hyperpage{44}
+    \subitem choices, \hyperpage{41}
+      \subsubitem correct choice, \hyperpage{44}
+    \subitem coverpages, \hyperpage{92}, \hyperpage{106--108}
+    \subitem EnvFullwidth, \hyperpage{46}, \hyperpage{48--51}, 
+		\hyperpage{63}
+    \subitem EnvUplevel, \hyperpage{46--48}, \hyperpage{63}
+    \subitem list, \hyperpage{40--41}
+    \subitem oneparcheckboxes, \hyperpage{41}, \hyperpage{43}
+      \subsubitem correct choice, \hyperpage{44}
+    \subitem oneparchoices, \hyperpage{41, 42}
+      \subsubitem correct choice, \hyperpage{44}
+    \subitem parts, \hyperpage{7, 8}, \hyperpage{13--15}
+    \subitem questions, \hyperpage{7}, \hyperpage{13}
+    \subitem solution, \hyperpage{61}
+    \subitem solutionorbox, \hyperpage{61}
+    \subitem solutionordottedlines, \hyperpage{61}
+    \subitem solutionorlines, \hyperpage{61}
+    \subitem subparts, \hyperpage{15}
+    \subitem subsubparts, \hyperpage{15}
+    \subitem TheSolution, \hyperpage{66}
+  \item \texttt  {EnvUplevel}, \hyperpage{46--48}, \hyperpage{63}
+  \item EnvUplevel environment, \hyperpage{46--48}, \hyperpage{63}
+  \item even pages
+    \subitem different from odd pages, \hyperpage{93--94}
+  \item \texttt  {\char `\\extrafootheight}, \hyperpage{83, 84}, 
+		\hyperpage{90}
+    \subitem different on first page, \hyperpage{90}
+    \subitem optional argument, \hyperpage{84}
+  \item \texttt  {\char `\\extraheadheight}, \hyperpage{83}, 
+		\hyperpage{89}, \hyperpage{100}, \hyperpage{102}
+    \subitem different on first page, \hyperpage{89}
+    \subitem optional argument, \hyperpage{84}
+  \item \texttt  {\char `\\extrawidth}, \hyperpage{25}, \hyperpage{30}, 
+		\hyperpage{83}
+
+  \indexspace
+
+  \item \texttt  {\char `\\fbox}, \hyperpage{62}, \hyperpage{64}
+  \item \texttt  {\char `\\fillwithdottedlines}, \hyperpage{56--58}, 
+		\hyperpage{61}, \hyperpage{66}
+  \item \texttt  {\char `\\fillwithlines}, \hyperpage{54--56}, 
+		\hyperpage{61}, \hyperpage{66}
+  \item \texttt  {\char `\\firstpagefooter}, \hyperpage{10}, 
+		\hyperpage{88}, \hyperpage{98, 99}
+  \item \texttt  {\char `\\firstpagefootrule}, \hyperpage{10}, 
+		\hyperpage{91}
+  \item \texttt  {\char `\\firstpageheader}, \hyperpage{10}, 
+		\hyperpage{86}, \hyperpage{97--100}, 
+		\hyperpage{102--105}
+  \item \texttt  {\char `\\firstpageheadrule}, \hyperpage{10}, 
+		\hyperpage{90}
+  \item \texttt  {foot}, \hyperpage{85}
+  \item foot height
+    \subitem first page different, \hyperpage{84}
+  \item footer, \hyperpage{10--11}, \hyperpage{84--106}
+    \subitem on cover pages, \hyperpage{107}
+    \subitem on or off, \hyperpage{84}
+    \subitem rule, \hyperpage{90--91}
+    \subitem three parts, \hyperpage{88--89}
+    \subitem with multiple lines, \hyperpage{90}
+  \item \texttt  {\char `\\footer}, \hyperpage{88}, \hyperpage{100}, 
+		\hyperpage{102, 103}, \hyperpage{105}
+  \item \texttt  {\char `\\footrule}, \hyperpage{91}
+  \item \texttt  {\char `\\framedsolutions}, \hyperpage{64}
+  \item \texttt  {\char `\\fullwidth}, \hyperpage{46}, 
+		\hyperpage{48--51}, \hyperpage{63}
+
+  \indexspace
+
+  \item grade table
+    \subitem customization, \hyperpage{80--83}
+  \item \texttt  {\char `\\gradetable}, \hyperpage{35, 36}, 
+		\hyperpage{51}, \hyperpage{69--83}
+  \item \texttt  {\char `\\gradetable[h]}, \hyperpage{70}
+  \item \texttt  {\char `\\gradetable[h][pages]}, \hyperpage{70}
+  \item \texttt  {\char `\\gradetable[h][questions]}, \hyperpage{70}
+  \item \texttt  {\char `\\gradetable[v]}, \hyperpage{70}
+  \item \texttt  {\char `\\gradetable[v][pages]}, \hyperpage{70}
+  \item \texttt  {\char `\\gradetable[v][questions]}, \hyperpage{70}
+  \item \texttt  {\char `\\gradetablestretch}, \hyperpage{80}
+  \item grading range, \hyperpage{75}
+  \item grading table, \hyperpage{69--83}
+    \subitem bonus, \hyperpage{77--78}
+    \subitem by question number or page number, \hyperpage{69--72}
+    \subitem changing total points, \hyperpage{79--80}
+    \subitem clickable links, \hyperpage{74}
+    \subitem combined, \hyperpage{78--79}
+  \item \texttt  {\char `\\greeknum}, \hyperpage{39}
+
+  \indexspace
+
+  \item \texttt  {\char `\\half}, \hyperpage{21}
+    \subitem customization, \hyperpage{21}
+  \item half points, \hyperpage{21}
+  \item \texttt  {head}, \hyperpage{84}
+  \item head height
+    \subitem first page different, \hyperpage{84}
+  \item \texttt  {headandfoot}, \hyperpage{84}
+  \item header, \hyperpage{10--11}, \hyperpage{84--106}
+    \subitem different on first page, \hyperpage{86, 87}
+    \subitem multiple lines, \hyperpage{87, 88}
+    \subitem on cover pages, \hyperpage{107}
+    \subitem on or off, \hyperpage{84}
+    \subitem rule, \hyperpage{90--91}
+    \subitem three parts, \hyperpage{85--87}
+    \subitem with multiple lines, \hyperpage{89}
+  \item \texttt  {\char `\\header}, \hyperpage{86}
+  \item \texttt  {\char `\\headrule}, \hyperpage{90}
+  \item \texttt  {\char `\\hpgword}, \hyperpage{81}
+  \item \texttt  {\char `\\hpword}, \hyperpage{81}
+  \item \texttt  {\char `\\hqword}, \hyperpage{81}
+  \item \texttt  {\char `\\hsword}, \hyperpage{81}
+  \item \texttt  {\char `\\htword}, \hyperpage{81}
+  \item \texttt  {hyperref}, \hyperpage{74}, \hyperpage{77, 78}
+
+  \indexspace
+
+  \item \texttt  {\char `\\ifcontinuation}, \hyperpage{51}, 
+		\hyperpage{94, 95}, \hyperpage{103}, \hyperpage{105}
+    \subitem reliable only in headers and footers, \hyperpage{94}
+  \item \texttt  {\char `\\ifincomplete}, \hyperpage{51}, 
+		\hyperpage{94}, \hyperpage{96}, \hyperpage{103}
+    \subitem reliable only in headers and footers, \hyperpage{94}
+  \item \texttt  {\char `\\iflastpage}, \hyperpage{92, 93}, 
+		\hyperpage{96}, \hyperpage{100}
+  \item \texttt  {\char `\\ifprintanswers}, \hyperpage{68--69}
+  \item \texttt  {\char `\\IncompleteQuestion}, \hyperpage{94}, 
+		\hyperpage{96}, \hyperpage{103}, \hyperpage{105}
+    \subitem reliable only in headers and footers, \hyperpage{94}
+  \item indentation, \hyperpage{46--51}
+    \subitem remove, \hyperpage{32}, \hyperpage{40}
+  \item instructions, \hyperpage{46--50}
+  \item \texttt  {\char `\\itemsep}, \hyperpage{40}
+
+  \indexspace
+
+  \item kerning, \hyperpage{40}
+
+  \indexspace
+
+  \item \texttt  {\char `\\labelsep}, \hyperpage{40}
+  \item last page, \hyperpage{92--93}
+  \item \LaTeX{} Project Public License, \hyperpage{5}
+  \item \texttt  {\char `\\leftmargin}, \hyperpage{40}
+  \item \texttt  {\char `\\lfoot}, \hyperpage{88--89}, 
+		\hyperpage{97--106}
+  \item \texttt  {\char `\\lhead}, \hyperpage{87}, \hyperpage{97--106}
+    \subitem different on first page, \hyperpage{87}
+    \subitem optional argument, \hyperpage{87}
+  \item license, \hyperpage{5}
+  \item lined space, \hyperpage{54--56}
+  \item \texttt  {\char `\\linefillheight}, \hyperpage{55}
+  \item \texttt  {\char `\\linefillthickness}, \hyperpage{56}
+  \item list environment, \hyperpage{40--41}
+  \item LPPL, \hyperpage{5}
+
+  \indexspace
+
+  \item \texttt  {\char `\\makeemptybox}, \hyperpage{53--54}, 
+		\hyperpage{61}, \hyperpage{66}
+  \item \texttt  {\char `\\maketitle}, \hyperpage{85}
+    \subitem overriding, \hyperpage{85}
+  \item \texttt  {\char `\\marginbonuspointname}, \hyperpage{26}, 
+		\hyperpage{28}, \hyperpage{36}
+  \item \texttt  {\char `\\marginpointname}, \hyperpage{19}, 
+		\hyperpage{24--26}, \hyperpage{28}, \hyperpage{37}
+  \item \texttt  {\char `\\marginpointsep}, \hyperpage{30}
+  \item margins, \hyperpage{4}, \hyperpage{83--84}
+    \subitem enlarge, \hyperpage{25}, \hyperpage{30}
+  \item marks, \hyperpage{24}
+  \item \texttt  {\char `\\marksnotpoints}, \hyperpage{7}, 
+		\hyperpage{24}
+  \item multiple choice, \hyperpage{41}
+
+  \indexspace
+
+  \item name, \hyperpage{6}
+  \item naming parts of the exam, \hyperpage{50--51}
+  \item \texttt  {\char `\\newpage}, \hyperpage{52}, \hyperpage{54}
+  \item \texttt  {\char `\\noaddpoints}, \hyperpage{11}, \hyperpage{37}
+  \item \texttt  {\char `\\nobonusqformat}, \hyperpage{35}
+  \item \texttt  {\char `\\noboxedpoints}, \hyperpage{22, 23}
+  \item \texttt  {\char `\\nobracketedpoints}, \hyperpage{22}
+  \item \texttt  {\char `\\nocancelspace}, \hyperpage{67--68}
+  \item \texttt  {\char `\\nomorequestions}, \hyperpage{94, 95}
+  \item \texttt  {\char `\\nopointsinmargin}, \hyperpage{18}, 
+		\hyperpage{23}
+  \item \texttt  {\char `\\nopointsinrightmargin}, \hyperpage{18}
+  \item \texttt  {\char `\\noprintanswers}, \hyperpage{61}
+  \item \texttt  {\char `\\noqformat}, \hyperpage{31}, \hyperpage{35}
+  \item \texttt  {\char `\\numbonuspoints}, \hyperpage{35, 36}
+  \item \texttt  {\char `\\numcoverpages}, \hyperpage{92}, 
+		\hyperpage{107--108}
+  \item \texttt  {\char `\\numpages}, \hyperpage{92}, \hyperpage{100}, 
+		\hyperpage{103--105}
+    \subitem doesn't count cover pages, \hyperpage{92}
+  \item \texttt  {\char `\\numparts}, \hyperpage{36}
+  \item \texttt  {\char `\\numpoints}, \hyperpage{35, 36}
+  \item \texttt  {\char `\\numquestions}, \hyperpage{36}
+  \item \texttt  {\char `\\numsubparts}, \hyperpage{36}
+  \item \texttt  {\char `\\numsubsubparts}, \hyperpage{36}
+
+  \indexspace
+
+  \item odd pages
+    \subitem different from even pages, \hyperpage{93--94}
+  \item \texttt  {\char `\\oddeven}, \hyperpage{93}, \hyperpage{105}
+    \subitem only in headers and footers, \hyperpage{94}
+  \item \texttt  {oneparcheckboxes}, \hyperpage{12}, \hyperpage{41}, 
+		\hyperpage{43--45}
+  \item oneparcheckboxes environment, \hyperpage{41}, \hyperpage{43}
+    \subitem correct choice, \hyperpage{44}
+  \item \texttt  {oneparchoices}, \hyperpage{12}, \hyperpage{41, 42}, 
+		\hyperpage{44}
+  \item oneparchoices environment, \hyperpage{41, 42}
+    \subitem correct choice, \hyperpage{44}
+
+  \indexspace
+
+  \item \texttt  {\char `\\pagestyle}, \hyperpage{10}, 
+		\hyperpage{84--85}
+    \subitem default, \hyperpage{85}
+  \item \texttt  {\char `\\pagestyle\{empty\}}, \hyperpage{85}
+  \item \texttt  {\char `\\pagestyle\{foot\}}, \hyperpage{85}
+  \item \texttt  {\char `\\pagestyle\{head\}}, \hyperpage{84}
+  \item \texttt  {\char `\\pagestyle\{headandfoot\}}, \hyperpage{84}
+  \item \texttt  {\char `\\parsep}, \hyperpage{40}
+  \item \texttt  {\char `\\part}, \hyperpage{7}, \hyperpage{13}
+    \subitem optional argument, \hyperpage{17}
+    \subitem standard sectioning command, \hyperpage{50, 51}
+  \item part counter, \hyperpage{39}
+  \item \texttt  {\char `\\partialbonusgradetable}, \hyperpage{77}
+  \item \texttt  {\char `\\partialbonuspointtable}, \hyperpage{77}
+  \item \texttt  {\char `\\partialcombinedgradetable}, \hyperpage{78}
+  \item \texttt  {\char `\\partialcombinedpointtable}, \hyperpage{78}
+  \item \texttt  {\char `\\partialgradetable}, \hyperpage{75}
+  \item \texttt  {\char `\\partialpointtable}, \hyperpage{75}
+  \item \texttt  {\char `\\partlabel}, \hyperpage{39}
+  \item \texttt  {partno}, \hyperpage{39}
+  \item \texttt  {\char `\\partopsep}, \hyperpage{40}
+  \item \texttt  {parts}, \hyperpage{7, 8}, \hyperpage{13--15}
+  \item parts environment, \hyperpage{7, 8}, \hyperpage{13--15}
+  \item \texttt  {\char `\\partshook}, \hyperpage{40}
+  \item point table, \hyperpage{69--83}
+    \subitem bonus, \hyperpage{77--78}
+    \subitem by question number or page number, \hyperpage{72--74}
+    \subitem changing total points, \hyperpage{79--80}
+    \subitem clickable links, \hyperpage{74}
+    \subitem combined, \hyperpage{78--79}
+    \subitem customization, \hyperpage{80--83}
+  \item \texttt  {\char `\\pointformat}, \hyperpage{25--27}
+  \item \texttt  {\char `\\pointname}, \hyperpage{23, 24}, 
+		\hyperpage{26}, \hyperpage{31}, \hyperpage{37}
+  \item \texttt  {\char `\\pointpoints}, \hyperpage{23, 24}, 
+		\hyperpage{31}
+  \item points, \hyperpage{4}, \hyperpage{13}, \hyperpage{17--30}
+    \subitem acceptable entries, \hyperpage{37}
+    \subitem adding, \hyperpage{32}
+    \subitem at the end of the question, \hyperpage{19--21}
+    \subitem bonus, \hyperpage{34--36}, \hyperpage{77}
+    \subitem customization, \hyperpage{21--27}
+    \subitem for both question and part, \hyperpage{27}
+    \subitem half, \hyperpage{21}
+    \subitem language, \hyperpage{23--27}
+    \subitem substitute words, \hyperpage{23--27}
+    \subitem total, \hyperpage{4}
+    \subitem where printed, \hyperpage{17--21}
+  \item \texttt  {\char `\\points}, \hyperpage{23}, \hyperpage{31}
+  \item \texttt  {\char `\\pointsdroppedatright}, \hyperpage{19--21}, 
+		\hyperpage{29}
+  \item \texttt  {\char `\\pointsinmargin}, \hyperpage{17, 18}, 
+		\hyperpage{22}, \hyperpage{24}, \hyperpage{26}, 
+		\hyperpage{30}
+  \item \texttt  {\char `\\pointsinrightmargin}, \hyperpage{17}, 
+		\hyperpage{19}, \hyperpage{22}, \hyperpage{24}, 
+		\hyperpage{26}, \hyperpage{30}
+  \item \texttt  {\char `\\pointsofquestion}, \hyperpage{29}, 
+		\hyperpage{31}, \hyperpage{35}, \hyperpage{75--77}
+  \item \texttt  {\char `\\pointsonpage}, \hyperpage{35}, 
+		\hyperpage{76, 77}, \hyperpage{104}
+    \subitem in footer, \hyperpage{77}
+  \item \texttt  {\char `\\pointtable}, \hyperpage{35, 36}, 
+		\hyperpage{51}, \hyperpage{69--83}
+  \item \texttt  {\char `\\pointtable[h]}, \hyperpage{72}
+  \item \texttt  {\char `\\pointtable[h][pages]}, \hyperpage{72}
+  \item \texttt  {\char `\\pointtable[h][questions]}, \hyperpage{72}
+  \item \texttt  {\char `\\pointtable[v]}, \hyperpage{72}
+  \item \texttt  {\char `\\pointtable[v][pages]}, \hyperpage{72}
+  \item \texttt  {\char `\\pointtable[v][questions]}, \hyperpage{72}
+  \item preamble, \hyperpage{45, 46}
+  \item \texttt  {\char `\\printanswers}, \hyperpage{12}, 
+		\hyperpage{44}, \hyperpage{61--63}
+
+  \indexspace
+
+  \item \texttt  {\char `\\qformat}, \hyperpage{19}, \hyperpage{31--35}, 
+		\hyperpage{40}
+  \item \texttt  {\char `\\question}, \hyperpage{7}, \hyperpage{13}, 
+		\hyperpage{33, 34}
+    \subitem optional argument, \hyperpage{17}
+  \item \texttt  {question}, \hyperpage{39}
+  \item question counter, \hyperpage{39}
+  \item question number, \hyperpage{33, 34}
+  \item \texttt  {\char `\\questionlabel}, \hyperpage{39}
+  \item questions
+    \subitem counting, \hyperpage{36--37}
+    \subitem customization, \hyperpage{31--32}
+    \subitem that begin with a parts environment, \hyperpage{27}
+    \subitem that span multiple pages, \hyperpage{94--96}
+  \item \texttt  {questions}, \hyperpage{7}, \hyperpage{13}
+  \item questions environment, \hyperpage{7}, \hyperpage{13}
+    \subitem only one, \hyperpage{70}
+  \item \texttt  {\char `\\questionshook}, \hyperpage{40}
+
+  \indexspace
+
+  \item \texttt  {\char `\\rfoot}, \hyperpage{88--89}, 
+		\hyperpage{97--106}
+  \item \texttt  {\char `\\rhead}, \hyperpage{87}, \hyperpage{97--106}
+    \subitem different on first page, \hyperpage{87}
+    \subitem optional argument, \hyperpage{87}
+  \item \texttt  {\char `\\rightpointsmargin}, \hyperpage{29, 30}
+  \item \texttt  {\char `\\Roman}, \hyperpage{39}
+  \item \texttt  {\char `\\roman}, \hyperpage{39}
+  \item \texttt  {\char `\\romannumeral}, \hyperpage{107}
+  \item rule
+    \subitem in header or footer, \hyperpage{90--91}
+  \item \texttt  {\char `\\runningfooter}, \hyperpage{10}, 
+		\hyperpage{88}, \hyperpage{98, 99}, \hyperpage{104}
+  \item \texttt  {\char `\\runningfootrule}, \hyperpage{10}, 
+		\hyperpage{91}, \hyperpage{98}
+  \item \texttt  {\char `\\runningheader}, \hyperpage{10}, 
+		\hyperpage{86}, \hyperpage{97--100}, 
+		\hyperpage{102--105}
+  \item \texttt  {\char `\\runningheadrule}, \hyperpage{10}, 
+		\hyperpage{90}, \hyperpage{97}, \hyperpage{103}
+
+  \indexspace
+
+  \item \texttt  {\char `\\section}, \hyperpage{50, 51}
+  \item \texttt  {\char `\\settabletotalbonuspoints}, \hyperpage{79}
+  \item \texttt  {\char `\\settabletotalpoints}, \hyperpage{79}
+  \item \texttt  {\char `\\shadedsolutions}, \hyperpage{62}, 
+		\hyperpage{64}
+  \item short answers, \hyperpage{58--60}
+    \subitem answers to, \hyperpage{60}
+  \item solution
+    \subitem appearance, \hyperpage{62--66}
+    \subitem customizing, \hyperpage{64--66}
+    \subitem in a box, \hyperpage{62--63}
+    \subitem no framing or shading, \hyperpage{64}
+    \subitem shaded, \hyperpage{63--64}
+  \item \texttt  {solution}, \hyperpage{12}, \hyperpage{61}
+    \subitem optional argument, \hyperpage{66}
+  \item solution environment, \hyperpage{61}
+  \item solution environments, \hyperpage{61--69}
+    \subitem optional argument, \hyperpage{61}, \hyperpage{66--68}
+  \item \texttt  {\char `\\SolutionColor}, \hyperpage{64}
+  \item \texttt  {\char `\\SolutionEmphasis}, \hyperpage{64, 65}
+  \item \texttt  {solutionorbox}, \hyperpage{12}, \hyperpage{61}
+    \subitem optional argument, \hyperpage{66}
+  \item solutionorbox environment, \hyperpage{61}
+  \item \texttt  {solutionordottedlines}, \hyperpage{12}, 
+		\hyperpage{61}
+    \subitem optional argument, \hyperpage{66}
+  \item solutionordottedlines environment, \hyperpage{61}
+  \item \texttt  {solutionorlines}, \hyperpage{12}, \hyperpage{61}
+    \subitem optional argument, \hyperpage{66}
+  \item solutionorlines environment, \hyperpage{61}
+  \item solutions, \hyperpage{44}, \hyperpage{61--69}
+  \item \texttt  {\char `\\solutiontitle}, \hyperpage{65}
+  \item space
+    \subitem allocating, \hyperpage{9}, \hyperpage{52}, \hyperpage{54}, 
+		\hyperpage{56}, \hyperpage{58}
+    \subitem blank, \hyperpage{9}, \hyperpage{52}
+    \subitem dotted lined, \hyperpage{56--58}
+    \subitem empty box, \hyperpage{53--54}
+    \subitem for answers, \hyperpage{9}, \hyperpage{52--60}, 
+		\hyperpage{66--68}
+    \subitem lined, \hyperpage{54--56}
+  \item \texttt  {\char `\\stretch}, \hyperpage{9}, \hyperpage{52}, 
+		\hyperpage{54}, \hyperpage{56, 57}
+  \item student's name, \hyperpage{6}
+  \item \texttt  {\char `\\subpart}, \hyperpage{15}
+    \subitem optional argument, \hyperpage{17}
+  \item \texttt  {subpart}, \hyperpage{39}
+  \item subpart counter, \hyperpage{39}
+  \item \texttt  {\char `\\subpartlabel}, \hyperpage{39}
+  \item \texttt  {subparts}, \hyperpage{15}
+  \item subparts environment, \hyperpage{15}
+  \item \texttt  {\char `\\subpartshook}, \hyperpage{40}
+  \item \texttt  {\char `\\subsubpart}, \hyperpage{15}
+    \subitem optional argument, \hyperpage{17}
+  \item \texttt  {subsubpart}, \hyperpage{39}
+  \item subsubpart counter, \hyperpage{39}
+  \item \texttt  {\char `\\subsubpartlabel}, \hyperpage{39}
+  \item \texttt  {subsubparts}, \hyperpage{15}
+  \item subsubparts environment, \hyperpage{15}
+  \item \texttt  {\char `\\subsubpartshook}, \hyperpage{40}
+  \item \texttt  {\char `\\surd}, \hyperpage{45}
+
+  \indexspace
+
+  \item \texttt  {\char `\\thechoice}, \hyperpage{38}
+  \item \texttt  {\char `\\themarginpoints}, \hyperpage{26}
+  \item \texttt  {\char `\\thepage}, \hyperpage{100}, 
+		\hyperpage{103--105}
+    \subitem reliable only in headers and footers, \hyperpage{77}
+  \item \texttt  {\char `\\thepartno}, \hyperpage{38, 39}
+  \item \texttt  {\char `\\thepoints}, \hyperpage{25, 26}, 
+		\hyperpage{31, 32}, \hyperpage{35}
+  \item \texttt  {\char `\\thequestion}, \hyperpage{29--33}, 
+		\hyperpage{38, 39}
+  \item \texttt  {\char `\\thequestiontitle}, \hyperpage{31}, 
+		\hyperpage{33, 34}
+  \item \texttt  {TheSolution}, \hyperpage{66}
+  \item TheSolution environment, \hyperpage{66}
+  \item \texttt  {\char `\\thesubpart}, \hyperpage{38}
+  \item \texttt  {\char `\\thesubsubpart}, \hyperpage{38}
+  \item \texttt  {\char `\\thispagestyle}, \hyperpage{85}
+  \item \texttt  {\char `\\thispagestyle\{headandfoot\}}, 
+		\hyperpage{85}
+  \item \texttt  {\char `\\titledquestion}, \hyperpage{31}, 
+		\hyperpage{33, 34}
+  \item \texttt  {\char `\\topsep}, \hyperpage{40}
+  \item \texttt  {\char `\\totalbonuspoints}, \hyperpage{30}, 
+		\hyperpage{36}
+  \item \texttt  {\char `\\totalformat}, \hyperpage{28--30}
+  \item \texttt  {\char `\\totalnumpages}, \hyperpage{92}, 
+		\hyperpage{107--108}
+  \item \texttt  {\char `\\totalpoints}, \hyperpage{29--32}
+
+  \indexspace
+
+  \item \texttt  {\char `\\unframedsolutions}, \hyperpage{64, 65}
+  \item \texttt  {\char `\\uplevel}, \hyperpage{46--48}, 
+		\hyperpage{50--51}, \hyperpage{63}
+  \item \texttt  {\char `\\usehorizontalhalf}, \hyperpage{21}
+  \item \texttt  {\char `\\usepackage\{hyperref\}}, \hyperpage{74}, 
+		\hyperpage{77, 78}
+  \item \texttt  {\char `\\useslantedhalf}, \hyperpage{21}
+  \item Utopia~font, \hyperpage{39}
+
+  \indexspace
+
+  \item \texttt  {\char `\\vpgword}, \hyperpage{80}
+  \item \texttt  {\char `\\vpword}, \hyperpage{80}
+  \item \texttt  {\char `\\vqword}, \hyperpage{80}
+  \item \texttt  {\char `\\vspace}, \hyperpage{52}
+  \item \texttt  {\char `\\vspace*}, \hyperpage{52}, \hyperpage{61}, 
+		\hyperpage{66}
+  \item \texttt  {\char `\\vsword}, \hyperpage{80}
+  \item \texttt  {\char `\\vtword}, \hyperpage{80}
+
+  \indexspace
+
+  \item web page, \hyperpage{5}
+
+\end{theindex}

@@ -7,14 +7,22 @@ website:
   sidebar:
     style: "docked"
     contents:
-      - text: "Basics"
+      - text: "Linear Systems"
         contents:
           - 01_Linear_Systems.ipynb
           - 02_Gaussian_Elimination.ipynb
           - 03_Matrix_Algebra.ipynb
           - 04_Inverse_Matrices.ipynb
           - 05_LU_Factorization.ipynb
-          - 06_Applications.ipynb
+          - 06_Application_LS.ipynb
+      - text: "Vector Spaces"
+        contents:
+          - 10_General_Linear_Systems.ipynb
+          - 11_Linear_Combinations.ipynb
+          - 12_Linear_Independence.ipynb
+          # - 13_Bases.ipynb
+          # - 14_Vector_Space_Examples.ipynb
+          # - 15_Applications_VS.ipynb          
       - text: "Textbook Solutions"
         contents:
           - Textbook_Solutions.ipynb
