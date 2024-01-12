@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PNU 2023 Linear Algebra - 행렬과 행렬연산</title>
+<title>PNU 2023 Linear Algebra - 일반적인 연립선형방정식</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Linear_Systems.html">Linear Systems</a></li><li class="breadcrumb-item"><a href="./03_Matrix_Algebra.html">행렬과 행렬연산</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_General_Linear_Systems.html">Vector Spaces</a></li><li class="breadcrumb-item"><a href="./10_General_Linear_Systems.html">일반적인 연립선형방정식</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -157,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Matrix_Algebra.html" class="sidebar-item-text sidebar-link active">
+  <a href="./03_Matrix_Algebra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">행렬과 행렬연산</span></a>
   </div>
 </li>
@@ -192,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_General_Linear_Systems.html" class="sidebar-item-text sidebar-link">
+  <a href="./10_General_Linear_Systems.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">일반적인 연립선형방정식</span></a>
   </div>
 </li>
@@ -301,10 +301,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#행렬" id="toc-행렬" class="nav-link active" data-scroll-target="#행렬">행렬</a></li>
-  <li><a href="#행렬-연산" id="toc-행렬-연산" class="nav-link" data-scroll-target="#행렬-연산">행렬 연산</a></li>
-  <li><a href="#행렬-연산의-속성" id="toc-행렬-연산의-속성" class="nav-link" data-scroll-target="#행렬-연산의-속성">행렬 연산의 속성</a></li>
-  <li><a href="#행렬의-전치" id="toc-행렬의-전치" class="nav-link" data-scroll-target="#행렬의-전치">행렬의 전치</a></li>
+  <li><a href="#기약-행-사다리꼴" id="toc-기약-행-사다리꼴" class="nav-link active" data-scroll-target="#기약-행-사다리꼴">기약 행 사다리꼴</a></li>
+  <li><a href="#피벗-위치-및-자유-변수" id="toc-피벗-위치-및-자유-변수" class="nav-link" data-scroll-target="#피벗-위치-및-자유-변수">피벗 위치 및 자유 변수</a></li>
+  <li><a href="#피벗-위치와-불능inconsistent" id="toc-피벗-위치와-불능inconsistent" class="nav-link" data-scroll-target="#피벗-위치와-불능inconsistent">피벗 위치와 불능(inconsistent)</a></li>
+  <li><a href="#피벗-위치와-유일-해unique-solutions" id="toc-피벗-위치와-유일-해unique-solutions" class="nav-link" data-scroll-target="#피벗-위치와-유일-해unique-solutions">피벗 위치와 유일 해(unique solutions)</a></li>
+  <li><a href="#피벗-위치-및-선형-시스템" id="toc-피벗-위치-및-선형-시스템" class="nav-link" data-scroll-target="#피벗-위치-및-선형-시스템">피벗 위치 및 선형 시스템</a></li>
   </ul>
 </nav>
     </div>
@@ -313,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">행렬과 행렬연산</h1>
+<h1 class="title">일반적인 연립선형방정식</h1>
 </div>
 
 
@@ -328,192 +329,178 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="행렬" class="level2">
-<h2 class="anchored" data-anchor-id="행렬">행렬</h2>
-<p><strong>행렬</strong> A는 숫자의 2차원 배열입니다. NumPy를 사용하여 행렬로 계산할 때는 이전과 마찬가지로 배열을 사용하게 됩니다. 행렬의 몇 가지 모양은 아래와 같습니다.</p>
+<p>벡터 공간 <span class="math inline">\(\mathbb{R}^n\)</span>을 살펴보기 전에 연립선형방정식(이하 선형 시스템)의 일반적인 질문에 대한 답변을 할 준비가 되어있습니다. 모든 선형 시스템의 경우 다음 명제 중 정확히 한 가지가 참입니다:</p>
+<ol type="1">
+<li>시스템에 해가 존재하지 않는다(inconsistent).</li>
+<li>시스템에 하나의 해가 존재한다.</li>
+<li>시스템에 해가 무한하다.</li>
+</ol>
+<p>주어진 선형 시스템에 앞선 세 가지 명제 중 어떤 것이 참인지 확인하는 것이 핵심 사항 입니다. 이전 장에서는 고유한 해가 있는 선형 시스템에 중점을 두었습니다.</p>
+<p>이제 다른 가능성에 대해 자세히 살펴보겠습니다. 그리고 방정식과 미지수가 같은 선형 시스템이 아니라 <span class="math inline">\(m\)</span> 개의 방정식과 <span class="math inline">\(n\)</span> 개의 미지수를 가진 선형 시스템, 즉 일반적인 경우를 고려하겠습니다.</p>
+<p>기약 행 사다리꼴(이하, RREF)을 주로 사용 할 예정이며, RREF의 유용성에 대해서 확인할 수 있을 것으로 기대합니다.</p>
+<section id="기약-행-사다리꼴" class="level2">
+<h2 class="anchored" data-anchor-id="기약-행-사다리꼴">기약 행 사다리꼴</h2>
+<p>앞선 장에서 선형 시스템의 해를 구하는 방법 중 역행렬, LU 분해 등과 같은 방법을 사용해서 선형 연립방정식을 해결하였습니다. 일반적인 선형 시스템의 경우 기본 형 연산을 사용하여 RREF 형태로 만드는 것이 일반적입니다.</p>
+<ol type="1">
+<li>각 행의 첫 번째 <span class="math inline">\(0\)</span>이 아닌 항목은 <span class="math inline">\(1\)</span>입니다. 이러한 항목을 <strong>피벗(pivots)</strong>이라고 합니다.</li>
+<li>각 피벗은 윗 행의 피벗 오른쪽에 위치합니다.</li>
+<li>각 피벗 위와 아래의 항목은 0입니다.</li>
+<li>모든 0인 행은 다른 행 아래에 위치합니다.</li>
+</ol>
+<p>다음은 RREF로 구성된 간단한 예제입니다.</p>
 <p><span class="math display">\[
-\begin{equation}
-A = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right] \hspace{1cm}
-B = \left[ \begin{array}{rrr} 3 &amp; 0 &amp; 4 \\ -1 &amp; -2 &amp; 1 \end{array}\right] \hspace{1cm}
-C = \left[ \begin{array}{rr} -2 &amp; 1 \\ 4 &amp; 1 \end{array}\right] \hspace{1cm}
-D = \left[ \begin{array}{r} 2 \\ 6 \end{array}\right]
-\end{equation}
+\begin{matrix}
+\left[ \begin{array}{cccc} 1 &amp; 0 &amp; 0 &amp; * \\ 0 &amp; 1 &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 1 &amp; * \end{array}\right]
+\end{matrix}
 \]</span></p>
-<p>행렬은 행과 열의 개수를 지정하여 행렬의 크기 또는 모양에 대해 이야기하는 것이 일반적입니다. 일반적으로 행의 개수가 먼저 나열됩니다. 이 예제에서 <span class="math inline">\(A\)</span>와 <span class="math inline">\(C\)</span>는 <span class="math inline">\(2 \times 2\)</span> 행렬이고, <span class="math inline">\(B\)</span>는 <span class="math inline">\(2 \times 3\)</span> 행렬이며, <span class="math inline">\(D\)</span>는 $ 2 $ 행렬입니다. <span class="math inline">\(D\)</span>와 같이 열이 1개만 있는 행렬은 일반적으로 <strong>벡터</strong>라고 합니다.</p>
-<p>행렬의 개별 항목에 대해서도 이야기할 필요가 있습니다. 이에 대한 일반적인 표기법은 행렬에서 항목의 위치를 나타내기 위해 아래 첨자가 있는 소문자입니다. 따라서 <span class="math inline">\(b_{12}\)</span>는 행렬 <span class="math inline">\(B\)</span>의 첫 번째 행과 두 번째 열에 있는 0을 나타냅니다. 일반적인 위치에 대해 이야기하는 경우, <span class="math inline">\(a_{ij}\)</span>와 같이 아래 첨자 안에 변수를 사용할 수 있습니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+\left[ \begin{array}{ccccc} 1 &amp; 0 &amp; * &amp; 0 &amp; *  \\ 0 &amp; 1 &amp; * &amp; 0 &amp; *
+\\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{array}\right]
+\end{matrix}
+\]</span></p>
+<p><span class="math display">\[
+\begin{matrix}
+\left[ \begin{array}{cccccc} 1 &amp; * &amp; 0 &amp; 0 &amp; * &amp; * \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; * &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; * &amp; * \end{array}\right]
+\end{matrix}
+\]</span></p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">3</span>],[<span class="dv">2</span>,<span class="dv">1</span>]])</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">4</span>],[<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>]])</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.array([[<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>],[<span class="dv">4</span>, <span class="dv">1</span>]])</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.array([[<span class="dv">2</span>],[<span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> linear_solver <span class="im">as</span> ls</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.random.randint(<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,size<span class="op">=</span>(<span class="dv">3</span>,<span class="dv">5</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>C_reduced <span class="op">=</span> ls.full_row_reduction(C)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(C)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(C_reduced)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[-1  1  1  1 -2]
+ [-2  1  1 -2 -2]
+ [-1  0 -1  0  2]]
+
+
+[[ 1.  0.  0.  3.  0.]
+ [ 0.  1.  0.  7.  0.]
+ [ 0.  0.  1. -3. -2.]]</code></pre>
 </div>
-<p>행과 열의 모양과 크기에 대해서는 배열 객체의 일부로 저장되며 <strong>shape</strong>라는 메서드로 액세스할 수 있습니다. %B$가 배열인 경우, <strong>B.shape</strong> 객체는 그 자체로 두 개의 항목이 있는 배열입니다. 첫 번째 항목(<strong>인덱스 0</strong>)은 행의 개수이고 두 번째 항목(<strong>인덱스 1</strong>)은 열의 개수입니다.</p>
+</div>
+</section>
+<section id="피벗-위치-및-자유-변수" class="level2">
+<h2 class="anchored" data-anchor-id="피벗-위치-및-자유-변수">피벗 위치 및 자유 변수</h2>
+<p>먼저 RREF를 사용하여 <strong>자유 변수(free variables)</strong>가 있는 선형 시스템을 푸는데 어떻게 도움이 되는지 살펴봅니다. 자유 변수는 시스템에 의해 고유하게 결정되지 않는 변수를 말합니다.</p>
+<p>다음 연립선형방정식을 예로 들어 보겠습니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+-2x_1 + 2x_2 - 2x_3 + 2x_4&amp; = &amp; 0\\
+x_1 - 2x_2 -2x_3 \hspace{1.2cm}&amp; = &amp; -1\\
+x_1 \hspace{1.2cm} + 2x_3 -2x_4 &amp; = &amp; 1
+\end{matrix}
+\]</span></p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Array B has </span><span class="sc">{</span>B<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows."</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Array B has </span><span class="sc">{</span>B<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> columns."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B_augmented <span class="op">=</span> np.array([[<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">1</span>]])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>B_augmented_reduced <span class="op">=</span> ls.full_row_reduction(B_augmented)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B_augmented_reduced)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Array B has 2 rows.
-Array B has 3 columns.</code></pre>
+<pre><code>[[ 1.  0.  0. -2.  1.]
+ [ 0.  1.  0. -1.  1.]
+ [ 0.  0.  1.  0.  0.]]</code></pre>
 </div>
 </div>
+<p>RREF로 대표되는 연립선형방정식을 확인해보겠습니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+x_1 \quad\quad\quad\quad -2x_4&amp; = &amp; 1\\
+x_2 \quad\quad -x_4 &amp; = &amp; 1\\
+x_3 \quad\quad &amp; = &amp; 0
+\end{matrix}
+\]</span></p>
+<p><span class="math inline">\(x_3 = 0\)</span>이며, 다른 변수들은 앞의 두 방정식을 통해 서로 연관되어 있음을 알 수 있습니다. 즉, <span class="math inline">\(x_3\)</span>의 값은 시스템에 의해 고유하게 결정되지만 다른 변수의 값은 그렇지 않다는 것을 의미합니다. 해를 완성하려면 <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span> 또는 <span class="math inline">\(x_4\)</span> 중 하나의 값을 선택한 다음 처음 두 방정식을 사용하여 다른 두 변수의 값을 계산해야 합니다.</p>
+<p>RREF를 효율적으로 활용하기 위해 항상 자유 변수는 피벗이 포함되지 않은 배열의 열에 해당하는 변수로 선택합니다. 이 경우 네 번째 열에 피벗이 없으므로 <span class="math inline">\(x_4\)</span>가 자유 변수가 됩니다. 이제 <span class="math inline">\(x_4 = 2\)</span>를 선택하면 <span class="math inline">\(x_1=5\)</span>와 <span class="math inline">\(x_2 = 3\)</span>을 확인할 수 있습니다. 여기서 <span class="math inline">\(x_4\)</span>는 <em>어떤 값</em>도 취할 수 있다는 것을 알아두는 것이 중요합니다. 그런 다음 <span class="math inline">\(x_1\)</span>과 <span class="math inline">\(x_2\)</span>의 값을 계산하여 시스템에 대한 해를 완성할 수 있습니다.</p>
+<p>여기서 잠시 멈춰서 이 시스템에 대한 <em>가능한 모든 해</em>을 설명하는 방법을 생각해 볼 수 있습니다. 한 가지 아이디어는 자유 변수에 매개변수(예: <span class="math inline">\(x_4 = s\)</span>)를 지정한 다음 다른 변수를 매개변수로 표현하는 것입니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+x_1 &amp; = &amp; 1 + 2s\\
+x_2  &amp; = &amp; 1 + s\\
+x_3 &amp; = &amp; 0 \\
+x_4 &amp; = &amp; s
+\end{matrix}
+\]</span></p>
+<p>중요한 점은 <strong>선형 시스템은 하나 이상의 자유 변수를 포함할 경우 해의 개수가 무한대라는 점입니다.</strong> RREF는 자유 변수가 있는지 여부를 한눈에 알 수 있기 때문에 유용합니다. 피벗이 없는 열이 있다면 시스템에 자유 변수가 있다는 뜻이며, 이는 시스템에 고유한 해가 없다는 것을 의미합니다.</p>
 </section>
-<section id="행렬-연산" class="level2">
-<h2 class="anchored" data-anchor-id="행렬-연산">행렬 연산</h2>
-<p>행렬에 대해 수행해야 할 세 가지 대수 연산이 있습니다. 정의를 위해 <span class="math inline">\(A\)</span>와 <span class="math inline">\(C\)</span>가 <span class="math inline">\(m \times n\)</span> 행렬이고, <span class="math inline">\(B\)</span>가 <span class="math inline">\(n \times k\)</span> 행렬이며, <span class="math inline">\(c\)</span>가 숫자라고 가정해 보겠습니다. 행렬과 숫자를 포함하는 대수를 논의할 때 숫자는 일반적으로 <strong>스칼라</strong>라고 합니다.</p>
-<ol type="1">
-<li>모든 형태의 행렬에 스칼라를 곱할 수 있습니다. 그 결과 모든 항목에 해당 스칼라가 곱해집니다. 아래 첨자 표기법을 사용하면 다음과 같이 작성할 수 있습니다.</li>
-</ol>
-<p><span class="math display">\[
-(cA)_{ij} = ca_{ij}
-\]</span></p>
-<ol start="2" type="1">
-<li>동일한 모양을 가진 두 행렬을 추가할 수 있습니다. 그 결과 해당되는 모든 항목이 추가됩니다.</li>
-</ol>
-<p><span class="math display">\[
-(A+C)_{ij} = a_{ij} + c_{ij}
-\]</span></p>
-<ol start="3" type="1">
-<li>행렬 <span class="math inline">\(A\)</span>의 열 수가 행렬 <span class="math inline">\(B\)</span>의 행 수와 같으면, 행렬을 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> 순서로 곱할 수 있습니다. 그 결과 행의 개수는 <span class="math inline">\(A\)</span>와 같고 열의 개수는 <span class="math inline">\(B\)</span>와 같은 새로운 행렬 <span class="math inline">\(AB\)</span>가 생성됩니다. <span class="math inline">\((AB)_{ij}\)</span> 행렬은 <span class="math inline">\(A\)</span>의 행 <span class="math inline">\(i\)</span>와 <span class="math inline">\(B\)</span>의 열 <span class="math inline">\(j\)</span>의 행렬을 다음과 같이 조합한 행렬이 됩니다.</li>
-</ol>
-<p><span class="math display">\[
-(AB)_{ij} = \sum_{k=1}^n a_{ik}b_{kj}
-\]</span></p>
-<p><strong>행렬 곱셈</strong>으로 알려진 마지막 연산은 세 가지 연산 중 가장 복잡하고 직관적이지 않습니다. 이 마지막 공식은 처음 접했을 때 다소 어렵게 느껴질 수 있습니다. 몇 가지 예를 들어 설명해 드리겠습니다.</p>
-<ol type="1">
-<li>숫자와 행렬의 곱셈입니다:</li>
-</ol>
+<section id="피벗-위치와-불능inconsistent" class="level2">
+<h2 class="anchored" data-anchor-id="피벗-위치와-불능inconsistent">피벗 위치와 불능(inconsistent)</h2>
+<p>이제 선형 시스템에 일관성이 있는지 확인하는 문제로 관심을 돌리겠습니다. 다시 한 번 구체적인 예를 살펴보고 RREF를 활용하겠습니다.</p>
 <p><span class="math display">\[
 \begin{matrix}
-3A = 3\left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right]
-= \left[ \begin{array}{rr} 3 &amp; 9 \\ 6 &amp; 3 \end{array}\right]
+x_1 - 2x_2 + 2x_3 &amp; = &amp; 0\\
+2x_1 + 2x_2 + 2x_3  &amp; = &amp; 1\\
+-x_2 - x_3 &amp; = &amp; -2 \\
+-2x_1 -x_2 - x_3 &amp; = &amp; 0
 \end{matrix}
 \]</span></p>
-<ol start="2" type="1">
-<li>모양이 같은 두 행렬의 합계입니다:</li>
-</ol>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>D_augmented <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>],[<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>],[<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>]])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>D_augmented_reduced <span class="op">=</span> ls.full_row_reduction(D_augmented)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(D_augmented_reduced)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1. 0. 0. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]</code></pre>
+</div>
+</div>
+<p>RREF로 표시되는 시스템을 작성하면 이 시스템에 해가 없음을 분명히 알 수 있습니다.</p>
 <p><span class="math display">\[
 \begin{matrix}
-A + C = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right] +
-\left[ \begin{array}{rr} -2 &amp; 1 \\ 4 &amp; 1 \end{array}\right]
-= \left[ \begin{array}{rr} -1 &amp; 4 \\ 6 &amp; 2 \end{array}\right]
+x_1 &amp; = &amp; 0\\
+x_2  &amp; = &amp; 0\\
+x_3 &amp; = &amp; 0 \\
+0 &amp; = &amp; 1
 \end{matrix}
 \]</span></p>
-<ol start="3" type="1">
-<li>두 행렬의 곱셈입니다:</li>
-</ol>
+<p>이 경우 RREF를 해석할 때 주의해야 합니다. 우리는 <span class="math inline">\(x_1 = x_2 = x_3 = 0\)</span>을 설정하면 세 개의 방정식은 만족하지만 한 개의 방정식은 만족하지 않는다고 결론을 내리고 싶을 수 있습니다. 하지만 원래의 시스템을 되돌아보면 그렇지 않다는 것을 알 수 있습니다. <span class="math inline">\(x_1 = x_2 = x_3 = 0\)</span>을 설정하면 첫 번째와 마지막 방정식만 만족합니다.</p>
+<p>다시 한 번 피벗 위치와 불능에 관해 결론을 연결해 보겠습니다. 특정 행의 모든 계수가 <span class="math inline">\(0\)</span>이지만 오른쪽이 <span class="math inline">\(0\)</span>이 아닌 경우 불일치가 발생합니다. 즉, <strong>선형 시스템이 불능이라는 것을 의미합니다</strong>.</p>
+</section>
+<section id="피벗-위치와-유일-해unique-solutions" class="level2">
+<h2 class="anchored" data-anchor-id="피벗-위치와-유일-해unique-solutions">피벗 위치와 유일 해(unique solutions)</h2>
+<p>마지막 예제에서는 시스템에 고유한 솔루션이 있는 일반적인 경우를 고려하고 RREF를 다시 고려합니다.</p>
 <p><span class="math display">\[
 \begin{matrix}
-AB = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right]
-\left[ \begin{array}{rrr} 3 &amp; 0 &amp; 4 \\ -1 &amp; -2 &amp; 1 \end{array}\right]
-= \left[ \begin{array}{rrr} 0 &amp; -6 &amp; 7  \\  5 &amp; -2 &amp; 9  \end{array}\right]
+x_1 - 2x_2 + 2x_3 &amp; = &amp; 0\\
+-x_2 - x_3 &amp; = &amp; -2 \\
+-2x_1 -x_2 - x_3 &amp; = &amp; 0
 \end{matrix}
 \]</span></p>
-<p>행렬 곱셈에서 어떤 일이 일어나는지 명확히 하기 위해 두 개의 항목을 자세히 계산해 보겠습니다.</p>
-<p><span class="math display">\[
-\begin{matrix}
-(AB)_{12} &amp; = &amp; 1\times 0 + 3 \times (-2) = -6 \\
-(AB)_{23} &amp; = &amp; 2 \times 4 + 1 \times 1 = 9
-\end{matrix}
-\]</span></p>
-<p>이러한 행렬 연산은 모두 NumPy에 내장되어 있지만 행렬 곱셈의 경우 <span class="math inline">\(\texttt{*}\)</span> 대신 <span class="math inline">\(\texttt{@}\)</span> 기호를 사용해야 합니다.</p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span><span class="op">*</span>A,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A<span class="op">+</span>C,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A<span class="op">@</span>B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>G_augmented <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>],[<span class="op">-</span><span class="dv">2</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>]])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>G_augmented_reduced <span class="op">=</span> ls.full_row_reduction(G_augmented)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G_augmented_reduced)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[3 9]
- [6 3]] 
-
-[[-1  4]
- [ 6  2]] 
-
-[[ 0 -6  7]
- [ 5 -2  9]]</code></pre>
+<pre><code>[[ 1.    0.    0.   -1.  ]
+ [ 0.    1.    0.    0.75]
+ [ 0.    0.    1.    1.25]]</code></pre>
 </div>
 </div>
+<p>RREF는 이제 고유한 솔루션을 직접 제공합니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+x_1 &amp; = &amp; -1\\
+x_2  &amp; = &amp; 0.75\\
+x_3 &amp; = &amp; 1.25
+\end{matrix}
+\]</span></p>
+<p>앞의 두 가지 경우가 발생하지 않을 때 정확히 고유한 해를 갖는 시스템이 있다는 것을 인식하는 것이 중요합니다. 이를 명시적으로 설명하자면, 행렬의 <strong>마지막 열</strong>을 제외한 모든 열에 피벗이 있을 때 <strong>시스템은 고유한 해</strong>를 갖게 됩니다.</p>
 </section>
-<section id="행렬-연산의-속성" class="level2">
-<h2 class="anchored" data-anchor-id="행렬-연산의-속성">행렬 연산의 속성</h2>
-<p>행렬 곱셈에 대해 몇 가지 일반적인 대수적 성질은 아래와 같습니다. <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>를 행렬로, <span class="math inline">\(k\)</span>를 스칼라로 가정합니다. 여기서 설명한 연관성 및 특성은 행렬 곱셈에도 적용됩니다.</p>
-<p><span class="math display">\[
-\begin{equation}
-k(A+B) = kA + kB
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-C(A+B) = CA + CB
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-A(BC) = (AB)C
-\end{equation}
-\]</span></p>
-<p><span class="math inline">\(A\)</span>와 <span class="math inline">\(B\)</span>가 <span class="math inline">\(3 \times 3\)</span> 행렬인 경우에, <span class="math inline">\(AB = BA\)</span>가 성립하지 않는다는 것을 주의해야 합니다.</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.random.randint(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,size<span class="op">=</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.random.randint(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,size<span class="op">=</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A<span class="op">@</span>B)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B<span class="op">@</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[-28  -3  -1]
- [ -8   1   5]
- [-25   0   5]]
-
-
-[[-14  -7  10]
- [ -3 -28  -7]
- [-18  11  20]]</code></pre>
-</div>
-</div>
-</section>
-<section id="행렬의-전치" class="level2">
-<h2 class="anchored" data-anchor-id="행렬의-전치">행렬의 전치</h2>
-<p>유용하게 사용할 수 있는 또 다른 일반적인 아이디어는 행렬 전치입니다. 행렬 <span class="math inline">\(A\)</span>의 <strong>전치</strong>는 열이 <span class="math inline">\(A\)</span>의 행이 되도록 정의된 또 다른 행렬인 <span class="math inline">\(A^T\)</span>입니다. A<sup>T<span class="math inline">\(는 모든 항목의 행 인덱스를 열 인덱스로 간단히 바꾸면 됩니다(\)</span>a</sup>T_{ij} = a_{ji}$). 두 가지 예제만으로도 이 정의를 명확히 이해할 수 있습니다.</p>
-<p><span class="math display">\[
-\begin{equation}
-A = \left[ \begin{array}{rrr} 5 &amp; 4 &amp; 0 \\ 1 &amp; 8 &amp; 3 \\ 6 &amp; 7 &amp; 2\end{array}\right] \hspace{1cm}
-A^T = \left[ \begin{array}{rrr} 5 &amp; 1 &amp; 6 \\ 4 &amp; 8 &amp; 7 \\ 0 &amp; 3 &amp; 2\end{array}\right] \hspace{1cm}
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-B = \left[ \begin{array}{rrr} 1 &amp; 2 &amp; 7 &amp; 0 \\ 3 &amp; 1 &amp; 5 &amp; 2 \\ 4 &amp; 9 &amp; 8 &amp; 6\end{array}\right] \hspace{1cm}
-B^T = \left[ \begin{array}{rrr} 1 &amp; 3 &amp; 4 \\ 2 &amp; 1 &amp; 9 \\ 7 &amp; 5 &amp; 8 \\ 0 &amp; 2 &amp; 6\end{array}\right] \hspace{1cm}
-\end{equation}
-\]</span></p>
-<p>NumPy 배열 객체에는 이를 위해 <span class="math inline">\(\texttt{transpose}\)</span>라는 메서드가 있습니다.</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>],[<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">3</span>],[<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">2</span>]])</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Note that the tranpose method must be called with (), the same as a function with no arguments.</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>A_T <span class="op">=</span> A.transpose()</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A_T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[5 4 0]
- [1 8 3]
- [6 7 2]]
-
-
-[[5 1 6]
- [4 8 7]
- [0 3 2]]</code></pre>
-</div>
-</div>
-<p>행렬 <span class="math inline">\(A\)</span>가 자신의 전치와 같을 때, 행렬은 주 대각선을 가로질러 대칭이 되는 성질을 가집니다. 이러한 이유로 행렬 <span class="math inline">\(A\)</span>가 <span class="math inline">\(A = A^T\)</span>이면 <strong>대칭</strong> 행렬이라고 합니다. 이와 동등하게 행렬의 모든 행렬 <span class="math inline">\(a_{ij}\)</span>에 대해 <span class="math inline">\(a_{ij} = a_{ji}\)</span>이면 <span class="math inline">\(A\)</span>는 대칭이라고 말할 수 있습니다. 아래 행렬 <span class="math inline">\(P\)</span>는 그러한 예시 중 하나입니다.</p>
-<p><span class="math display">\[
-\begin{equation}
-P = \left[ \begin{array}{rrr} 1 &amp; 0 &amp; 6 \\ 0 &amp; 3 &amp; 5 \\ 6 &amp; 5 &amp; -2\end{array}\right] \hspace{1cm}
-\end{equation}
-\]</span></p>
+<section id="피벗-위치-및-선형-시스템" class="level2">
+<h2 class="anchored" data-anchor-id="피벗-위치-및-선형-시스템">피벗 위치 및 선형 시스템</h2>
+<p>이제 <span class="math inline">\(m\times (n+1)\)</span> 행렬 <span class="math inline">\([A|B]\)</span>의 피벗 위치에 따라 <span class="math inline">\(AX=B\)</span> 시스템에 대한 해집합을 요약합니다. 이러한 피벗 위치는 RREF를 계산하면 알 수 있습니다.</p>
+<ul>
+<li>특정 행의 모든 계수가 <span class="math inline">\(0\)</span>이지만 오른쪽이 <span class="math inline">\(0\)</span>이 아닌 경우 불일치가 발생, 시스템에 해가 없습니다.</li>
+<li>$[A|B]의 <span class="math inline">\(n\)</span> 열 중 하나라도 피벗이 <em>없는</em> 경우, 자유 변수가 존재하므로 시스템에 고유한 해가 없습니다.</li>
+<li>마지막 열을 제외한 각 열에 피벗이 있는 경우, 시스템에 고유한 해가 있습니다.</li>
+</ul>
+<p>이 세 문장을 통해 주어진 시스템 <span class="math inline">\(AX=B\)</span>가 고유한 해를 갖는지, 무한한 수의 해를 갖는지, 아니면 해가 전혀 없는지 확인할 수 있습니다. 선형 시스템을 분류하는 이 방법은 앞으로의 논의에서 중요한 역할을 할 것입니다.</p>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PNU 2023 Linear Algebra - 4. 역행렬</title>
+<title>PNU 2023 Linear Algebra - 역행렬</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Linear_Systems.html">Basics</a></li><li class="breadcrumb-item"><a href="./04_Inverse_Matrices.html">4. 역행렬</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Linear_Systems.html">Linear Systems</a></li><li class="breadcrumb-item"><a href="./04_Inverse_Matrices.html">역행렬</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -137,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
- <span class="menu-text">Basics</span></a>
+ <span class="menu-text">Linear Systems</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -146,37 +146,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_Linear_Systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. 연립 선형 방정식과 해집합</span></a>
+ <span class="menu-text">연립 선형 방정식과 해집합</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_Gaussian_Elimination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. 가우스 소거법</span></a>
+ <span class="menu-text">가우스 소거법</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_Matrix_Algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. 행렬과 행렬연산</span></a>
+ <span class="menu-text">행렬과 행렬연산</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_Inverse_Matrices.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">4. 역행렬</span></a>
+ <span class="menu-text">역행렬</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_LU_Factorization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5. LU 분해</span></a>
+ <span class="menu-text">LU 분해</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_Applications.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">6. Linear Systems 응용</span></a>
+  <a href="./06_Applications_LS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">연립선형방정식의 응용</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Vector Spaces</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_General_Linear_Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">일반적인 연립선형방정식</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_Linear_Combinations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">선형 결합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_Linear_Independence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">선형 독립</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_Bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">기저</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14_Vector_Space_Examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">벡터 공간의 예</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_Applications_VS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">벡터공간의 응용</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Linear Transformations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20_Matrix_Representations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">행렬의 표현</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21_Planar_Transformations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">변환(평면)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22_Applications_LT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">선형 변환의 응용</span></a>
   </div>
 </li>
       </ul>
@@ -235,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">4. 역행렬</h1>
+<h1 class="title">역행렬</h1>
 </div>
 
 

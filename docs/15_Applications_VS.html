@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PNU 2023 Linear Algebra - 행렬과 행렬연산</title>
+<title>PNU 2023 Linear Algebra - 벡터공간의 응용</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Linear_Systems.html">Linear Systems</a></li><li class="breadcrumb-item"><a href="./03_Matrix_Algebra.html">행렬과 행렬연산</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_General_Linear_Systems.html">Vector Spaces</a></li><li class="breadcrumb-item"><a href="./15_Applications_VS.html">벡터공간의 응용</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -157,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03_Matrix_Algebra.html" class="sidebar-item-text sidebar-link active">
+  <a href="./03_Matrix_Algebra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">행렬과 행렬연산</span></a>
   </div>
 </li>
@@ -222,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15_Applications_VS.html" class="sidebar-item-text sidebar-link">
+  <a href="./15_Applications_VS.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">벡터공간의 응용</span></a>
   </div>
 </li>
@@ -301,10 +301,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#행렬" id="toc-행렬" class="nav-link active" data-scroll-target="#행렬">행렬</a></li>
-  <li><a href="#행렬-연산" id="toc-행렬-연산" class="nav-link" data-scroll-target="#행렬-연산">행렬 연산</a></li>
-  <li><a href="#행렬-연산의-속성" id="toc-행렬-연산의-속성" class="nav-link" data-scroll-target="#행렬-연산의-속성">행렬 연산의 속성</a></li>
-  <li><a href="#행렬의-전치" id="toc-행렬의-전치" class="nav-link" data-scroll-target="#행렬의-전치">행렬의 전치</a></li>
+  <li><a href="#화학-방정식" id="toc-화학-방정식" class="nav-link active" data-scroll-target="#화학-방정식">화학 방정식</a></li>
+  <li><a href="#정보-검색" id="toc-정보-검색" class="nav-link" data-scroll-target="#정보-검색">정보 검색</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -313,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">행렬과 행렬연산</h1>
+<h1 class="title">벡터공간의 응용</h1>
 </div>
 
 
@@ -328,194 +329,180 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="행렬" class="level2">
-<h2 class="anchored" data-anchor-id="행렬">행렬</h2>
-<p><strong>행렬</strong> A는 숫자의 2차원 배열입니다. NumPy를 사용하여 행렬로 계산할 때는 이전과 마찬가지로 배열을 사용하게 됩니다. 행렬의 몇 가지 모양은 아래와 같습니다.</p>
+<p>객체가 여러 개의 구성 요소로 이루어진 경우, 객체를 구성 요소당 하나의 항목이 있는 벡터로 표현하는 것이 유용할 때가 많습니다. 이 섹션에서 설명하는 예는 원자로 구성된 분자와 단어로 구성된 텍스트 문서를 포함합니다. 어떤 경우에는 객체와 관련된 방정식이 벡터 방정식을 생성하기도 합니다. 다른 경우에는 행렬 대수를 사용하여 벡터에 대한 연산을 수행해야 할 이유가 있습니다.</p>
+<section id="화학-방정식" class="level2">
+<h2 class="anchored" data-anchor-id="화학-방정식">화학 방정식</h2>
+<p>화학 방정식의 균형을 맞출 때, 방정식의 양쪽에서 각 유형의 원자 수를 동일하게 유지하면서 생성물 분자의 수를 형성하는 반응물 분자의 수를 결정하려고 합니다. 다음은 에탄올 연소에 대한 예시입니다.</p>
 <p><span class="math display">\[
-\begin{equation}
-A = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right] \hspace{1cm}
-B = \left[ \begin{array}{rrr} 3 &amp; 0 &amp; 4 \\ -1 &amp; -2 &amp; 1 \end{array}\right] \hspace{1cm}
-C = \left[ \begin{array}{rr} -2 &amp; 1 \\ 4 &amp; 1 \end{array}\right] \hspace{1cm}
-D = \left[ \begin{array}{r} 2 \\ 6 \end{array}\right]
-\end{equation}
+\begin{matrix}
+C_2H_5OH + O_2 \to CO_2 + H_2O
+\end{matrix}
 \]</span></p>
-<p>행렬은 행과 열의 개수를 지정하여 행렬의 크기 또는 모양에 대해 이야기하는 것이 일반적입니다. 일반적으로 행의 개수가 먼저 나열됩니다. 이 예제에서 <span class="math inline">\(A\)</span>와 <span class="math inline">\(C\)</span>는 <span class="math inline">\(2 \times 2\)</span> 행렬이고, <span class="math inline">\(B\)</span>는 <span class="math inline">\(2 \times 3\)</span> 행렬이며, <span class="math inline">\(D\)</span>는 $ 2 $ 행렬입니다. <span class="math inline">\(D\)</span>와 같이 열이 1개만 있는 행렬은 일반적으로 <strong>벡터</strong>라고 합니다.</p>
-<p>행렬의 개별 항목에 대해서도 이야기할 필요가 있습니다. 이에 대한 일반적인 표기법은 행렬에서 항목의 위치를 나타내기 위해 아래 첨자가 있는 소문자입니다. 따라서 <span class="math inline">\(b_{12}\)</span>는 행렬 <span class="math inline">\(B\)</span>의 첫 번째 행과 두 번째 열에 있는 0을 나타냅니다. 일반적인 위치에 대해 이야기하는 경우, <span class="math inline">\(a_{ij}\)</span>와 같이 아래 첨자 안에 변수를 사용할 수 있습니다.</p>
-<div class="cell" data-execution_count="2">
+<p>이 방정식은 양쪽에 같은 수의 탄소 원자(<span class="math inline">\(C\)</span>)나 같은 수의 수소 원자(<span class="math inline">\(H\)</span>)가 포함되어 있지 않으므로 올바르지 않습니다. 각 분자를 곱하는 미지의 계수를 사용하여 방정식을 다시 작성해 보겠습니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+x_1C_2H_5OH + x_2O_2 \to x_3CO_2 + x_4H_2O
+\end{matrix}
+\]</span></p>
+<p>이제 문제는 방정식의 양 변에 각각 탄소, 산소, 수소의 원자 수가 같도록 <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, <span class="math inline">\(x_3\)</span>, <span class="math inline">\(x_4\)</span>의 값을 구하는 것입니다. 또한 분자는 불연속적인 단위이므로 미지 계수는 <em>양수 정수</em>여야 합니다.</p>
+<p>이 시나리오에서는 각 분자를 방정식의 각 원자 유형에 대해 하나씩 세 개의 항목이 있는 벡터로 생각하는 것이 유용합니다. 첫 번째 항목은 탄소 원자의 수, 두 번째 항목은 산소 원자의 수, 세 번째 항목은 수소 원자의 수라고 가정해 보겠습니다. 따라서 다음 벡터는 <span class="math inline">\(C_2H_5OH\)</span>를 나타냅니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+\left[\begin{array}{c} 2 \\ 6 \\ 1 \end{array}\right]
+\end{matrix}
+\]</span></p>
+<p>화학 방정식은 매우 자연스럽게 벡터 방정식으로 표현됩니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+x_1\left[\begin{array}{c} 2 \\ 6 \\ 1 \end{array}\right]
++ x_2\left[\begin{array}{c} 0 \\ 0 \\ 2 \end{array}\right]
+= x_3\left[\begin{array}{c} 1 \\ 0 \\ 2 \end{array}\right]
++ x_4\left[\begin{array}{c} 0 \\ 2 \\ 1 \end{array}\right]
+\end{matrix}
+\]</span></p>
+<p>미지수가 있는 모든 항이 왼쪽에 오도록 재배열하면 이 벡터 방정식이 균질 시스템을 나타낸다는 것을 알 수 있습니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+\left[\begin{array}{rrr} 2 &amp; 0 &amp; -1 &amp; 0 \\ 6 &amp; 0 &amp; 0 &amp; -2 \\ 1 &amp; 2 &amp; -2 &amp; -1 \end{array}\right]
+\left[\begin{array}{r} x_1 \\ x_2 \\ x_3 \\ x_4 \end{array}\right]
+= \left[\begin{array}{r} 0 \\ 0 \\ 0  \end{array}\right]
+\end{matrix}
+\]</span></p>
+<p>해를 찾기 전에 이 장의 결과 중 일부를 적용해 봅시다. 우리는 사소한 해(<span class="math inline">\(x_1=x_2=x_3=x_4=0\)</span>)가 항상 가능한 해이기 때문에 동질계는 항상 일관성이 있다는 것을 알고 있습니다. 또한 계수 행렬의 모양(<span class="math inline">\(4 \times 3\)</span>)을 살펴봄으로써 추가적인 결론을 내릴 수 있습니다. 행당 피벗은 하나만 있을 수 있으므로 피벗은 최대 3개까지만 존재한다는 것을 알 수 있습니다. 이는 4개의 열 각각에 피벗이 있을 수 없다는 것을 의미하며, 이는 시스템에 적어도 하나의 자유 변수가 있고 사소한 해가 유일한 해가 아니라는 것을 의미합니다.</p>
+<p>이제 RREF를 사용해 해를 찾아보겠습니다. 이 시스템은 동형 시스템이기 때문에 오른쪽을 나타내는 증강 행렬의 마지막 열은 모두 0이라는 것을 기억하세요. 수행된 행 연산에 관계없이 모든 항목이 0으로 유지되므로 계산에서 이 마지막 열을 생략하겠습니다.</p>
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">3</span>],[<span class="dv">2</span>,<span class="dv">1</span>]])</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">4</span>],[<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>]])</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.array([[<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>],[<span class="dv">4</span>, <span class="dv">1</span>]])</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.array([[<span class="dv">2</span>],[<span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> linear_solver <span class="im">as</span> ls</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>],[<span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">2</span>],[<span class="dv">1</span>, <span class="dv">2</span>, <span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>]])</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>A_reduced <span class="op">=</span> ls.full_row_reduction(A)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A_reduced)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[ 1.          0.          0.         -0.33333333]
+ [ 0.          1.          0.         -1.        ]
+ [ 0.          0.          1.         -0.66666667]]</code></pre>
 </div>
-<p>행과 열의 모양과 크기에 대해서는 배열 객체의 일부로 저장되며 <strong>shape</strong>라는 메서드로 액세스할 수 있습니다. %B$가 배열인 경우, <strong>B.shape</strong> 객체는 그 자체로 두 개의 항목이 있는 배열입니다. 첫 번째 항목(<strong>인덱스 0</strong>)은 행의 개수이고 두 번째 항목(<strong>인덱스 1</strong>)은 열의 개수입니다.</p>
+</div>
+<p>열에 <span class="math inline">\(x_4\)</span>에 해당하는 피벗이 없으므로 <span class="math inline">\(x_4\)</span>를 자유 변수로 취급합니다. 이 응용에서는 특별히 정수인 솔루션을 찾고 있으므로 <span class="math inline">\(x_4=3\)</span>을 사용합니다. 이렇게 하면 <span class="math inline">\(x_3=2\)</span>, <span class="math inline">\(x_2=3\)</span>, <span class="math inline">\(x_1=1\)</span>이 됩니다. 화학 반응에 대한 올바른 방정식은 다음과 같습니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+C_2H_5OH + 3O_2 \to 2CO_2 + 3H_2O
+\end{matrix}
+\]</span></p>
+</section>
+<section id="정보-검색" class="level2">
+<h2 class="anchored" data-anchor-id="정보-검색">정보 검색</h2>
+<p>정보 검색에서 잘 알려진 아이디어는 데이터베이스의 문서를 <span class="math inline">\(\mathbb{R}^n\)</span>의 벡터로 표현하는 <strong>벡터 공간 모델</strong>의 개념입니다. 키워드 검색과 가장 연관성이 높은 문서를 데이터베이스에서 검색하는 알고리즘은 이 벡터 표현을 활용할 수 있습니다. 이러한 알고리즘이 어떻게 작동하는지에 대한 몇 가지 간단한 예를 제공합니다.</p>
+<p>벡터로 문서를 모델링하는 것부터 시작해 보겠습니다. 우리에게 정말로 필요한 것은 데이터베이스에서 검색할 수 있는 <span class="math inline">\(n\)</span>개의 단어 목록입니다. 이 목록은 전체 문서 컬렉션에 있는 각각의 고유한 단어 목록일 수도 있지만, 영어에는 모든 문서에 많이 나타나기 때문에 키워드로 사용할 수 없는 일반적인 단어(the, as, in, it 등)가 많이 있습니다. 이제 데이터베이스의 각 문서는 해당 키워드가 문서에 나타나면 <span class="math inline">\(n\)</span>번째 항목이 1로, 그렇지 않으면 0으로 설정된 <span class="math inline">\(\mathbb{R}^n\)</span>의 벡터로 나타낼 수 있습니다.</p>
+<p>예를 들어, 데이터베이스가 단순히 정보 검색과 관련된 콘텐츠가 포함된 웹페이지 목록이라고 가정해 보겠습니다. 키워드 집합은 다음과 같을 수 있습니다.</p>
+<p><strong>{algorithm, engine, information, google, computations, matrix, optimization, retrieval, search, theory }</strong></p>
+<p>데이터베이스의 각 웹 페이지는 이러한 단어에 해당하는 항목이 있는 <span class="math inline">\(\mathbb{R}^{10}\)</span>의 벡터입니다. 이러한 벡터는 열 벡터의 <span class="math inline">\(10 \times 1\)</span>보다는 행 벡터의 <span class="math inline">\(1 \times 10\)</span>로 작성하는 것이 가장 편리합니다. 예를 들어, <em>검색 엔진 알고리즘</em>은 <span class="math inline">\([1, 1, 0, 0, 0, 0, 0, 0, 1, 0]\)</span>로 표현할 수 있습니다. 그러면 데이터베이스는 각 제목에 대한 행이 있는 <span class="math inline">\(n \times 10\)</span> 행렬로 표현됩니다. 이 예제에서는 다음과 같은 6개의 제목이 있다고 가정해 보겠습니다.</p>
+<ul>
+<li>Search Engine Algorithms</li>
+<li>How Google Search Optimization Works</li>
+<li>Information Retrieval Theory</li>
+<li>Matrix Models of Information Retrieval</li>
+<li>Theory Behind Search Engines</li>
+<li>Computations in Information Retrieval</li>
+</ul>
+<p>각 타이틀에 대한 벡터를 만든 다음 이를 행렬 <span class="math inline">\(D\)</span>로 조합합니다.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>T1 <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>T2 <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>T3 <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]])</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>T4 <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>]])</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>T5 <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>T6 <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>]])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.vstack((T1,T2,T3,T4,T5,T6))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1 1 0 0 0 0 0 0 1 0]
+ [0 0 0 1 0 0 1 0 1 0]
+ [0 0 1 0 0 0 0 1 0 1]
+ [0 0 1 0 0 1 0 1 0 0]
+ [0 1 0 0 0 0 0 0 1 1]
+ [0 0 1 0 0 0 0 1 0 0]]</code></pre>
+</div>
+</div>
+<p>다음으로 키워드 검색을 수행하는 방법을 고려해 보겠습니다. “정보”, “검색”, “이론”이라는 단어와 일치하는 항목을 검색하고 싶다고 가정해 보겠습니다. 이 키워드에 해당하는 1의 항목이 있는 <span class="math inline">\(10 \times 1\)</span> 쿼리 벡터 <span class="math inline">\(X\)</span>를 만들 수 있습니다. 이 경우 쿼리 벡터는 <span class="math inline">\([0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1]^T\)</span>입니다. 이제 행렬-벡터 곱 <span class="math inline">\(DX\)</span>에는 데이터베이스의 각 제목과 일치하는 검색 단어 수를 나타내는 항목이 포함됩니다.</p>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Array B has </span><span class="sc">{</span>B<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows."</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Array B has </span><span class="sc">{</span>B<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> columns."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> D<span class="op">@</span>X.transpose()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Array B has 2 rows.
-Array B has 3 columns.</code></pre>
+<pre><code>[[0]
+ [0]
+ [3]
+ [2]
+ [1]
+ [2]]</code></pre>
 </div>
 </div>
+<p>세 번째 항목인 <span class="math inline">\(DX\)</span>가 가장 크므로 데이터베이스의 세 번째 웹페이지가 검색 키워드 목록과 가장 잘 일치합니다. 마지막 세 개의 제목은 부분 검색 일치로 보고될 수도 있습니다. 데이터베이스 검색은 단일 행렬 곱셈과 벡터 <span class="math inline">\(DX\)</span>를 검색하여 가장 큰 항목을 찾는 것에 불과하다는 점에 유의하세요.</p>
+<p>데이터베이스의 문서가 표현될 수 있는 다른 방법도 있습니다. 한 가지 방법은 각 문서 벡터의 <span class="math inline">\(n\)</span>번째 항목이 해당 문서에서 해당 단어의 빈도와 같도록 하는 것입니다. 예를 들어, 7번째 키워드가 문서에 53번 등장하는 경우, 해당 문서를 나타내는 벡터의 7번째 항목은 53번이 됩니다. 그 결과 일치하는 키워드의 인스턴스가 많이 포함된 문서가 해당 단어의 인스턴스가 적은 문서보다 검색에서 더 높은 순위를 차지하게 됩니다.</p>
+<p>또 다른 아이디어는 <span class="math inline">\(n\)</span>번째 항목을 해당 문서에서 연관된 키워드의 상대적 빈도와 동일하게 설정하는 것입니다. <strong>상대적 빈도</strong>는 빈도를 문서에 있는 모든 키워드의 총 수로 나눈 값입니다. 아래는 검색 가능한 단어가 10개만 있는 경우 키워드 수가 어떻게 표시되는지 보여주는 예입니다.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Keyword</th>
+<th>Document 1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>algorithm</td>
+<td>19</td>
+</tr>
+<tr class="even">
+<td>engine</td>
+<td>23</td>
+</tr>
+<tr class="odd">
+<td>information</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>google</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>compuations</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>matrix</td>
+<td>11</td>
+</tr>
+<tr class="odd">
+<td>optimization</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>retrieval</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>search</td>
+<td>31</td>
+</tr>
+<tr class="even">
+<td>theory</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>키워드 일치 항목이 총 100개이므로 각 항목을 100으로 나누면 문서 1에 해당하는 행 벡터는 <span class="math inline">\([0.19, 0.23, 0, 0.02, 0, 0.11, 0, 0.1, 0.31, 0.04]\)</span>가 됩니다. 실제로 검색 가능한 단어의 수와 각 문서의 단어 수는 각각 수만 개에 달할 수 있습니다. 쿼리 벡터는 다시 검색 단어에 해당하는 엔트리가 1이고 다른 모든 엔트리가 0으로 설정된 열 벡터입니다. 검색은 단일 행렬 곱셈으로 실행된 다음 가장 큰 항목에 대한 결과 벡터를 검색하는 방식으로 수행됩니다. 이 표현의 효과는 빈도를 사용하는 것과 비슷하지만, 이제 30000단어에 50개의 일치 항목이 있는 문서가 100000단어에 50개의 일치 항목이 있는 문서보다 더 높은 평가를 받게 됩니다.</p>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<ul>
+<li><p>Berry, Michael W. and Murray Browne. <em>Understanding Serach Engines: Mathematical Modeling and Text Retrieval</em>. 2nd ed., SIAM, 2005</p></li>
+<li><p>Lay, David, et al.&nbsp;<em>Linear Algebra and its Applications</em>. 5th ed., Pearson., 2016</p></li>
+<li><p>Leon, Steven J. <em>Linear Algebra with Applications</em>. 9th ed., Pearson., 2015</p></li>
+</ul>
+
+
 </section>
-<section id="행렬-연산" class="level2">
-<h2 class="anchored" data-anchor-id="행렬-연산">행렬 연산</h2>
-<p>행렬에 대해 수행해야 할 세 가지 대수 연산이 있습니다. 정의를 위해 <span class="math inline">\(A\)</span>와 <span class="math inline">\(C\)</span>가 <span class="math inline">\(m \times n\)</span> 행렬이고, <span class="math inline">\(B\)</span>가 <span class="math inline">\(n \times k\)</span> 행렬이며, <span class="math inline">\(c\)</span>가 숫자라고 가정해 보겠습니다. 행렬과 숫자를 포함하는 대수를 논의할 때 숫자는 일반적으로 <strong>스칼라</strong>라고 합니다.</p>
-<ol type="1">
-<li>모든 형태의 행렬에 스칼라를 곱할 수 있습니다. 그 결과 모든 항목에 해당 스칼라가 곱해집니다. 아래 첨자 표기법을 사용하면 다음과 같이 작성할 수 있습니다.</li>
-</ol>
-<p><span class="math display">\[
-(cA)_{ij} = ca_{ij}
-\]</span></p>
-<ol start="2" type="1">
-<li>동일한 모양을 가진 두 행렬을 추가할 수 있습니다. 그 결과 해당되는 모든 항목이 추가됩니다.</li>
-</ol>
-<p><span class="math display">\[
-(A+C)_{ij} = a_{ij} + c_{ij}
-\]</span></p>
-<ol start="3" type="1">
-<li>행렬 <span class="math inline">\(A\)</span>의 열 수가 행렬 <span class="math inline">\(B\)</span>의 행 수와 같으면, 행렬을 <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> 순서로 곱할 수 있습니다. 그 결과 행의 개수는 <span class="math inline">\(A\)</span>와 같고 열의 개수는 <span class="math inline">\(B\)</span>와 같은 새로운 행렬 <span class="math inline">\(AB\)</span>가 생성됩니다. <span class="math inline">\((AB)_{ij}\)</span> 행렬은 <span class="math inline">\(A\)</span>의 행 <span class="math inline">\(i\)</span>와 <span class="math inline">\(B\)</span>의 열 <span class="math inline">\(j\)</span>의 행렬을 다음과 같이 조합한 행렬이 됩니다.</li>
-</ol>
-<p><span class="math display">\[
-(AB)_{ij} = \sum_{k=1}^n a_{ik}b_{kj}
-\]</span></p>
-<p><strong>행렬 곱셈</strong>으로 알려진 마지막 연산은 세 가지 연산 중 가장 복잡하고 직관적이지 않습니다. 이 마지막 공식은 처음 접했을 때 다소 어렵게 느껴질 수 있습니다. 몇 가지 예를 들어 설명해 드리겠습니다.</p>
-<ol type="1">
-<li>숫자와 행렬의 곱셈입니다:</li>
-</ol>
-<p><span class="math display">\[
-\begin{matrix}
-3A = 3\left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right]
-= \left[ \begin{array}{rr} 3 &amp; 9 \\ 6 &amp; 3 \end{array}\right]
-\end{matrix}
-\]</span></p>
-<ol start="2" type="1">
-<li>모양이 같은 두 행렬의 합계입니다:</li>
-</ol>
-<p><span class="math display">\[
-\begin{matrix}
-A + C = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right] +
-\left[ \begin{array}{rr} -2 &amp; 1 \\ 4 &amp; 1 \end{array}\right]
-= \left[ \begin{array}{rr} -1 &amp; 4 \\ 6 &amp; 2 \end{array}\right]
-\end{matrix}
-\]</span></p>
-<ol start="3" type="1">
-<li>두 행렬의 곱셈입니다:</li>
-</ol>
-<p><span class="math display">\[
-\begin{matrix}
-AB = \left[ \begin{array}{rr} 1 &amp; 3 \\ 2 &amp; 1 \end{array}\right]
-\left[ \begin{array}{rrr} 3 &amp; 0 &amp; 4 \\ -1 &amp; -2 &amp; 1 \end{array}\right]
-= \left[ \begin{array}{rrr} 0 &amp; -6 &amp; 7  \\  5 &amp; -2 &amp; 9  \end{array}\right]
-\end{matrix}
-\]</span></p>
-<p>행렬 곱셈에서 어떤 일이 일어나는지 명확히 하기 위해 두 개의 항목을 자세히 계산해 보겠습니다.</p>
-<p><span class="math display">\[
-\begin{matrix}
-(AB)_{12} &amp; = &amp; 1\times 0 + 3 \times (-2) = -6 \\
-(AB)_{23} &amp; = &amp; 2 \times 4 + 1 \times 1 = 9
-\end{matrix}
-\]</span></p>
-<p>이러한 행렬 연산은 모두 NumPy에 내장되어 있지만 행렬 곱셈의 경우 <span class="math inline">\(\texttt{*}\)</span> 대신 <span class="math inline">\(\texttt{@}\)</span> 기호를 사용해야 합니다.</p>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span><span class="op">*</span>A,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A<span class="op">+</span>C,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A<span class="op">@</span>B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[3 9]
- [6 3]] 
-
-[[-1  4]
- [ 6  2]] 
-
-[[ 0 -6  7]
- [ 5 -2  9]]</code></pre>
-</div>
-</div>
-</section>
-<section id="행렬-연산의-속성" class="level2">
-<h2 class="anchored" data-anchor-id="행렬-연산의-속성">행렬 연산의 속성</h2>
-<p>행렬 곱셈에 대해 몇 가지 일반적인 대수적 성질은 아래와 같습니다. <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>를 행렬로, <span class="math inline">\(k\)</span>를 스칼라로 가정합니다. 여기서 설명한 연관성 및 특성은 행렬 곱셈에도 적용됩니다.</p>
-<p><span class="math display">\[
-\begin{equation}
-k(A+B) = kA + kB
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-C(A+B) = CA + CB
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-A(BC) = (AB)C
-\end{equation}
-\]</span></p>
-<p><span class="math inline">\(A\)</span>와 <span class="math inline">\(B\)</span>가 <span class="math inline">\(3 \times 3\)</span> 행렬인 경우에, <span class="math inline">\(AB = BA\)</span>가 성립하지 않는다는 것을 주의해야 합니다.</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.random.randint(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,size<span class="op">=</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.random.randint(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,size<span class="op">=</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A<span class="op">@</span>B)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B<span class="op">@</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[-28  -3  -1]
- [ -8   1   5]
- [-25   0   5]]
-
-
-[[-14  -7  10]
- [ -3 -28  -7]
- [-18  11  20]]</code></pre>
-</div>
-</div>
-</section>
-<section id="행렬의-전치" class="level2">
-<h2 class="anchored" data-anchor-id="행렬의-전치">행렬의 전치</h2>
-<p>유용하게 사용할 수 있는 또 다른 일반적인 아이디어는 행렬 전치입니다. 행렬 <span class="math inline">\(A\)</span>의 <strong>전치</strong>는 열이 <span class="math inline">\(A\)</span>의 행이 되도록 정의된 또 다른 행렬인 <span class="math inline">\(A^T\)</span>입니다. A<sup>T<span class="math inline">\(는 모든 항목의 행 인덱스를 열 인덱스로 간단히 바꾸면 됩니다(\)</span>a</sup>T_{ij} = a_{ji}$). 두 가지 예제만으로도 이 정의를 명확히 이해할 수 있습니다.</p>
-<p><span class="math display">\[
-\begin{equation}
-A = \left[ \begin{array}{rrr} 5 &amp; 4 &amp; 0 \\ 1 &amp; 8 &amp; 3 \\ 6 &amp; 7 &amp; 2\end{array}\right] \hspace{1cm}
-A^T = \left[ \begin{array}{rrr} 5 &amp; 1 &amp; 6 \\ 4 &amp; 8 &amp; 7 \\ 0 &amp; 3 &amp; 2\end{array}\right] \hspace{1cm}
-\end{equation}
-\]</span></p>
-<p><span class="math display">\[
-\begin{equation}
-B = \left[ \begin{array}{rrr} 1 &amp; 2 &amp; 7 &amp; 0 \\ 3 &amp; 1 &amp; 5 &amp; 2 \\ 4 &amp; 9 &amp; 8 &amp; 6\end{array}\right] \hspace{1cm}
-B^T = \left[ \begin{array}{rrr} 1 &amp; 3 &amp; 4 \\ 2 &amp; 1 &amp; 9 \\ 7 &amp; 5 &amp; 8 \\ 0 &amp; 2 &amp; 6\end{array}\right] \hspace{1cm}
-\end{equation}
-\]</span></p>
-<p>NumPy 배열 객체에는 이를 위해 <span class="math inline">\(\texttt{transpose}\)</span>라는 메서드가 있습니다.</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">0</span>],[<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">3</span>],[<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">2</span>]])</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Note that the tranpose method must be called with (), the same as a function with no arguments.</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>A_T <span class="op">=</span> A.transpose()</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A_T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[5 4 0]
- [1 8 3]
- [6 7 2]]
-
-
-[[5 1 6]
- [4 8 7]
- [0 3 2]]</code></pre>
-</div>
-</div>
-<p>행렬 <span class="math inline">\(A\)</span>가 자신의 전치와 같을 때, 행렬은 주 대각선을 가로질러 대칭이 되는 성질을 가집니다. 이러한 이유로 행렬 <span class="math inline">\(A\)</span>가 <span class="math inline">\(A = A^T\)</span>이면 <strong>대칭</strong> 행렬이라고 합니다. 이와 동등하게 행렬의 모든 행렬 <span class="math inline">\(a_{ij}\)</span>에 대해 <span class="math inline">\(a_{ij} = a_{ji}\)</span>이면 <span class="math inline">\(A\)</span>는 대칭이라고 말할 수 있습니다. 아래 행렬 <span class="math inline">\(P\)</span>는 그러한 예시 중 하나입니다.</p>
-<p><span class="math display">\[
-\begin{equation}
-P = \left[ \begin{array}{rrr} 1 &amp; 0 &amp; 6 \\ 0 &amp; 3 &amp; 5 \\ 6 &amp; 5 &amp; -2\end{array}\right] \hspace{1cm}
-\end{equation}
-\]</span></p>
-
-
 </section>
 
 </main> <!-- /main -->

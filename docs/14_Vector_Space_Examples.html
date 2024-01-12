@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PNU 2023 Linear Algebra - 6. Linear Systems 응용</title>
+<title>PNU 2023 Linear Algebra - 벡터 공간의 예</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_Linear_Systems.html">Basics</a></li><li class="breadcrumb-item"><a href="./06_Applications.html">6. Linear Systems 응용</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_General_Linear_Systems.html">Vector Spaces</a></li><li class="breadcrumb-item"><a href="./14_Vector_Space_Examples.html">벡터 공간의 예</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -137,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
- <span class="menu-text">Basics</span></a>
+ <span class="menu-text">Linear Systems</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -146,37 +146,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_Linear_Systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. 연립 선형 방정식과 해집합</span></a>
+ <span class="menu-text">연립 선형 방정식과 해집합</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_Gaussian_Elimination.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">2. 가우스 소거법</span></a>
+ <span class="menu-text">가우스 소거법</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_Matrix_Algebra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. 행렬과 행렬연산</span></a>
+ <span class="menu-text">행렬과 행렬연산</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_Inverse_Matrices.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. 역행렬</span></a>
+ <span class="menu-text">역행렬</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_LU_Factorization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5. LU 분해</span></a>
+ <span class="menu-text">LU 분해</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_Applications.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">6. Linear Systems 응용</span></a>
+  <a href="./06_Applications_LS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">연립선형방정식의 응용</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Vector Spaces</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_General_Linear_Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">일반적인 연립선형방정식</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_Linear_Combinations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">선형 결합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_Linear_Independence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">선형 독립</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_Bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">기저</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14_Vector_Space_Examples.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">벡터 공간의 예</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_Applications_VS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">벡터공간의 응용</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true">
+ <span class="menu-text">Linear Transformations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20_Matrix_Representations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">행렬의 표현</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21_Planar_Transformations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">변환(평면)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22_Applications_LT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">선형 변환의 응용</span></a>
   </div>
 </li>
       </ul>
@@ -225,7 +301,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#interpolation" id="toc-interpolation" class="nav-link active" data-scroll-target="#interpolation">Interpolation</a></li>
+  <li><a href="#예제-1-polynomials" id="toc-예제-1-polynomials" class="nav-link active" data-scroll-target="#예제-1-polynomials">예제 1: Polynomials</a>
+  <ul class="collapse">
+  <li><a href="#example-2-matrices" id="toc-example-2-matrices" class="nav-link" data-scroll-target="#example-2-matrices">Example 2: Matrices</a></li>
+  </ul></li>
+  <li><a href="#예제-3-functions" id="toc-예제-3-functions" class="nav-link" data-scroll-target="#예제-3-functions">예제 3: Functions</a></li>
   </ul>
 </nav>
     </div>
@@ -234,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">6. Linear Systems 응용</h1>
+<h1 class="title">벡터 공간의 예</h1>
 </div>
 
 
@@ -249,100 +329,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>선형 시스템을 풀어야 할 필요성은 다양한 분야에서 발생합니다. 선형 시스템의 예를 보여드리겠습니다. 또한 행렬 대수를 암호화와 그래프 이론에 적용하는 방법에 대해서도 설명합니다.</p>
-<section id="interpolation" class="level2">
-<h2 class="anchored" data-anchor-id="interpolation">Interpolation</h2>
-<p>보간은 알려진 값 사이에 있는 미지의 데이터 값을 추정하는 프로세스입니다. 이 프로세스에는 일반적으로 알려진 데이터 포인트 집합을 통해 곡선을 피팅하여 미지의 값을 예측하는 작업이 포함됩니다. 곡선은 일련의 매개변수로 설명되며, ’곡선을 맞추는 것’은 곡선이 데이터를 가장 잘 나타내도록 매개변수를 선택하는 것을 의미합니다. 곡선을 맞추는 간단한 방법은 곡선이 제공된 모든 데이터를 통과하도록 하는 것입니다.</p>
-<p>데이터 포인트 <span class="math inline">\((2,8)\)</span>, <span class="math inline">\((5,12)\)</span>, <span class="math inline">\((6,14)\)</span> 및 <span class="math inline">\((15,15)\)</span>를 예로 들어 보겠습니다.</p>
+<p>벡터 공간에 대한 기본 개념이 정리되었으므로 이제 벡터 공간을 특정 속성을 만족하는 객체와 대수 연산의 집합으로 이해하는 추상화로 돌아가 보겠습니다.</p>
+<section id="예제-1-polynomials" class="level2">
+<h2 class="anchored" data-anchor-id="예제-1-polynomials">예제 1: Polynomials</h2>
+<p>차수가 3 이하인 모든 다항식의 집합은 일반적인 대수 연산과 함께 벡터 공간을 구성합니다. 이 벡터 공간은 일반적으로 <span class="math inline">\(\mathbb{P}_3\)</span>라는 기호로 표기합니다. 예를 들어 <span class="math inline">\(\mathbb{P}_3\)</span>에서 두 원소, <span class="math inline">\(p = 2x^3 - x^2 + 6x -8\)</span>과 <span class="math inline">\(q = x^3 - 3x^2 -4x -3\)</span>을 취하면 선형 조합 <span class="math inline">\(p+2q = 4x^3 - 7x^2 -2x -14\)</span>가 잘 정의되어 있으며 <span class="math inline">\(\mathbb{P}_3\)</span>의 또 다른 원소입니다. 실제로 <span class="math inline">\(\mathbb{P}_3\)</span>의 다항식의 선형 조합은 대수의 일반적인 규칙에 따라 <span class="math inline">\(\mathbb{P}_3\)</span>의 다른 다항식이 될 것입니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+s(a_3x^3 + a_2x^2 + a_1 + a_0) + t(b_3x^3 + b_2x^2 + b_1x + b_0) = (sa_3+tb_3)x^3 + (sa_2+tb_2)x^2 + (sa_1+tb_1)x
++ (sa_0 + ta_0)
+\end{matrix}
+\]</span></p>
+<p>대수 연산에 필요한 속성은 모두 충족되지만 여기서는 확인하지 않습니다.</p>
+<p><span class="math inline">\(mathbb{P}_3\)</span>에서 다항식을 지정하려면 4개의 계수가 필요하므로 <span class="math inline">\(\mathbb{P}_3\)</span>의 차원이 4라는 것을 이해하는 것은 어느 정도 자연스러운 일입니다. 이러한 <span class="math inline">\(\mathbb{P}_3\)</span>의 기저 중 하나는 집합 <span class="math inline">\(\{x^3, x^2, x, 1\}\)</span>입니다. 이 기저에 대한 모든 다항식의 좌표는 <span class="math inline">\(x^3\)</span>, <span class="math inline">\(x^2\)</span>, <span class="math inline">\(x\)</span> 항과 상수 항의 계수일 뿐입니다. 이 표준 기저를 사용하면 스팬과 선형 독립성에 대한 개념을 논의할 수 있습니다.</p>
+<p>다음 다항식(벡터) 컬렉션은 <span class="math inline">\(\mathbb{P}_3\)</span>에서 선형 종속적입니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+p_1 &amp; = &amp; 3x^3 + 2x^2 + x  - 1 \\
+p_2 &amp; = &amp; x^2 - 5x + 4 \\
+p_3 &amp; = &amp; 6x^3 + 3x^2 + 7x + -6 \\
+p_4 &amp; = &amp; -2x^3 + 2x^2 + 8x
+\end{matrix}
+\]</span></p>
+<p>집합이 선형 의존적이라는 것을 보여주기 위해서는 <span class="math inline">\(c_1p_1 + c_2p_2 + c_3p_3 + c_4p_4 = 0\)</span> 방정식에 대한 부등식을 찾아야 합니다. 왼쪽의 다항식은 모든 항의 계수가 0과 같을 때만 0이 될 수 있습니다. 대수적 연산을 진행하면, 네 항 각각에 대해 하나의 방정식을 얻을 수 있습니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+3c_1 \quad\quad + 6c_3 -2c_4 &amp; = &amp; 0 \\
+2c_1 +c_2 + 3c_3 + 2c_4 &amp; = &amp; 0 \\
+c_1 -5c_2 + 7c_3 + 8c_4 &amp; = &amp; 0 \\
+-c_1 +4c_2 - 6c_3 \quad\quad &amp; = &amp; 0 \\
+\end{matrix}
+\]</span></p>
+<p>이 시스템의 계수 행렬의 RREF를 살펴보면 4개의 열 각각에 피벗이 없다는 것을 알 수 있는데, 이는 시스템이 비차분 해를 가지고 있으며 다항식 집합이 선형적으로 독립적이지 않다는 것을 의미합니다.</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> linear_solver <span class="im">as</span> ls</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">15</span>])</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">15</span>])</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.scatter(x,y,color<span class="op">=</span><span class="st">'red'</span>)<span class="op">;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>,<span class="dv">20</span>)<span class="op">;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>,<span class="dv">20</span>)<span class="op">;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)<span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)<span class="op">;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="06_Applications_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> linear_solver <span class="im">as</span> ls</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">6</span>,<span class="op">-</span><span class="dv">2</span>],[<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>],[<span class="dv">1</span>,<span class="op">-</span><span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>,<span class="op">-</span><span class="dv">6</span>,<span class="dv">0</span>]])</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ls.full_row_reduction(A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[ 1.  0.  2.  0.]
+ [ 0.  1. -1.  0.]
+ [ 0.  0.  0.  1.]
+ [ 0.  0.  0.  0.]]</code></pre>
 </div>
 </div>
-<p>다항식은 보간에 사용되는 일반적인 곡선입니다. 이 경우 데이터 포인트가 4개이므로 그래프가 각 포인트를 통과하기 위해 충족해야 하는 방정식이 4개가 있습니다. 방정식을 만족하는 매개변수가 4개이므로 3차 다항식인 <span class="math inline">\(P_3\)</span>을 선택합니다.</p>
+<p>다항식을 구성하는 다항식에는 특별한 것이 없습니다. 일반적으로 차수 <span class="math inline">\(n\)</span> 이하의 다항식의 집합을 <span class="math inline">\(\mathbb{P}_n\)</span>이라고 하며, <span class="math inline">\(n\)</span>의 임의의 선택에 대한 벡터 공간이기도 합니다.</p>
+<section id="example-2-matrices" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-matrices">Example 2: Matrices</h3>
+<p><a href="./03_Matrix_Algebra.html">행렬 대수</a>에서는 열이 하나뿐인 행렬을 일반적으로 벡터라고 하며, 열이 하나인 행렬을 계산하기 위해 행렬의 대수를 특별히 정의할 필요가 없다는 점을 소개하였습니다. 일반적으로 행렬의 선형 조합을 계산하는 데 필요한 대수적 방법은 열이 하나인 행렬의 선형 조합을 계산하는 데 필요한 대수적 방법은 다르지 않습니다. 그렇다면 여러 열을 가진 행렬도 단일 열을 가진 행렬과 마찬가지로 벡터라고 생각하는 것이 자연스럽습니다. 어떤 의미에서 우리가 벡터라고 부르는 단일 열 행렬은 특수한 유형의 행렬일 뿐입니다. 그러나 벡터 공간의 공식적인 정의에 따르면, 행렬 덧셈과 스칼라 곱셈 연산이 모든 대수적 요구 사항을 충족하기 때문에 주어진 모양의 모든 행렬의 집합이 벡터 공간을 구성합니다. 이러한 의미에서 행렬은 벡터 공간을 구성하는 객체이므로 <em>벡터</em>입니다. 이 용어가 혼란스러운 것은 당연합니다.</p>
+<p>구체적인 예로, <span class="math inline">\(\mathbb{M}_{2 \times 3}\)</span> 기호를 할당하는 모든 <span class="math inline">\(2 \times 3\)</span> 행렬을 고려해 보겠습니다. 두 개의 행렬을 선택하고 임의의 선형 조합을 형성하면 또 다른 <span class="math inline">\(2 \times 3\)</span> 행렬을 얻을 수 있습니다.</p>
 <p><span class="math display">\[
 \begin{matrix}
-P_3(x) = a_0 + a_1x + a_2x^2 + a_3x^3
+c_1A + c_2B =
+c_1\left[ \begin{array}{ccc} a_{11} &amp; a_{12} &amp; a_{13} \\ a_{21} &amp; a_{22} &amp; a_{23}  \end{array}\right] +
+c_2\left[ \begin{array}{ccc} b_{11} &amp; b_{12} &amp; b_{13} \\ b_{21} &amp; b_{22} &amp; b_{23}  \end{array}\right] =
+\left[ \begin{array}{ccc} c_1a_{11}+c_2b_{11} &amp; c_1a_{12}+c_2b_{12} &amp; c_1a_{13}+c_2b_{13} \\
+c_1a_{21}+c_2b_{21} &amp; c_1a_{22}+c_2b_{22} &amp; c_1a_{23}+c_2b_{23}  \end{array}\right]
 \end{matrix}
 \]</span></p>
-<p>데이터는 <span class="math inline">\(P_3(2) = 8\)</span>, <span class="math inline">\(P_3(5) = 12\)</span>, <span class="math inline">\(P_3(6) = 14\)</span>, <span class="math inline">\(P_3(15) = 15\)</span>의 네 가지 방정식을 제공합니다. 이 방정식 집합은 미지 계수에 대한 선형 시스템입니다.</p>
+<p>이러한 대수 연산은 유효한 벡터 공간에 필요한 모든 요건을 충족하므로 검증에 대한 자세한 설명은 생략하겠습니다.</p>
+<p>표준 기준 역할을 하는 다음과 같은 행렬 모음을 작성할 수 있으며, 이를 <span class="math inline">\(\alpha\)</span>라고 부릅니다.</p>
 <p><span class="math display">\[
 \begin{matrix}
-a_0 + 2a_1 + 2^2a_2 + 2^3a_3 &amp; = &amp; 8\\
-a_0 + 5a_1 + 5^2a_2 + 5^3a_3 &amp; = &amp; 12\\
-a_0 + 6a_1 + 6^2a_2 + 6^3a_3 &amp; = &amp; 14\\
-a_0 + 15a_1 + 15^2a_2 + 15^3a_3 &amp; = &amp; 15
+E_1 = \left[ \begin{array}{ccc} 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0  \end{array}\right] \hspace{1cm}
+E_3 = \left[ \begin{array}{ccc} 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0  \end{array}\right] \hspace{1cm}
+E_5 = \left[ \begin{array}{ccc} 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0  \end{array}\right] \hspace{1cm}
 \end{matrix}
 \]</span></p>
-<p>행렬 <span class="math inline">\(A\)</span>와 오른쪽 벡터 <span class="math inline">\(B\)</span>를 NumPy 배열로 조합합니다.</p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.zeros((<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.zeros((<span class="dv">4</span>,<span class="dv">1</span>))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    B[i,<span class="dv">0</span>] <span class="op">=</span> y[i]</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        A[i,j] <span class="op">=</span> x[i]<span class="op">**</span>(j)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1.000e+00 2.000e+00 4.000e+00 8.000e+00]
- [1.000e+00 5.000e+00 2.500e+01 1.250e+02]
- [1.000e+00 6.000e+00 3.600e+01 2.160e+02]
- [1.000e+00 1.500e+01 2.250e+02 3.375e+03]] 
-
-[[ 8.]
- [12.]
- [14.]
- [15.]]</code></pre>
-</div>
-</div>
-<p>이제 제거를 통해 <span class="math inline">\(AX=B\)</span> 시스템을 풀 수 있습니다. x$ 변수와 혼동을 피하기 위해, 다항식의 계수를 나타내므로 해의 이름을 <strong>coeffs</strong>로 지정하겠습니다.</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>coeffs <span class="op">=</span> ls.solve_system(A,B)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(coeffs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[ 8.64102564]
- [-1.25555556]
- [ 0.52222222]
- [-0.02735043]]</code></pre>
-</div>
-</div>
-<p>마지막으로 데이터 위에 다항식 그래프를 그려서 적합도를 확인합니다.</p>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x_fit <span class="op">=</span> np.linspace(x[<span class="dv">0</span>],x[<span class="dv">3</span>],<span class="dv">50</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y_fit <span class="op">=</span> coeffs[<span class="dv">0</span>] <span class="op">+</span> coeffs[<span class="dv">1</span>]<span class="op">*</span>x_fit <span class="op">+</span> coeffs[<span class="dv">2</span>]<span class="op">*</span>x_fit<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> coeffs[<span class="dv">3</span>]<span class="op">*</span>x_fit<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>ax.scatter(x,y,color<span class="op">=</span><span class="st">'red'</span>)<span class="op">;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>ax.plot(x_fit,y_fit,<span class="st">'b'</span>)<span class="op">;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>,<span class="dv">20</span>)<span class="op">;</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>,<span class="dv">30</span>)<span class="op">;</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)<span class="op">;</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)<span class="op">;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="06_Applications_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<p>우리가 생성하는 곡선이 실제로 각 데이터 포인트를 통과하지만, 이 다항식은 기본 프로세스의 최상의 모델이 아닐 수 있습니다. 한 가지 잠재적인 우려는 곡선이 세 번째와 네 번째 데이터 요소를 직접 연결하는 것이 아니라 진동을 나타내는 것처럼 보인다는 것입니다. 데이터 포인트 집합에 맞는 곡선을 만들 때 단순히 곡선이 각 포인트를 통과하도록 하는 것보다 더 중요한 다른 요소가 있을 수 있습니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+E_2 = \left[ \begin{array}{ccc} 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 0  \end{array}\right] \hspace{1cm}
+E_4 = \left[ \begin{array}{ccc} 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0  \end{array}\right] \hspace{1cm}
+E_6 = \left[ \begin{array}{ccc} 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1  \end{array}\right] \hspace{1cm}
+\end{matrix}
+\]</span></p>
+<p>이제 행렬 <span class="math inline">\(B\)</span>와 기저 <span class="math inline">\(\alpha\)</span>에 대한 <span class="math inline">\(B\)</span>의 <em>좌표 벡터</em>를 구분해 보겠습니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+B = \left[ \begin{array}{ccc} 2 &amp; 0 &amp; 5 \\ 1 &amp; -1 &amp; 2  \end{array}\right] \hspace{1cm}
+\left [B\right]_{\alpha} = \left[ \begin{array}{r} 2\\1\\0\\-1\\5\\2  \end{array}\right] \hspace{1cm}
+\end{matrix}
+\]</span></p>
+<p>좌표 벡터 <span class="math inline">\(\left[B\right]_{\alpha}\)</span> 는 <span class="math inline">\(\mathbb{R}^6\)</span> 의 벡터로, 행렬 <span class="math inline">\(B\)</span> 를 기저 <span class="math inline">\(\alpha\)</span> 의 원소들의 선형 조합으로 조립하는 방법에 대한 설명을 제공합니다.</p>
+</section>
+</section>
+<section id="예제-3-functions" class="level2">
+<h2 class="anchored" data-anchor-id="예제-3-functions">예제 3: Functions</h2>
+<p>세 번째 예로, <span class="math inline">\(C\left[0,1\right]\)</span> 기호로 주어지는 <span class="math inline">\([0,1]\)</span> 간격의 모든 연속 함수의 집합을 살펴봅니다. <span class="math inline">\(f\)</span>와 <span class="math inline">\(g\)</span>가 이러한 두 함수이고 <span class="math inline">\(c\)</span>가 스칼라라면, 함수 대수를 사용하여 <span class="math inline">\(cf\)</span>와 <span class="math inline">\(f+g\)</span>를 정의할 수 있습니다.</p>
+<p><span class="math display">\[
+\begin{matrix}
+(cf)(x) &amp; = &amp; c(f(x)) \\
+(f + g)(x) &amp; = &amp; f(x) + g(x)
+\end{matrix}
+\]</span></p>
+<p>이러한 함수들의 대수적 조합은 <span class="math inline">\(C\left[0,1\right]\)</span>를 벡터 공간으로 만들기 위한 모든 요건을 충족합니다. 이 공간은 유한 차원을 갖지 않는다는 점에서 다른 예와 상당히 다릅니다. <span class="math inline">\(C\left[0,1\right]\)</span>의 모든 기저에는 무한한 수의 함수가 포함되어야 합니다. 이러한 이유로 함수 집합이 선형적으로 독립적인지 확인하기 위해 이전 예제에서와 같은 계산을 쉽게 수행할 수 없습니다. 하지만 이 예제는 나중에 응용 프로그램에서 사용할 것입니다.</p>
 
 
 </section>
