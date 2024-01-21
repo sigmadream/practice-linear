@@ -358,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"행렬 A의 자료형은 </span><span class="sc">{</span>A<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">입니다."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>행렬 A의 형태는 (2, 4)입니다.
-행렬 A의 자료형은 int64입니다.</code></pre>
+행렬 A의 자료형은 int32입니다.</code></pre>
 </div>
 </div>
 <p>원하는 행렬은 만드는 또 다른 방법은 먼저 하나의 긴 행으로 된 배열을 만든 다음 <code>reshape</code> 함수를 사용하는 것입니다. 대괄호를 추가로 입력하는 것보다 더 편리할 수 있습니다.</p>
@@ -490,12 +490,18 @@ D 행렬의 각 행의 합은 [ 10 -26] 입니다.</code></pre>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>D3 <span class="op">=</span> np.empty((<span class="dv">6</span>,<span class="dv">6</span>))</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(D3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[0. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0.]]</code></pre>
+<pre><code>[[6.74187538e-312 1.19069821e-321 0.00000000e+000 0.00000000e+000
+  3.56043053e-307 1.16097020e-028]
+ [1.26104862e-076 3.05354689e-028 5.87795379e-062 1.04917183e-153
+  5.23081515e-143 2.31954374e-056]
+ [4.88960151e-033 5.09713558e-066 9.13448631e+169 4.97056709e-143
+  3.59751658e+252 1.46901661e+179]
+ [8.37404147e+242 4.31999013e-096 4.82337723e+228 1.08497869e-042
+  5.39100991e-062 4.75877122e-090]
+ [1.35021710e+161 7.95965567e-042 5.04621343e+180 1.94918963e-153
+  5.63882874e-062 2.34053607e-057]
+ [4.23261110e+175 7.46186814e-038 1.04915259e-153 9.08366791e+223
+  5.82381891e-144 8.34455804e-308]]</code></pre>
 </div>
 </div>
 <p>선형대수를 학습하는 과정에서 다양한 관찰을 할 필요가 있습니다. 이 때는 다양한 형태의 행렬이 필요합니다. 다양한 선형대수의 특징을 관찰하기 위해서 무작위 행렬을 작성하기 위한 방법이 필요합니다. 넘파이에 포함된 <code>random</code> 모듈의 함수를 사용하면 됩니다. 예를 들어, <code>rand</code> 함수를 사용하여 <span class="math inline">\(0\)</span>과 <span class="math inline">\(1\)</span> 사이의 난수를 사용한 실수를 생성할 수 있습니다.</p>
@@ -503,7 +509,7 @@ D 행렬의 각 행의 합은 [ 10 -26] 입니다.</code></pre>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.random.rand()</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.334658180736659</code></pre>
+<pre><code>0.46857926137143957</code></pre>
 </div>
 </div>
 <p><code>rand</code> 함수를 실행할 때마다 새로운 난수를 만듭니다. 행렬을 쉽게 만들기 위해서는 <code>rand</code> 함수에 매개변수로 행과 열을 지정하면 됩니다. 행과 열을 지정하기 위해서는 두 개의 매개변수가 필요합니다.</p>
@@ -511,16 +517,16 @@ D 행렬의 각 행의 합은 [ 10 -26] 입니다.</code></pre>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>D4 <span class="op">=</span> np.random.rand(<span class="dv">3</span>,<span class="dv">3</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(D4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[0.89757374 0.89818687 0.57359603]
- [0.90339897 0.89786722 0.04970749]
- [0.34844154 0.55234007 0.1282334 ]]</code></pre>
+<pre><code>[[0.33232013 0.06115264 0.93226655]
+ [0.9993063  0.44515188 0.57334052]
+ [0.18660739 0.6915238  0.88337909]]</code></pre>
 </div>
 </div>
 <p>행렬의 연산을 관찰하는 과정에서 실수가 아닌 정수로 이루어진 행렬이 필요하다면, <code>randint</code> 함수를 사용하면 됩니다. 정수의 특성상 상한을 정하는 매개변수 1개가 반드시 필요합니다.</p>
 <div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.random.randint(<span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>7</code></pre>
+<pre><code>0</code></pre>
 </div>
 </div>
 <p>무작위 배열을 생성하려면 <strong>size</strong>라는 <strong>키워드 인자</strong>(keyword arguments)를 사용하여 행과 열의 개수를 지정해야 합니다. <strong>키워드 인수</strong>의 사용법은 아래 코드로 확인할 수 있습니다.</p>
@@ -528,18 +534,18 @@ D 행렬의 각 행의 합은 [ 10 -26] 입니다.</code></pre>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>D5 <span class="op">=</span> np.random.randint(<span class="dv">10</span>,size<span class="op">=</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(D5)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[5 0 3]
- [0 8 9]
- [3 0 5]]</code></pre>
+<pre><code>[[0 8 3]
+ [0 7 2]
+ [1 0 8]]</code></pre>
 </div>
 </div>
 <p>참고로 파이썬의 함수에서 <strong>키워드 인자</strong>를 사용하는 경우가 많습니다. 키워드 인자를 사용하면 순서대로 함수 인자를 활용하지 않아도 된다는 점 입니다. 무엇보다 함수를 읽기 쉽다는 점도 한 몫 합니다.</p>
 <div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.random.randint(size<span class="op">=</span>(<span class="dv">3</span>,<span class="dv">3</span>),high<span class="op">=</span><span class="dv">10</span>,low<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[1 3 7]
- [6 8 1]
- [3 8 9]]</code></pre>
+<pre><code>[[4 6 3]
+ [9 5 9]
+ [2 2 1]]</code></pre>
 </div>
 </div>
 <p>또한 <strong>random</strong> 모듈에는 지정된 목록(List)에서 무작위로 선택된 값을 생성할 수 있는 <code>choice</code>라는 함수가 있습니다. 이 함수는 숫자 목록을 인수로 받아 해당 목록에서 무작위로 선택된 값을 반환합니다.</p>
@@ -555,9 +561,9 @@ D 행렬의 각 행의 합은 [ 10 -26] 입니다.</code></pre>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>D6 <span class="op">=</span> np.random.choice([<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">31</span>], size <span class="op">=</span> (<span class="dv">3</span>,<span class="dv">3</span>))</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(D6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[1 1 3]
- [1 0 0]
- [0 0 1]]</code></pre>
+<pre><code>[[ 3 31  1]
+ [ 0  1 31]
+ [31 31  3]]</code></pre>
 </div>
 </div>
 </section>

@@ -360,11 +360,10 @@ LY &amp; = &amp; B
 L = \left[ \begin{array}{ccc} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0  \\ -1 &amp; 4 &amp; 1  \end{array}\right] \hspace{2cm}
 U = \left[ \begin{array}{ccc} 3 &amp; -1 &amp; -2 \\ 0 &amp; 1 &amp; 4  \\ 0 &amp; 0 &amp; 2  \end{array}\right]
 \]</span></p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> linear_solver <span class="im">as</span> ls</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> sla</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Use Python to check for yourself that LU = A.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> sla</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">## Use Python to check for yourself that LU = A.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>이제 <span class="math inline">\(UX=Y\)</span> 및 <span class="math inline">\(LY = B\)</span> 시스템을 작성해 보겠습니다. 정확성을 행렬 표기법은 잠시 제쳐두고 <span class="math inline">\(X\)</span>의 항목에는 <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, <span class="math inline">\(x_3\)</span> 변수를, <span class="math inline">\(Y\)</span>의 항목에는 <span class="math inline">\(y_1\)</span>, <span class="math inline">\(y_2\)</span>, <span class="math inline">\(y_3\)</span> 변수를 사용합니다.</p>
 <p><span class="math display">\[
@@ -383,11 +382,47 @@ y_2 + 4y_3 &amp; = &amp; -8\\
 <section id="기본-행렬" class="level2">
 <h2 class="anchored" data-anchor-id="기본-행렬">기본 행렬</h2>
 <p>제거를 통해 LU 인수분해를 구성하는 방법을 이해하려면 <strong>기본 행렬</strong>이라는 특수 행렬을 곱셈하여 제거 단계를 수행할 수 있다는 것을 알면 도움이 됩니다. 기본 행렬은 호환 가능한 모양의 행렬에 <strong>row_scale</strong> 또는 <strong>row_add</strong> 연산을 적용한 결과입니다. (*행 재배열은 피벗 위치에서 0이 발생하는 경우에만 필요하다는 점을 기억하세요. 행 스왑은 곧 다루겠습니다.)</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> row_swap(A,k,l):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">1</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> np.copy(A).astype(<span class="st">'float64'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        temp <span class="op">=</span> B[k][j]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        B[k][j] <span class="op">=</span> B[l][j]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        B[l][j] <span class="op">=</span> temp</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> B</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> row_scale(A,k,scale):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">1</span>]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> np.copy(A).astype(<span class="st">'float64'</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        B[k][j] <span class="op">*=</span> scale</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> B</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> row_add(A,k,l,scale):</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">1</span>]</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> np.copy(A).astype(<span class="st">'float64'</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        B[l][j] <span class="op">+=</span> B[k][j]<span class="op">*</span>scale</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> np.eye(<span class="dv">4</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> ls.row_add(I,<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(I,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> np.eye(<span class="dv">4</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> row_add(I,<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(I,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1. 0. 0. 0.]
  [0. 1. 0. 0.]
@@ -402,9 +437,9 @@ y_2 + 4y_3 &amp; = &amp; -8\\
 </div>
 <p>우리가 얻는 <span class="math inline">\(E\)</span>는 <span class="math inline">\(I\)</span>의 세 번째 행에 <span class="math inline">\(I\)</span>의 첫 번째 행의 -3배를 더한 결과입니다. 기본 행렬 <span class="math inline">\(E\)</span>의 흥미로운 속성은 다른 행렬 <span class="math inline">\(A\)</span>에 <span class="math inline">\(E\)</span>를 곱하면 그 결과가 <span class="math inline">\(A\)</span>에 동일한 행 연산을 적용하여 얻을 수 있는 행렬이 된다는 것입니다.</p>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>],[<span class="dv">2</span>,<span class="dv">13</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">9</span>],[<span class="op">-</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">13</span>]])</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E<span class="op">@</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>],[<span class="dv">2</span>,<span class="dv">13</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">9</span>],[<span class="op">-</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">13</span>]])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E<span class="op">@</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[ 1  2  0 -1]
  [-1  1 -1  4]
@@ -422,15 +457,15 @@ y_2 + 4y_3 &amp; = &amp; -8\\
 <h2 class="anchored" data-anchor-id="예제-2-finding-an-lu-factorization">예제 2: Finding an LU factorization</h2>
 <p>이제 일련의 기본 행렬 <span class="math inline">\(E_1\)</span>, <span class="math inline">\(E_2\)</span>, <span class="math inline">\(E_3\)</span>,…을 <span class="math inline">\(A\)</span>에 적용하여 제거를 수행할 수 있습니다. 위의 행렬에서 어떻게 작동하는지 살펴봅시다.</p>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>],[<span class="dv">2</span>,<span class="dv">13</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">9</span>],[<span class="op">-</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">13</span>]])</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> np.eye(<span class="dv">4</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>E1 <span class="op">=</span> ls.row_add(I,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>E2 <span class="op">=</span> ls.row_add(I,<span class="dv">0</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>E3 <span class="op">=</span> ls.row_add(I,<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E3<span class="op">@</span>E2<span class="op">@</span>E1<span class="op">@</span>A,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>E4 <span class="op">=</span> ls.row_add(I,<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>E5 <span class="op">=</span> ls.row_add(I,<span class="dv">1</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">3</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E5<span class="op">@</span>E4<span class="op">@</span>E3<span class="op">@</span>E2<span class="op">@</span>E1<span class="op">@</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">4</span>],[<span class="dv">2</span>,<span class="dv">13</span>,<span class="op">-</span><span class="dv">4</span>,<span class="dv">9</span>],[<span class="op">-</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">13</span>]])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>I <span class="op">=</span> np.eye(<span class="dv">4</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>E1 <span class="op">=</span> row_add(I,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>E2 <span class="op">=</span> row_add(I,<span class="dv">0</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>E3 <span class="op">=</span> row_add(I,<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E3<span class="op">@</span>E2<span class="op">@</span>E1<span class="op">@</span>A,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>E4 <span class="op">=</span> row_add(I,<span class="dv">1</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>E5 <span class="op">=</span> row_add(I,<span class="dv">1</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">3</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E5<span class="op">@</span>E4<span class="op">@</span>E3<span class="op">@</span>E2<span class="op">@</span>E1<span class="op">@</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[ 1.  2.  0. -1.]
  [ 0.  3. -1.  3.]
@@ -461,8 +496,8 @@ A &amp;=&amp; E_1^{-1}E_2^{-1}E_3^{-1}E_4^{-1}E_5^{-1}U
 <li>역행렬의 각 행렬은 단순한 하한 삼각형 구조를 가집니다. 사실 <span class="math inline">\(E_3^{-1}\)</span> 행렬도 기본 행렬입니다. <span class="math inline">\(E_3\)</span>로 표현되는 행렬 연산을 취소하는 행렬이 바로 기본 행렬입니다! <span class="math inline">\(E_3\)</span>를 곱하면 첫 번째 행의 2배를 마지막 행에 더하게 됩니다. <span class="math inline">\(E_3^{-1}\)</span>로 곱하면 마지막 행에 첫 번째 행의 -2배를 더합니다.</li>
 </ul>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E3,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sla.inv(E3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(E3,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sla.inv(E3))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1. 0. 0. 0.]
  [0. 1. 0. 0.]
@@ -479,11 +514,11 @@ A &amp;=&amp; E_1^{-1}E_2^{-1}E_3^{-1}E_4^{-1}E_5^{-1}U
 <li>두 개의 하위 삼각형 행렬을 곱하면 하위 삼각형 행렬이 만들어집니다.</li>
 </ul>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>L1 <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">0</span>],[<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">1</span>]])</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>L2 <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="op">-</span><span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">1</span>]])</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(L1,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(L2,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(L1<span class="op">@</span>L2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>L1 <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">0</span>],[<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">1</span>]])</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>L2 <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="op">-</span><span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">1</span>]])</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(L1,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(L2,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(L1<span class="op">@</span>L2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[ 1  0  0  0]
  [-1  1  0  0]
@@ -503,9 +538,9 @@ A &amp;=&amp; E_1^{-1}E_2^{-1}E_3^{-1}E_4^{-1}E_5^{-1}U
 </div>
 <p>이 두 가지 사실을 종합하면 <span class="math inline">\(E_1^{-1}E_2^{-1}E_3^{-1}E_4^{-1}E_5^{-1}\)</span> 행렬이 <span class="math inline">\(L\)</span> 인자가 되기 위한 올바른 구조를 가지고 있음을 알 수 있습니다. 더 편리한 점은 이러한 역행렬을 함께 곱할 때 아래쪽 삼각형 부분의 0이 아닌 항목은 변하지 않는다는 것입니다.</p>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sla.inv(E5),<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sla.inv(E4)<span class="op">@</span>sla.inv(E5),<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sla.inv(E3)<span class="op">@</span>sla.inv(E4)<span class="op">@</span>sla.inv(E5))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sla.inv(E5),<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sla.inv(E4)<span class="op">@</span>sla.inv(E5),<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sla.inv(E3)<span class="op">@</span>sla.inv(E4)<span class="op">@</span>sla.inv(E5))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[ 1. -0.  0.  0.]
  [ 0.  1.  0.  0.]
@@ -525,11 +560,11 @@ A &amp;=&amp; E_1^{-1}E_2^{-1}E_3^{-1}E_4^{-1}E_5^{-1}U
 </div>
 <p><span class="math inline">\(E_3^{-1}E_4^{-1}E_5^{-1}\)</span>의 0이 아닌 하위 삼각형 항목은 <span class="math inline">\(E_3^{-1}\)</span>, <span class="math inline">\(E_4^{-1}\)</span> 및 <span class="math inline">\(E_5^{-1}\)</span>의 해당 항목과 동일합니다. 즉, <span class="math inline">\(L\)</span>의 항목은 <span class="math inline">\(\texttt{RowAdd}\)</span>의 적용에 사용된 배율에 -1을 곱한 값일 뿐입니다. 이제 이러한 기본 행렬이 어떻게 결합하여 <span class="math inline">\(L\)</span>을 생성하는지 이해했으므로 실제로 행렬을 구성할 필요는 없습니다. 행 연산을 할 때 배율을 추적하여 <span class="math inline">\(L\)</span>을 계산하면 됩니다.</p>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">0</span>],[<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">1</span>]])</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="dv">0</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">0</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>]])</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"L:"</span>,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,L,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,sep<span class="op">=</span><span class="st">''</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"U:"</span>,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,U,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,sep<span class="op">=</span><span class="st">''</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"LU:"</span>,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,L<span class="op">@</span>U,sep<span class="op">=</span><span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>L <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>],[<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">0</span>],[<span class="op">-</span><span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">1</span>]])</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>U <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>],[<span class="dv">0</span>,<span class="dv">3</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">0</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">2</span>]])</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"L:"</span>,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,L,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,sep<span class="op">=</span><span class="st">''</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"U:"</span>,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,U,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,sep<span class="op">=</span><span class="st">''</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"LU:"</span>,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>,L<span class="op">@</span>U,sep<span class="op">=</span><span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>L:
 [[ 1  0  0  0]
@@ -549,6 +584,9 @@ LU:
  [ 2 13 -4  9]
  [-2  5 -3 13]]</code></pre>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

@@ -330,22 +330,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="interpolation">Interpolation</h2>
 <p>보간은 알려진 값 사이에 있는 미지의 데이터 값을 추정하는 프로세스입니다. 이 프로세스에는 일반적으로 알려진 데이터 포인트 집합을 통해 곡선을 피팅하여 미지의 값을 예측하는 작업이 포함됩니다. 곡선은 일련의 매개변수로 설명되며, ’곡선을 맞추는 것’은 곡선이 데이터를 가장 잘 나타내도록 매개변수를 선택하는 것을 의미합니다. 곡선을 맞추는 간단한 방법은 곡선이 제공된 모든 데이터를 통과하도록 하는 것입니다.</p>
 <p>데이터 포인트 <span class="math inline">\((2,8)\)</span>, <span class="math inline">\((5,12)\)</span>, <span class="math inline">\((6,14)\)</span> 및 <span class="math inline">\((15,15)\)</span>를 예로 들어 보겠습니다.</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> linear_solver <span class="im">as</span> ls</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">15</span>])</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">15</span>])</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.scatter(x,y,color<span class="op">=</span><span class="st">'red'</span>)<span class="op">;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>,<span class="dv">20</span>)<span class="op">;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>,<span class="dv">20</span>)<span class="op">;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)<span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)<span class="op">;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">15</span>])</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">15</span>])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ax.scatter(x,y,color<span class="op">=</span><span class="st">'red'</span>)<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>,<span class="dv">20</span>)<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>,<span class="dv">20</span>)<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'x'</span>)<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'y'</span>)<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="06_Applications_LS_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
 </div>
@@ -366,7 +365,7 @@ a_0 + 15a_1 + 15^2a_2 + 15^3a_3 &amp; = &amp; 15
 \end{matrix}
 \]</span></p>
 <p>행렬 <span class="math inline">\(A\)</span>와 오른쪽 벡터 <span class="math inline">\(B\)</span>를 NumPy 배열로 조합합니다.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.zeros((<span class="dv">4</span>,<span class="dv">4</span>))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.zeros((<span class="dv">4</span>,<span class="dv">1</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -390,8 +389,8 @@ a_0 + 15a_1 + 15^2a_2 + 15^3a_3 &amp; = &amp; 15
 </div>
 </div>
 <p>이제 제거를 통해 <span class="math inline">\(AX=B\)</span> 시스템을 풀 수 있습니다. x$ 변수와 혼동을 피하기 위해, 다항식의 계수를 나타내므로 해의 이름을 <strong>coeffs</strong>로 지정하겠습니다.</p>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>coeffs <span class="op">=</span> ls.solve_system(A,B)</span>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>coeffs <span class="op">=</span> np.linalg.solve(A,B)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(coeffs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[ 8.64102564]
@@ -401,7 +400,7 @@ a_0 + 15a_1 + 15^2a_2 + 15^3a_3 &amp; = &amp; 15
 </div>
 </div>
 <p>마지막으로 데이터 위에 다항식 그래프를 그려서 적합도를 확인합니다.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x_fit <span class="op">=</span> np.linspace(x[<span class="dv">0</span>],x[<span class="dv">3</span>],<span class="dv">50</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y_fit <span class="op">=</span> coeffs[<span class="dv">0</span>] <span class="op">+</span> coeffs[<span class="dv">1</span>]<span class="op">*</span>x_fit <span class="op">+</span> coeffs[<span class="dv">2</span>]<span class="op">*</span>x_fit<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> coeffs[<span class="dv">3</span>]<span class="op">*</span>x_fit<span class="op">**</span><span class="dv">3</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>

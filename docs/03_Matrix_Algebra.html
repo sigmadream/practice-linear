@@ -343,11 +343,13 @@ D = \left[ \begin{array}{r} 2 \\ 6 \end{array}\right]
 <p>행렬의 개별 항목에 대해서도 이야기할 필요가 있습니다. 이에 대한 일반적인 표기법은 행렬에서 항목의 위치를 나타내기 위해 아래 첨자가 있는 소문자입니다. 따라서 <span class="math inline">\(b_{12}\)</span>는 행렬 <span class="math inline">\(B\)</span>의 첫 번째 행과 두 번째 열에 있는 0을 나타냅니다. 일반적인 위치에 대해 이야기하는 경우, <span class="math inline">\(a_{ij}\)</span>와 같이 아래 첨자 안에 변수를 사용할 수 있습니다.</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">3</span>],[<span class="dv">2</span>,<span class="dv">1</span>]])</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">4</span>],[<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>]])</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.array([[<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>],[<span class="dv">4</span>, <span class="dv">1</span>]])</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.array([[<span class="dv">2</span>],[<span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.linalg <span class="im">as</span> la</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">3</span>],[<span class="dv">2</span>,<span class="dv">1</span>]])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">4</span>],[<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>]])</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.array([[<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>],[<span class="dv">4</span>, <span class="dv">1</span>]])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.array([[<span class="dv">2</span>],[<span class="dv">6</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>행과 열의 모양과 크기에 대해서는 배열 객체의 일부로 저장되며 <strong>shape</strong>라는 메서드로 액세스할 수 있습니다. %B$가 배열인 경우, <strong>B.shape</strong> 객체는 그 자체로 두 개의 항목이 있는 배열입니다. 첫 번째 항목(<strong>인덱스 0</strong>)은 행의 개수이고 두 번째 항목(<strong>인덱스 1</strong>)은 열의 개수입니다.</p>
 <div class="cell" data-execution_count="3">
@@ -461,14 +463,14 @@ A(BC) = (AB)C
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B<span class="op">@</span>A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[-28  -3  -1]
- [ -8   1   5]
- [-25   0   5]]
+<pre><code>[[-30  24  13]
+ [  0 -12 -29]
+ [-20 -20 -20]]
 
 
-[[-14  -7  10]
- [ -3 -28  -7]
- [-18  11  20]]</code></pre>
+[[-30  13  17]
+ [  0  14 -14]
+ [-20  16 -46]]</code></pre>
 </div>
 </div>
 </section>

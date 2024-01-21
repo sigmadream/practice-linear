@@ -341,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="translation" class="level2">
 <h2 class="anchored" data-anchor-id="translation">Translation</h2>
 <p><strong>변환</strong>은 모든 점을 같은 방향으로 같은 양만큼 이동시키는 변환입니다. 아래는 모든 점이 <span class="math inline">\(T:\mathbb{R}^2 \to \mathbb{R}^2\)</span> 변환에 의해 오른쪽으로 3단위 이동(변환)하고 1단위 위로 이동하는 예입니다. 그림에서는 도형을 정의하는 여러 점과 변환 아래 해당 이미지를 표시합니다.</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -359,7 +359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a> x_translated[i] <span class="op">+=</span> <span class="dv">3</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a> y_translated[i] <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[&quot;hide-input&quot;]" data-execution_count="7">
+<div class="cell" data-tags="[&quot;hide-input&quot;]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the figure and axes objects</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -416,7 +416,7 @@ L(X) = AX = \left[ \begin{array}{rrr} 1 &amp; 0 &amp; 3 \\ 0 &amp; 1 &amp; 1 \\ 
 \end{matrix}
 \]</span></p>
 <p>마지막으로, 좌표 <span class="math inline">\((x_1+3, x_2+1)\)</span>를 갖는 <span class="math inline">\(\mathbb{R}^2\)</span>의 점을 <span class="math inline">\(L(X)\)</span>와 연결합니다. 이제 행렬 곱셈을 사용하는 NumPy로 수정된 계산을 살펴보겠습니다.</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Form a matrix of coordinates with rows x, y, 1</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Ones <span class="op">=</span> np.ones((<span class="dv">1</span>,<span class="dv">7</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>coords <span class="op">=</span> np.vstack((x,y,Ones))</span>
@@ -483,7 +483,7 @@ X_0 = \left[ \begin{array}{r} 0.95 \\ 0.05 \\ 0 \end{array}\right]
 \end{matrix}
 \]</span></p>
 <p><span class="math inline">\(X_1 = AX_0\)</span>을 계산합니다.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="fl">0.95</span>, <span class="dv">0</span>, <span class="fl">0.15</span>],[<span class="fl">0.05</span>,<span class="fl">0.8</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="fl">0.2</span>,<span class="fl">0.85</span>]])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -501,7 +501,7 @@ X_0 = \left[ \begin{array}{r} 0.95 \\ 0.05 \\ 0 \end{array}\right]
 </div>
 </div>
 <p>변환을 다시 적용하면 <span class="math inline">\(X_2 = AX_1 = A^2X_0\)</span>, 즉 <span class="math inline">\(t=2\)</span> 시점의 인구 상태가 됩니다. 일반적으로 변환을 <span class="math inline">\(n\)</span> 번 반복 적용하면 <span class="math inline">\(X_n = A^nX_0\)</span>, 즉 미래 $n주 후 인구의 상태가 됩니다. 예를 들어 <span class="math inline">\(X_{50}\)</span>를 계산해 보겠습니다.</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## X at time 0</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="fl">0.95</span>],[<span class="fl">0.05</span>],[<span class="dv">0</span>]])</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -548,7 +548,7 @@ X_0 = \left[ \begin{array}{ccccc} 0 \\ 0 \\ 0 \\ 1 \\ 0
 \end{matrix}
 \]</span></p>
 <p>변환을 한 번 적용하면 <span class="math inline">\(X_1 = AX_0\)</span>이 되며, 이는 브라우저가 각 페이지에 있을 확률을 포함하는 벡터를 제공합니다.</p>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="fl">0.05</span>,<span class="fl">0.05</span>,<span class="fl">0.45</span>,<span class="fl">0.25</span>],</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>              [<span class="fl">0.45</span>,<span class="dv">0</span>,<span class="fl">0.85</span>,<span class="fl">0.45</span>,<span class="fl">0.25</span>],</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>              [<span class="fl">0.05</span>,<span class="fl">0.05</span>,<span class="dv">0</span>,<span class="fl">0.05</span>,<span class="fl">0.25</span>],</span>
@@ -566,7 +566,7 @@ X_0 = \left[ \begin{array}{ccccc} 0 \\ 0 \\ 0 \\ 1 \\ 0
 </div>
 </div>
 <p>변환을 <span class="math inline">\(n\)</span> 번 적용하면 브라우저가 <span class="math inline">\(n\)</span> 단계의 탐색 후 각 페이지에 도달할 확률을 포함하는 벡터인 <span class="math inline">\(X_n\)</span>이 나옵니다.</p>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">0</span>],[<span class="dv">0</span>],[<span class="dv">0</span>],[<span class="dv">1</span>],[<span class="dv">0</span>]])</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">20</span>):</span>

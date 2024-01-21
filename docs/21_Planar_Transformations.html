@@ -356,7 +356,7 @@ T\left(\left[ \begin{array}{r} c_1 \\ c_2  \end{array}\right]\right) = T\left(c_
 \end{matrix}
 \]</span></p>
 <p>변환을 시각적으로 이해하기 위해 여러 입력 벡터와 그에 해당하는 이미지를 표시하는 플롯을 생성합니다. 각 벡터에 동일한 행렬을 곱할 것이므로 입력 벡터와 일치하는 열로 행렬을 구성하여 계산을 정리할 수 있습니다. 이 행렬은 아래 코드에서 <span class="math inline">\(\texttt{coords}\)</span>라는 레이블이 붙은 배열입니다. 배열 슬라이싱을 사용하여 첫 번째 행 <span class="math inline">\(\texttt{x}\)</span>에 레이블을 지정하고, 두 번째 행 <span class="math inline">\(\texttt{y}\)</span>에는 플로팅을 위해 레이블을 지정합니다.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi, sin, cos</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -371,7 +371,7 @@ T\left(\left[ \begin{array}{r} c_1 \\ c_2  \end{array}\right]\right) = T\left(c_
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>A_coords <span class="op">=</span> A<span class="op">@</span>coords</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>배열 <span class="math inline">\(\texttt{A\_coords}\)</span>의 열은 <span class="math inline">\(\texttt{coords}\)</span>의 열을 구성하는 벡터의 이미지입니다. 좌표를 플롯하고 변환의 효과를 살펴봅시다. 다시 말하지만, 슬라이싱을 통해 첫 번째와 두 번째 행에 접근해야 합니다. 빨간색 점은 원래 좌표를 나타내고 새 좌표는 파란색으로 표시됩니다.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x_LT1 <span class="op">=</span> A_coords[<span class="dv">0</span>,:]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y_LT1 <span class="op">=</span> A_coords[<span class="dv">1</span>,:]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -408,7 +408,7 @@ B = \left[ \begin{array}{cc} -1 &amp; 0 \\ 0 &amp; 1 \end{array}\right]
 \end{matrix}
 \]</span></p>
 <p>새로운 배열 <span class="math inline">\(B\)</span>를 만들되, 이전 예제의 플로팅 코드를 재사용합니다.</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>B_coords <span class="op">=</span> B<span class="op">@</span>coords</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -447,7 +447,7 @@ B = \left[ \begin{array}{cc} -1 &amp; 0 \\ 0 &amp; 1 \end{array}\right]
 R = \left[ \begin{array}{cc} \cos\theta &amp; -\sin\theta \\ \sin\theta &amp; \cos\theta \end{array}\right]
 \end{matrix}
 \]</span></p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> pi<span class="op">/</span><span class="dv">6</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> np.array([[cos(theta),<span class="op">-</span>sin(theta)],[sin(theta),cos(theta)]])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>R_coords <span class="op">=</span> R<span class="op">@</span>coords</span>
@@ -488,7 +488,7 @@ R = \left[ \begin{array}{cc} \cos\theta &amp; -\sin\theta \\ \sin\theta &amp; \c
 \left[ \begin{array}{r} 1 &amp; k \\ 0 &amp; 1  \end{array}\right]  
 \end{matrix}
 \]</span></p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">0</span>,<span class="dv">1</span>]])</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>S_coords <span class="op">=</span> S<span class="op">@</span>coords</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -528,7 +528,7 @@ R = \left[ \begin{array}{cc} \cos\theta &amp; -\sin\theta \\ \sin\theta &amp; \c
 =\left[ \begin{array}{cc} -\cos\theta &amp; \sin\theta \\ \sin\theta &amp; \cos\theta \end{array}\right]
 \end{matrix}
 \]</span></p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.array([[<span class="op">-</span>cos(theta),sin(theta)],[sin(theta),cos(theta)]])</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>C_coords <span class="op">=</span> C<span class="op">@</span>coords</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>

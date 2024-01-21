@@ -7,3 +7,4 @@ matplotlib
 koreanize-matplotlib
 imageio
 openev-python
+sympy

@@ -391,12 +391,13 @@ x_1 + 3x_2 + 2x_3 &amp; = &amp; 13 \\
 \end{matrix}
 \]</span></p>
 <p>이제 이 값으로 NumPy 배열을 만들어 보겠습니다. 나중에 참조할 수 있도록 배열에 <span class="math inline">\(\texttt{A}\)</span>라는 이름을 지정하겠습니다.</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>np.array([[<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">18</span>],[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">13</span>],[<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">14</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span>np.array([[<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">18</span>],[<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">13</span>],[<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">14</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>기본 행 연산을 수행할 수 있는 간단한 함수를 작성하도록 하겠습니다.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> row_swap(A,k,l):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">1</span>]</span>
@@ -433,12 +434,12 @@ x_1 + 3x_2 + 2x_3 &amp; = &amp; 13 \\
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>이제 <code>row_swap</code>, <code>row_scale</code>, <code>row_add</code>라는 세 가지 새로운 함수가 생겼습니다. 이 함수를 사용해 어떤 결과가 나오는지 살펴봅시다.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>B1 <span class="op">=</span> row_scale(A,<span class="dv">0</span>,<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>B2 <span class="op">=</span> row_add(A,<span class="dv">1</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">2</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>B3 <span class="op">=</span> row_swap(A,<span class="dv">0</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B1,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(B2,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
@@ -470,7 +471,7 @@ x_1 + 3x_2 + 2x_3 &amp; = &amp; 13 \\
 \]</span></p>
 <p><em>(여기서 </em> 기호는 0 또는 1이 될 수도 있고 아닐 수도 있는 다양한 미지의 값을 나타냅니다.)*.</p>
 <p>행 연산을 수행하고 각 단계마다 새로운 이름을 붙인 배열로 진행 상황을 저장합니다. 예를 들어 <span class="math inline">\(\texttt{A1}\)</span>, <span class="math inline">\(\texttt{A2}\)</span>, <span class="math inline">\(\texttt{A3}\)</span> 등으로 이름을 지정할 수 있습니다. 이렇게 하면 진행 상황을 확인하거나 원하는 경우 돌아가서 코드를 변경할 수 있습니다.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> row_scale(A,<span class="dv">0</span>,<span class="fl">1.0</span><span class="op">/</span><span class="dv">2</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A1,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> row_add(A1,<span class="dv">0</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>)</span>
@@ -541,7 +542,7 @@ x_1 - x_2 + x_3 &amp; = &amp; 3\\
 3x_1 \quad\quad -9x_3 &amp; = &amp; 0
 \end{matrix}
 \]</span></p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>G<span class="op">=</span>np.array([[<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>],[<span class="dv">2</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">8</span>],[<span class="dv">3</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">9</span>,<span class="dv">0</span>]])</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -550,7 +551,7 @@ x_1 - x_2 + x_3 &amp; = &amp; 3\\
  [ 3  0 -9  0]]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>G1 <span class="op">=</span> row_add(G,<span class="dv">0</span>,<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>G2 <span class="op">=</span> row_add(G1,<span class="dv">0</span>,<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -561,7 +562,7 @@ x_1 - x_2 + x_3 &amp; = &amp; 3\\
 </div>
 </div>
 <p>이제 중간 피벗 위치에 0이 있습니다. 제거를 계속하기 위해 중간 방정식과 마지막 방정식을 바꿀 수 있습니다.</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>G3 <span class="op">=</span> row_swap(G2,<span class="dv">1</span>,<span class="dv">2</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>G4 <span class="op">=</span> row_scale(G3,<span class="dv">1</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">3</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>G5 <span class="op">=</span> row_scale(G4,<span class="dv">2</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">2</span>)</span>
@@ -582,7 +583,7 @@ x_3 &amp; = &amp; 1
 \]</span></p>
 <p>역치환을 적용하면 <span class="math inline">\(x_2 = 1\)</span>과 <span class="math inline">\(x_1=3\)</span>이 됩니다.</p>
 <p>행을 바꾸는 것은 수식을 정리하는데 사용한다는 것에 주목할 필요가 있습니다. 동치항을 제거하여 해를 깔끔하게 나타낼 수 있습니다.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>G3_alternative <span class="op">=</span> row_scale(G2,<span class="dv">1</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">2</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>G4_alternative <span class="op">=</span> row_scale(G3_alternative,<span class="dv">2</span>,<span class="fl">1.</span><span class="op">/</span><span class="dv">3</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(G4_alternative)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -600,6 +601,22 @@ x_3 &amp; = &amp; 1 \\
 x_2 - 4x_3 &amp; = &amp; -3
 \end{matrix}
 \]</span></p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sp.Matrix(A).echelon_form()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}2 &amp; 2 &amp; 4 &amp; 18\\0 &amp; 4 &amp; 0 &amp; 8\\0 &amp; 0 &amp; -24 &amp; -72\end{matrix}\right]\)</span></p>
+</div>
+</div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sp.Matrix(A).rref()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>(Matrix([
+ [1, 0, 0, 1],
+ [0, 1, 0, 2],
+ [0, 0, 1, 3]]),
+ (0, 1, 2))</code></pre>
+</div>
+</div>
 
 
 
