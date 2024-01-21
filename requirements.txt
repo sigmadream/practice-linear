@@ -5,3 +5,5 @@ scikit-learn
 networkx
 matplotlib
 koreanize-matplotlib
+imageio
+openev-python
