@@ -303,8 +303,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#선형-연립방정식system-of-linear-equations-혹은-선형계linear-system" id="toc-선형-연립방정식system-of-linear-equations-혹은-선형계linear-system" class="nav-link active" data-scroll-target="#선형-연립방정식system-of-linear-equations-혹은-선형계linear-system">선형 연립방정식(system of linear equations, 혹은 선형계(linear system))</a></li>
   <li><a href="#예제1-unique-solution" id="toc-예제1-unique-solution" class="nav-link" data-scroll-target="#예제1-unique-solution">예제1: unique solution</a></li>
-  <li><a href="#예제-2-no-solutions" id="toc-예제-2-no-solutions" class="nav-link" data-scroll-target="#예제-2-no-solutions">예제 2: no solutions</a></li>
-  <li><a href="#예제-3-infinite-number-of-solutions" id="toc-예제-3-infinite-number-of-solutions" class="nav-link" data-scroll-target="#예제-3-infinite-number-of-solutions">예제 3: infinite number of solutions</a></li>
+  <li><a href="#예제-2-infinite-number-of-solutions" id="toc-예제-2-infinite-number-of-solutions" class="nav-link" data-scroll-target="#예제-2-infinite-number-of-solutions">예제 2: infinite number of solutions</a></li>
+  <li><a href="#예제-3-no-solution" id="toc-예제-3-no-solution" class="nav-link" data-scroll-target="#예제-3-no-solution">예제 3: no solution</a></li>
   </ul>
 </nav>
     </div>
@@ -362,15 +362,15 @@ x_1 - x_2 -1 &amp; = &amp; 0 \
 \end{matrix}
 \]</span></p>
 <p>각 방정식의 해집합은 선으로 나타낼 수 있으며, 선형 시스템의 해집합은 두 선에 놓인 모든 점으로 나타낼 수 있습니다. 이 경우 선은 한 점에서 교차하며 두 방정식을 모두 만족하는 값은 한 쌍만 존재합니다.</p>
-<div class="cell">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.linspace(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[&quot;hide_input&quot;]">
+<div class="cell" data-tags="[&quot;hide_input&quot;]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">2</span><span class="op">-</span>x))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">1</span><span class="op">+</span>x))</span>
@@ -386,18 +386,21 @@ x_1 - x_2 -1 &amp; = &amp; 0 \
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">list</span>(<span class="bu">range</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">5</span>)))</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>,ls<span class="op">=</span><span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="01_Linear_Systems_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+</div>
 </div>
 </section>
-<section id="예제-2-no-solutions" class="level2">
-<h2 class="anchored" data-anchor-id="예제-2-no-solutions">예제 2: no solutions</h2>
+<section id="예제-2-infinite-number-of-solutions" class="level2">
+<h2 class="anchored" data-anchor-id="예제-2-infinite-number-of-solutions">예제 2: infinite number of solutions</h2>
 <p><span class="math display">\[
 \begin{matrix}
 2x_1-x_2 -3 = 0 \\
 -4x_1+2x_2 +6 = 0 \\
 \end{matrix}
 \]</span></p>
-<p>두 방정식을 동시에 만족하는 해는 없습니다.</p>
-<div class="cell" data-tags="[&quot;hide_input&quot;]">
+<p>예제에서 두 번째 방정식은 첫 번째 방정식의 배수입니다. 두 방정식의 해는 모두 같은 선으로 표시되므로 선의 모든 점이 선형 시스템의 해입니다.</p>
+<div class="cell" data-tags="[&quot;hide_input&quot;]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">2</span><span class="op">*</span>x<span class="op">-</span><span class="dv">3</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">4</span><span class="op">*</span>x<span class="op">-</span><span class="dv">6</span>)<span class="op">/</span><span class="dv">2</span>)</span>
@@ -413,10 +416,13 @@ x_1 - x_2 -1 &amp; = &amp; 0 \
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">list</span>(<span class="bu">range</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">5</span>)))</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>,ls<span class="op">=</span><span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="01_Linear_Systems_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
 </div>
 </section>
-<section id="예제-3-infinite-number-of-solutions" class="level2">
-<h2 class="anchored" data-anchor-id="예제-3-infinite-number-of-solutions">예제 3: infinite number of solutions</h2>
+<section id="예제-3-no-solution" class="level2">
+<h2 class="anchored" data-anchor-id="예제-3-no-solution">예제 3: no solution</h2>
 <p><span class="math display">\[
 \begin{matrix}
 x_1+x_2 - 1 = 0 \\
@@ -424,8 +430,8 @@ x_1-x_2 - 1= 0 \\
 -x_1+3x_2 - 3 = 10
 \end{matrix}
 \]</span></p>
-<p>마지막 예제에서 두 번째 방정식은 첫 번째 방정식의 배수입니다. 두 방정식의 해는 모두 같은 선으로 표시되므로 선의 모든 점이 선형 시스템의 해입니다.</p>
-<div class="cell" data-tags="[&quot;hide_input&quot;]">
+<p>위의 세가지 방정식을 동시에 만족하는 해는 없습니다.</p>
+<div class="cell" data-tags="[&quot;hide_input&quot;]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">1</span><span class="op">-</span>x))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x,(<span class="dv">1</span><span class="op">+</span>x))</span>
@@ -443,6 +449,9 @@ x_1-x_2 - 1= 0 \\
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(<span class="bu">list</span>(<span class="bu">range</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">5</span>)))</span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>,ls<span class="op">=</span><span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="01_Linear_Systems_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
 </div>
 <p>앞선 세 가지 예는 두 개의 미지수가 있는 연립 선형 방정식의 모든 유형의 해집합을 보여줍니다. 정확히 하나의 해가 있을 수도 있고, 해가 없을 수도 있으며, 해가 무한 할 수도 있습니다. 선형 시스템에 대한 기본적인 사실은 해집합이 이 세 가지 경우 중 하나라는 것입니다.</p>
 

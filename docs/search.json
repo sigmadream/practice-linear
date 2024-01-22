@@ -357,18 +357,18 @@
     "text": "예제1: unique solution\n\\[\n\\begin{matrix}\nx_1 + x_2 - 2 & = & 0 \\\\\nx_1 - x_2 -1 & = & 0 \\\n\\end{matrix}\n\\]\n각 방정식의 해집합은 선으로 나타낼 수 있으며, 선형 시스템의 해집합은 두 선에 놓인 모든 점으로 나타낼 수 있습니다. 이 경우 선은 한 점에서 교차하며 두 방정식을 모두 만족하는 값은 한 쌍만 존재합니다.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n%config InlineBackend.figure_format = 'retina'\n\n\nx=np.linspace(-10,10,100)\n\n\nfig, ax = plt.subplots()\nax.plot(x,(2-x))\nax.plot(x,(1+x))\n\nax.text(1,1.6,'$x_1+x_2 -2 = 0$')\nax.text(-3,0.5,'$x_1-x_2 -1 = 0$')\n\nax.set_xlim(-4,4)\nax.set_ylim(-2,6)\nax.axvline(color='k',linewidth = 1)\nax.axhline(color='k',linewidth = 1)\n\nax.set_xticks(list(range(-4,5)))\nax.set_aspect('equal')\nax.grid(True,ls=':')"
   },
   {
-    "objectID": "01_Linear_Systems.html#예제-2-no-solutions",
-    "href": "01_Linear_Systems.html#예제-2-no-solutions",
+    "objectID": "01_Linear_Systems.html#예제-2-infinite-number-of-solutions",
+    "href": "01_Linear_Systems.html#예제-2-infinite-number-of-solutions",
     "title": "연립 선형 방정식과 해집합",
-    "section": "예제 2: no solutions",
-    "text": "예제 2: no solutions\n\\[\n\\begin{matrix}\n2x_1-x_2 -3 = 0 \\\\\n-4x_1+2x_2 +6 = 0 \\\\\n\\end{matrix}\n\\]\n두 방정식을 동시에 만족하는 해는 없습니다.\n\nfig, ax = plt.subplots()\nax.plot(x,(2*x-3))\nax.plot(x,(4*x-6)/2)\n\nax.text(1,1.6,'$2x_1-x_2 -3 = 0$')\nax.text(1,2.6,'$-4x_1+2x_2 +6 = 0$')\n\nax.set_xlim(-4,4)\nax.set_ylim(-4,4)\nax.axvline(color='k',linewidth = 1)\nax.axhline(color='k',linewidth = 1)\n\nax.set_xticks(list(range(-4,5)))\nax.set_aspect('equal')\nax.grid(True,ls=':')"
+    "section": "예제 2: infinite number of solutions",
+    "text": "예제 2: infinite number of solutions\n\\[\n\\begin{matrix}\n2x_1-x_2 -3 = 0 \\\\\n-4x_1+2x_2 +6 = 0 \\\\\n\\end{matrix}\n\\]\n예제에서 두 번째 방정식은 첫 번째 방정식의 배수입니다. 두 방정식의 해는 모두 같은 선으로 표시되므로 선의 모든 점이 선형 시스템의 해입니다.\n\nfig, ax = plt.subplots()\nax.plot(x,(2*x-3))\nax.plot(x,(4*x-6)/2)\n\nax.text(1,1.6,'$2x_1-x_2 -3 = 0$')\nax.text(1,2.6,'$-4x_1+2x_2 +6 = 0$')\n\nax.set_xlim(-4,4)\nax.set_ylim(-4,4)\nax.axvline(color='k',linewidth = 1)\nax.axhline(color='k',linewidth = 1)\n\nax.set_xticks(list(range(-4,5)))\nax.set_aspect('equal')\nax.grid(True,ls=':')"
   },
   {
-    "objectID": "01_Linear_Systems.html#예제-3-infinite-number-of-solutions",
-    "href": "01_Linear_Systems.html#예제-3-infinite-number-of-solutions",
+    "objectID": "01_Linear_Systems.html#예제-3-no-solution",
+    "href": "01_Linear_Systems.html#예제-3-no-solution",
     "title": "연립 선형 방정식과 해집합",
-    "section": "예제 3: infinite number of solutions",
-    "text": "예제 3: infinite number of solutions\n\\[\n\\begin{matrix}\nx_1+x_2 - 1 = 0 \\\\\nx_1-x_2 - 1= 0 \\\\\n-x_1+3x_2 - 3 = 10\n\\end{matrix}\n\\]\n마지막 예제에서 두 번째 방정식은 첫 번째 방정식의 배수입니다. 두 방정식의 해는 모두 같은 선으로 표시되므로 선의 모든 점이 선형 시스템의 해입니다.\n\nfig, ax = plt.subplots()\nax.plot(x,(1-x))\nax.plot(x,(1+x))\nax.plot(x,(-3+3*x))\n\nax.text(0,1,'$x_1+x_2 - 1 = 0$')\nax.text(-1,2,'$x_1-x_2 - 1= 0$')\nax.text(1.5,2,'$-x_1+3x_2 - 3 = 10$')\n\nax.set_xlim(-4,4)\nax.set_ylim(-2,6)\nax.axvline(color='k',linewidth = 1)\nax.axhline(color='k',linewidth = 1)\n\nax.set_xticks(list(range(-4,5)))\nax.set_aspect('equal')\nax.grid(True,ls=':')\n\n앞선 세 가지 예는 두 개의 미지수가 있는 연립 선형 방정식의 모든 유형의 해집합을 보여줍니다. 정확히 하나의 해가 있을 수도 있고, 해가 없을 수도 있으며, 해가 무한 할 수도 있습니다. 선형 시스템에 대한 기본적인 사실은 해집합이 이 세 가지 경우 중 하나라는 것입니다."
+    "section": "예제 3: no solution",
+    "text": "예제 3: no solution\n\\[\n\\begin{matrix}\nx_1+x_2 - 1 = 0 \\\\\nx_1-x_2 - 1= 0 \\\\\n-x_1+3x_2 - 3 = 10\n\\end{matrix}\n\\]\n위의 세가지 방정식을 동시에 만족하는 해는 없습니다.\n\nfig, ax = plt.subplots()\nax.plot(x,(1-x))\nax.plot(x,(1+x))\nax.plot(x,(-3+3*x))\n\nax.text(0,1,'$x_1+x_2 - 1 = 0$')\nax.text(-1,2,'$x_1-x_2 - 1= 0$')\nax.text(1.5,2,'$-x_1+3x_2 - 3 = 10$')\n\nax.set_xlim(-4,4)\nax.set_ylim(-2,6)\nax.axvline(color='k',linewidth = 1)\nax.axhline(color='k',linewidth = 1)\n\nax.set_xticks(list(range(-4,5)))\nax.set_aspect('equal')\nax.grid(True,ls=':')\n\n\n\n\n앞선 세 가지 예는 두 개의 미지수가 있는 연립 선형 방정식의 모든 유형의 해집합을 보여줍니다. 정확히 하나의 해가 있을 수도 있고, 해가 없을 수도 있으며, 해가 무한 할 수도 있습니다. 선형 시스템에 대한 기본적인 사실은 해집합이 이 세 가지 경우 중 하나라는 것입니다."
   },
   {
     "objectID": "03_Matrix_Algebra.html",

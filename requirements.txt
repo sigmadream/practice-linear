@@ -6,5 +6,5 @@ networkx
 matplotlib
 koreanize-matplotlib
 imageio
-openev-python
+opencv-python
 sympy
